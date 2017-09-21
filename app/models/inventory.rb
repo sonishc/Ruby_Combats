@@ -1,6 +1,7 @@
 class Inventory < ApplicationRecord
   belongs_to :user
   belongs_to :item
+
   validates_uniqueness_of :item_id, scope: :user_id
   validate :maximum_items_not_more_then_15, on: :create
 
