@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170930093146) do
     t.bigint "user_id"
     t.bigint "item_id"
     t.boolean "equipped", default: false
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_inventories_on_item_id"
