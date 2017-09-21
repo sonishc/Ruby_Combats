@@ -1,16 +1,15 @@
 class CreateUsers < ActiveRecord::Migration[5.1]
   def change
     create_table :users do |t|
-      t.string :name
+      t.belongs_to :level, foreign_key: true
+      t.belongs_to :role, foreign_key: true
+
+      t.string :name, limit: 99
       t.string :email
       t.string :password_digest
-      t.integer :hp
-      t.string :state
+      t.string :locale, default: 'en'
+      t.integer :hp, default: 100
       t.integer :experience
-      t.integer :level
-      t.string :locale
-      t.integer :role
-      t.string :type
 
       t.timestamps
     end

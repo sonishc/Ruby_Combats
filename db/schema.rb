@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170927110812) do
 
 
 
+
   create_table "roles", force: :cascade do |t|
     t.string "title", null: false
   end
@@ -46,13 +47,10 @@ ActiveRecord::Schema.define(version: 20170927110812) do
     t.string "email"
     t.string "password_digest"
     t.integer "hp"
-    t.string "state"
     t.integer "experience"
     t.integer "level"
     t.string "locale"
     t.integer "role"
-    t.string "type"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
