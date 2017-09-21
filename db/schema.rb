@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20170927110812) do
   enable_extension "plpgsql"
 
 
+
   create_table "roles", force: :cascade do |t|
     t.string "title", null: false
   end
