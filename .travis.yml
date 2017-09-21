@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.4.1
+env:
+  - DB=postgresql
+install: bundle install
+script:
+  - bundle exec rake db:drop RAILS_ENV=test
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake db:migrate RAILS_ENV=test
+  - bundle exec rspec
+  - bundle exec rubocop -D
+branches: 
+  only:
+  - master
