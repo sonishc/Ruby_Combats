@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project aims to create the online  Ruby game
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Before create push, you need to install overcommit gem run:
 
-* System dependencies
+```bash
+gem install overcommit
+```
 
-* Configuration
+If the project was initialized, run one of the following commands:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+overcommit --install
+```
