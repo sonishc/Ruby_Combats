@@ -9,27 +9,27 @@ RSpec.describe User, type: :model do
 
   it 'is invalid without a name' do
     user_1.name = nil
-    user_1.valid?
+    expect(user_1.valid?).to be(false)
     expect(user_1.errors[:name]).to include("can't be blank")
   end
 
   it 'is invalid without an email address' do
     user_1.email = nil
-    user_1.valid?
+    expect(user_1.valid?).to be(false)
     expect(user_1.errors[:email]).to include("can't be blank")
   end
 
   it 'is invalid with a duplicate email address' do
     user_1.save
     user = User.new(email: 'some@mail.com')
-    user.valid?
+    expect(user.valid?).to be(false)
     expect(user.errors[:email]).to include('has already been taken')
   end
 
   it 'is invalid with a duplicate name' do
     user_1.save
     user = User.new(name: 'Bob')
-    user.valid?
+    expect(user.valid?).to be(false)
     expect(user.errors[:name]).to include('has already been taken')
   end
 
@@ -51,7 +51,8 @@ RSpec.describe User, type: :model do
 
   describe 'when password is not present' do
     before do
-      user_1.password = user_1.password_confirmation = ' '
+      user_1.password = ' '
+      user_1.password_confirmation = ' '
     end
 
     it 'is invalid' do
