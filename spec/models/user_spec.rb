@@ -1,14 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user_1) do
-    User.create(
-      name:     'Joe',
-      email:    'joe@mail.com',
-      password: 'joe_pass',
-      password_confirmation: 'joe_pass'
-    )
-  end
+  let(:user_1) { FactoryGirl.create(:user) }
 
   it 'is valid with a name, email, and password' do
     expect(user_1).to be_valid
@@ -28,14 +21,14 @@ RSpec.describe User, type: :model do
 
   it 'is invalid with a duplicate email address' do
     user_1
-    user = User.new(email: 'joe@mail.com')
+    user = User.new(email: 'some@mail.com')
     user.valid?
     expect(user.errors[:email]).to include('has already been taken')
   end
 
   it 'is invalid with a duplicate name' do
     user_1
-    user = User.new(name: 'Joe')
+    user = User.new(name: 'Bob')
     user.valid?
     expect(user.errors[:name]).to include('has already been taken')
   end
