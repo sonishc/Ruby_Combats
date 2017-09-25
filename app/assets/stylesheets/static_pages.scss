@@ -1,0 +1,36 @@
+// Place all the styles related to the Static_Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle, #1fc8db, #2cb5e8);
+  border-radius: 20%;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+
+#root {
+  width: 200px;
+  height: 200px;
+  margin: 200px auto 0;
+  background-color: indigo;
+  border-radius: 100%;
+  animation-name: vr333;
+  animation-duration: 5.1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes vr333 {
+  0%   {background-color:indigo;}
+  20%  {background-color:lightgreen;}
+  40%  {background-color:yellow;}
+  60%  {background-color:skyblue;}
+  80%  {background-color:cornflowerblue;}
+  100% {background-color:indigo;}
+}

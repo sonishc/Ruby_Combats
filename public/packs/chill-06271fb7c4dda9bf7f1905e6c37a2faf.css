@@ -1,0 +1,12 @@
+#root {
+  background: radial-gradient(circle, #1fc8db, #2cb5e8);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 20%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}

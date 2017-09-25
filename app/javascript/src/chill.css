@@ -1,0 +1,130 @@
+div.god {
+  background: radial-gradient(circle, #1fc8db, #2cb5e8);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 20%;
+  * {
+      box-sizing: border-box;
+  }
+  .wrapper {
+      width: 100%;
+      height: 100%;
+      margin: auto 0;
+  }
+  p.chill {
+      text-align: center;
+  }
+
+  /*         TOP PART OF THE SITE       */
+
+  #top {
+      color: white;
+      margin: 0 auto;
+      padding: 15px 5px 15px;
+  }
+
+  /*         BOTTOM PART OF THE SITE       */
+
+  #bottom {
+      padding: 15px 5px 15px;
+      margin: 0;
+      color: #f2f2f2;
+      position: relative;
+      top: 25px;
+  }
+  div.main {
+      width: 100%;
+      height: 400px;
+      margin: auto;
+  }
+  div.mainElement{
+      width: 200px;
+      height: 200px;
+      margin: auto;
+      position: relative;
+      top: 100px;
+      box-shadow: 0 0 15px 5px lightblue;
+      border-radius: 100%;
+      background: radial-gradient(circle,white 25%, skyblue, #1fc8db);
+  }
+  div.elements {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      float:left;
+      opacity:0.6;
+      transition: 0.8s;
+      transition-timing-function: ease-in;
+  }
+
+  /*TopLeft*/
+  div#TopLeft {
+      animation-name: TopLeft;
+      animation-duration: 5.1s;
+      animation-iteration-count: infinite;
+      background-color: red;
+      border-radius: 100% 0 0 0;
+  }
+  /* Standard syntax */
+  @keyframes TopLeft {
+      0%   {background-color:red; left:0px; top:0px; transform:rotate(0);}
+      20%  {background-color:green; left:-200px; top:-100px; border-radius: 100%; border-radius: 0 0 100% 0; transform:rotate(-360deg);}
+      40%  {background-color:yellow; left:-200px; top:200px; border-radius: 0 100% 0 0; transform:rotate(0);}
+      60%  {background-color:red; left:300px; top:200px; border-radius: 100% 0 0 0; transform:rotate(-360deg);}
+      80%  {background-color:green; left:300px; top:-100px; border-radius: 0 0 0 100%; transform:rotate(0);}
+      100% {background-color:red; left:0px; top:0px; transform:rotate(-360deg);}
+  }
+
+  /*TopRight*/
+  div#TopRight {
+      animation-name: TopRight;
+      animation-duration: 5.1s;
+      animation-iteration-count: infinite;
+      background-color: yellow;
+      border-radius: 0 100% 0 0;
+  }
+  /* Standard syntax */
+  @keyframes TopRight {
+      0%   {background-color:yellow; left:0px; top:0px; transform:rotate(0);}
+      20%  {background-color:blue; left:200px; top:-100px; border-radius: 0 0 0 100%; transform:rotate(-360deg);}
+      40%  {background-color:red; left:-300px; top:-100px; border-radius: 0 0 100% 0; transform:rotate(0);}
+      60%  {background-color:yellow; left:-300px; top:200px; border-radius: 0 100% 0 0; transform:rotate(-360deg);}
+      80%  {background-color:blue; left:200px; top:200px; border-radius: 100% 0 0 0; transform:rotate(0);}
+      100% {background-color:yellow; left:0px; top:0px; transform:rotate(-360deg);}
+  }
+
+  /*BottomLeft*/
+  div#BottomLeft {
+      animation-name: BottomLeft;
+      animation-duration: 5.1s;
+      animation-iteration-count: infinite;
+      background-color: blue;
+      border-radius: 0 0 0 100%;
+  }
+  @keyframes BottomLeft {
+      0%   {background-color:blue; left:0px; top:0px; transform:rotate(0);}
+      20%  {background-color:yellow; left:-200px; top:100px; border-radius: 0 100% 0 0; transform:rotate(-360deg);}
+      40%  {background-color:green; left:300px; top:100px; border-radius: 100% 0 0 0; transform:rotate(0);}
+      60%  {background-color:blue; left:300px; top:-200px; border-radius: 0 0 0 100%; transform:rotate(-360deg);}
+      80%  {background-color:red; left:-200px; top:-200px; border-radius: 0 0 100% 0; transform:rotate(0);}
+      100% {background-color:blue; left:0px; top:0px; transform:rotate(-360deg);}
+  }
+
+  /*BottomRight*/
+  div#BottomRight {
+      animation-name: BottomRight;
+      animation-duration: 5.1s;
+      animation-iteration-count: infinite;
+      background-color: green;
+      border-radius: 0 0 100% 0;
+  }
+  @keyframes BottomRight {
+      0%   {background-color:green; left:0px; top:0px; transform:rotate(0);}
+      20%  {background-color:red; left:200px; top:100px;border-radius: 100% 0 0 0; transform:rotate(-360deg);}
+      40%  {background-color:blue; left:200px; top:-200px; border-radius: 0 0 0 100%; transform:rotate(0);}
+      60%  {background-color:green; left:-300px; top:-200px; border-radius: 0 0 100% 0; transform:rotate(-360deg);}
+      80%  {background-color:yellow; left:-300px; top:100px; border-radius: 0 100% 0 0; transform:rotate(0);}
+      100% {background-color:green; left:0px; top:0px; transform:rotate(-360deg);}
+  }
+}
