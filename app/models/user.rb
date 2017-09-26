@@ -1,10 +1,10 @@
 # Gem 'bcrypt-ruby'
 # Generate User model with password_digest field
 class User < ApplicationRecord
-  # belongs_to :role
-  # belongs_to :level
-  has_and_belongs_to_many :inventory
-  has_and_belongs_to_many :skills
+  belongs_to :role
+  belongs_to :level
+  has_many :inventories
+  has_one :skill
 
   has_secure_password
 
