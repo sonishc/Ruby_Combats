@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  before_save :downcase_email
+  before_save :convert_email_to_downcase
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                     length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
@@ -17,8 +17,7 @@ class User < ApplicationRecord
 
   private
 
-  # Converts email to all lower-case.
-  def downcase_email
+  def convert_email_to_downcase
     self.email = email.downcase
   end
 end
