@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import '../../assets/stylesheets/static_pages.scss'
+import '../../ssets/stylesheets/static_pages.scss'
 
 class Chill extends Component {
   render() {
