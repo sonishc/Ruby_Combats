@@ -1,0 +1,78 @@
+body {
+  background: radial-gradient(circle, #1fc8db, #2cb5e8);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 20%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+#root {
+  width: 200px;
+  height: 200px;
+  margin: 300px auto 0;
+  -webkit-animation-name: vr333;
+          animation-name: vr333;
+  -webkit-animation-duration: 5.1s;
+          animation-duration: 5.1s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  background-color: indigo;
+  border-radius: 100%;
+}
+
+@-webkit-keyframes vr333 {
+  0% {
+    background-color: indigo;
+  }
+
+  20% {
+    background-color: green;
+  }
+
+  40% {
+    background-color: yellow;
+  }
+
+  60% {
+    background-color: red;
+  }
+
+  80% {
+    background-color: green;
+  }
+
+  100% {
+    background-color: indigo;
+  }
+}
+
+@keyframes vr333 {
+  0% {
+    background-color: indigo;
+  }
+
+  20% {
+    background-color: green;
+  }
+
+  40% {
+    background-color: yellow;
+  }
+
+  60% {
+    background-color: red;
+  }
+
+  80% {
+    background-color: green;
+  }
+
+  100% {
+    background-color: indigo;
+  }
+}
