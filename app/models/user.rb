@@ -1,10 +1,10 @@
 # Gem 'bcrypt-ruby'
 # Generate User model with password_digest field
 class User < ApplicationRecord
-  belongs_to :role
-  belongs_to :level
-  has_many :inventories
-  has_one :skill
+  # belongs_to :role
+  # belongs_to :level
+  # has_many :inventories
+  # has_one :skill
 
   has_secure_password
 
@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                     length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true,  uniqueness: true
-  validates :password, length: { minimum: 5 }
+  validates :password_digest, length: { minimum: 5 }
 
   private
 

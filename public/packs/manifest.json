@@ -1,5 +1,7 @@
 {
-  "application.js": "/packs/application-ea30bd9f6f2c43692adc.js",
-  "chill.js": "/packs/chill-552b540b3c16a86f136a.js",
-  "hello_react.js": "/packs/hello_react-64f149e686efb6fd2961.js"
+  "application.js": "/packs/application-0c7f974442c1e375464f.js",
+  "chill.js": "/packs/chill-3de44178795484560e70.js",
+  "hello_react.js": "/packs/hello_react-3a7d463af131efbddfe1.js",
+  "signupForm.css": "/packs/signupForm-4a086db796845262912ae49b13eb3704.css",
+  "signupForm.js": "/packs/signupForm-22d968eb4c9b0947c25a.js"
 }
