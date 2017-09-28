@@ -1,0 +1,72 @@
+/* line 1, /home/zoryana/Desktop/Happy JS Developer/ruby/Project/clean_v/Ruby_Combats/app/assets/stylesheets/signupForm.scss */
+.wrapper {
+  margin: 10% 25%;
+  width: 50%;
+}
+/* line 5, /home/zoryana/Desktop/Happy JS Developer/ruby/Project/clean_v/Ruby_Combats/app/assets/stylesheets/signupForm.scss */
+.wrapper p {
+  color: #00d8ff;
+  font-size: 1.3em;
+  /*text-align: center;*/
+  cursor: pointer;
+}
+/* line 11, /home/zoryana/Desktop/Happy JS Developer/ruby/Project/clean_v/Ruby_Combats/app/assets/stylesheets/signupForm.scss */
+.wrapper legend {
+  color: #00d8ff;
+  font-size: 2em;
+  text-align: center;
+}
+/* line 16, /home/zoryana/Desktop/Happy JS Developer/ruby/Project/clean_v/Ruby_Combats/app/assets/stylesheets/signupForm.scss */
+.wrapper .form-input {
+  display: block;
+  width: 100%;
+  border-radius: 5px;
+  height: 30px;
+  padding: 6px 12px;
+}
+/* line 23, /home/zoryana/Desktop/Happy JS Developer/ruby/Project/clean_v/Ruby_Combats/app/assets/stylesheets/signupForm.scss */
+.wrapper .form-input:focus {
+  border: 2px solid #00d8ff;
+}
+/* line 27, /home/zoryana/Desktop/Happy JS Developer/ruby/Project/clean_v/Ruby_Combats/app/assets/stylesheets/signupForm.scss */
+.wrapper .submit-btn {
+  background-color: #00d8ff;
+  border: none;
+  color: white;
+  padding: 5% 10%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 5% 25%;
+  cursor: pointer;
+  width: 50%;
+  min-width: 90px;
+  font-size: 1.2em;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+* {
+    box-sizing: border-box;
+}
+html {
+    height: 100%
+}
+body {
+    height: 100%;
+    margin: 0;
+}
