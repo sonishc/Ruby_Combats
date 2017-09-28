@@ -10,6 +10,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
+gem 'pundit', '~> 1.1.0'
 gem 'rails', '~> 5.1.4'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
@@ -37,12 +38,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-end
-
-group :test do
-  gem 'database_cleaner', '~> 1.5'
-  gem 'faker', '~> 1.6.1'
-  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
