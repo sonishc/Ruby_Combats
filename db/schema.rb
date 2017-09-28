@@ -16,12 +16,41 @@ ActiveRecord::Schema.define(version: 20170927110812) do
   enable_extension "plpgsql"
 
 
+
+
   create_table "roles", force: :cascade do |t|
     t.string "title", null: false
   end
 
   create_table "inventories", force: :cascade do |t|
     t.boolean "equipped", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "item_name"
+    t.string "category"
+    t.string "hierarchy"
+    t.integer "hp"
+    t.integer "armor"
+    t.integer "power"
+    t.integer "instinct"
+    t.integer "stamina"
+    t.integer "dexterity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.integer "hp"
+    t.integer "experience"
+    t.integer "level"
+    t.string "locale"
+    t.integer "role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
