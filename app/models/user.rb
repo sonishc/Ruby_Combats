@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   belongs_to :role
-  belongs_to :level
   has_many :inventories
-  has_one :skill
 
   has_secure_password
 
