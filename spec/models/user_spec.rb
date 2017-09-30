@@ -17,14 +17,12 @@ RSpec.describe User, type: :model do
   end
 
   it 'is invalid with a duplicate email address' do
-    user_1.save
     user_2.email = user_1.email
     expect(user_2.valid?).to be(false)
     expect(user_2.errors[:email]).to include('has already been taken')
   end
 
   it 'is invalid with a duplicate name' do
-    user_1.save
     user_2.name = user_1.name
     expect(user_2.valid?).to be(false)
     expect(user_2.errors[:name]).to include('has already been taken')
