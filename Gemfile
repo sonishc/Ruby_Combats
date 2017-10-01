@@ -6,13 +6,17 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt', '3.1.11'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.1'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
 gem 'pundit', '~> 1.1.0'
 gem 'rails', '~> 5.1.4'
+gem 'react-bootstrap-rails', '~> 0.30.2'
+gem 'react-rails-img'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'

@@ -12,4 +12,11 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require react
+//= require react_ujs
+//= require components
 //= require_tree .
+//= require react_bootstrap
+//= require jquery
+//= require bootstrap-sprockets
+//= require react_rails_img
