@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.integer :hp, default: 100
       t.integer :experience
       t.references :role, index: true
+      t.boolean :banned, default: false
 
       t.timestamps
     end

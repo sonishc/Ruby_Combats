@@ -1,0 +1,24 @@
+<table>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+       
+        <td>
+          <%= form_for(user) do |f|%>
+            
+            <%= f.select('role_id', Role.all.map {|r| [r.title, r.id]})%>
+            <td>
+              <button><%= f.submit 'Change Role' %></button>
+            </td>
+          <% end %>
+        </td>
+        <td>
+          <%= button_to "Destroy", user, method: :delete, data: { confirm: "You sure?" } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table> 

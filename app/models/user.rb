@@ -1,9 +1,14 @@
 class User < ApplicationRecord
-  belongs_to :role
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+  belongs_to :role, optional: true
   has_many :inventories
 
-  has_secure_password
+  # has_secure_password
 
+  after_initialize :set_default_role, if: :new_record?
   before_save :convert_email_to_downcase
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -16,5 +21,9 @@ class User < ApplicationRecord
 
   def convert_email_to_downcase
     self.email = email.downcase
+  end
+
+  def set_default_role
+    self.role_id ||= 4
   end
 end
