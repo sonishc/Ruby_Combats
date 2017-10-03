@@ -6,6 +6,8 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
   </head>
 
   <body>
@@ -26,6 +28,7 @@
         <span><%= current_user.email %> welcome to Combats</span>
         <%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %>
     <% end %>
+    <%= debug(params) if Rails.env.development? %>
 
   </body>
 </html>
