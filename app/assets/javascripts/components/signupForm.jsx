@@ -60,9 +60,3 @@ class SignupForm extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <SignupForm />,
-    document.getElementById('root')
-  )
-})
