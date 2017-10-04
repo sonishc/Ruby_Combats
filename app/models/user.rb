@@ -16,6 +16,7 @@ class User < ApplicationRecord
                     length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true,  uniqueness: true, length: { maximum: 99 }
 
+
   private
 
   def convert_email_to_downcase

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   get 'persons/profile', as: 'user_root'
   devise_scope :user do
@@ -8,7 +7,10 @@ Rails.application.routes.draw do
     get '/users/edit', to: 'devise/registrations#edit'
   end
 
+  post '/user/:id', to: 'users#update'
+
   resources :users
+  
   resources :magician, controller: "users", type: "Magician"
   resources :rogue, controller: "users", type: "Rogue"
   resources :warrior, controller: "users", type: "Warrior"

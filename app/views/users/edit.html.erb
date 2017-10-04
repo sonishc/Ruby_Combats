@@ -1,7 +1,9 @@
-<!-- <h1>Select your player type</h1>
-<%= @user.name %> you are <%= @user.type %>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Select your Name and Player type:
 <div>
   <%= form_for(@user) do |f| %>
+  	<%= f.label :name %>
+  	<%= f.text_field :name%>
 
     <%= f.label :type %>
     <%= f.select(:type, options_for_select([['Magician'], ['Warrior'], ['Rogue']] )) %>
@@ -10,5 +12,5 @@
   <% end %>
 
 </div> -->
-<%= react_component('UserEdit') %> 
+<%= react_component('UserUpdate', {url: user_path, user_id: @user.id}) %>
 <%= debug(params) if Rails.env.development? %> 
