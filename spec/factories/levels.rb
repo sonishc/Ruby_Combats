@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :level do
-    sequence(:id) { |n| 1 + n }
-    sequence(:experience_level) { |n| 50 + n }
-    sequence(:health_point_level) { |n| 100 + n }
+    sequence(:id, (0..11).cycle) { |n| 1 + n }
+    sequence(:experience_level, (49..9999).cycle) { |n| 1000 + n }
+    sequence(:health_point_level, (99..9999).cycle) { |n| 1 + n }
   end
 end
