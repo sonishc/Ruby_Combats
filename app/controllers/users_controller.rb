@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to users_url
+    @users = User.all
+    @users.find(params[:id]).destroy
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { render json: @users }
+    end
   end
 end

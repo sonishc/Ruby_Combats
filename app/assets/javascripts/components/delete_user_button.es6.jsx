@@ -1,13 +1,28 @@
 class DeleteUserButton extends React.Component {
-  render () {
+  constructor(props) {
+    super(props);
+
+    this.state = { id: this.props.user_id };
+  }
+
+  initHeaders() {
     const token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
 
+    axios.defaults.headers.common['X-CSRF-Token'] = token
+    axios.defaults.headers.common['Accept'] = 'application/json'
+  }
+
+  sendRequest(e) {
+    this.initHeaders();
+    axios.delete('/users/' + this.state.id).then(response => {
+      this.props.updateFunc(response.data);
+    });
+  }
+
+  render() {
+
     return (
-      <form className="button_to" method="post" action={'/users/' + this.props.user_id}>
-        <input name="_method" value="delete" type="hidden"/>
-        <input data-confirm="You sure?" value="Delete" type="submit"/>
-        <input name="authenticity_token" value={token} type="hidden"/>
-      </form>
-    )
+      <button onClick={() => this.sendRequest()}>Delete</button>
+    );
   }
 }

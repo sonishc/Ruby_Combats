@@ -1,7 +1,17 @@
 class UsersEditTable extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {users: this.props.users }
+    this.updateList = this.updateList.bind(this);
+  }
+
+  updateList(users) {
+    this.setState({users: users});
+  }
 
   user_rows() {
-    const users = this.props.users;
+    const users = this.state.users;
 
     const user_rows = users.map((user) => {
       return (
@@ -10,7 +20,7 @@ class UsersEditTable extends React.Component {
           <td>{user.name}</td>
           <td>{user.email}</td>
           <td>
-            <DeleteUserButton user_id={user.id} />
+            <DeleteUserButton user_id={user.id} updateFunc={this.updateList} />
           </td>
         </tr>
       )
@@ -19,8 +29,6 @@ class UsersEditTable extends React.Component {
   }
 
   render () {
-
-
     return (
       <table>
         <thead>
