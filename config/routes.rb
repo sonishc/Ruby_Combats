@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
+  #post '/users', to: 'users#create'
+
   devise_for :users
   get 'persons/profile', as: 'user_root'
   devise_scope :user do
     root to: 'devise/sessions#new'
     get '/users/sign_out', to: 'devise/sessions#destroy'
-    get '/users/edit', to: 'devise/registrations#edit'
+    get '/users/edit', to: 'devise/registrations#edit'    
   end
-
-  post '/user/:id', to: 'users#update'
 
   resources :users
   
