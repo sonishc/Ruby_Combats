@@ -7,6 +7,7 @@ end
 
 gem 'bcrypt', '3.1.11'
 gem 'coffee-rails', '~> 4.2'
+gem 'devise', '~> 4.1'
 gem 'jbuilder', '~> 2.5'
 gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
@@ -20,6 +21,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'react-rails'
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
 end
