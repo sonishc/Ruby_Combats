@@ -1,4 +1,3 @@
-#inherit_from: .rubocop_todo.yml
 require: rubocop-rspec
 AllCops:
   Include:
@@ -7,3 +6,19 @@ AllCops:
     - lib/**/*.rake
   Exclude:
     - db/schema.rb
+    - bin/webpack
+    - db/**
+    - config/**
+    - app/assets/javascript
+    - app/javascript
+Metrics/MethodLength:  
+  Max: 20
+
+Documentation:  
+ Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
