@@ -1,0 +1,16 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- Select your Name and Player type:
+<div>
+  <%= form_for(@user) do |f| %>
+  	<%= f.label :name %>
+  	<%= f.text_field :name%>
+
+    <%= f.label :type %>
+    <%= f.select(:type, options_for_select([['Magician'], ['Warrior'], ['Rogue']] )) %>
+
+    <%= f.submit "Save changes", class: "btn btn-primary" %>
+  <% end %>
+
+</div> -->
+<%= react_component('UserUpdate', {url: user_path, user_id: @user.id}) %>
+<%= debug(params) if Rails.env.development? %> 
