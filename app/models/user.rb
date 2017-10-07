@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :inventories
 
   before_save :convert_email_to_downcase
-
+  before_create :set_default_role
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                     length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
@@ -18,5 +18,9 @@ class User < ApplicationRecord
 
   def convert_email_to_downcase
     self.email = email.downcase
+  end
+
+  def set_default_role
+    self.role_id ||= Role.find_by(title: 'Player').id
   end
 end
