@@ -1,0 +1,67 @@
+/* Basic style */
+/* --- Colors --- */
+
+$dutch-white: #eae2b7;
+$yellow-red: #fcbf49;
+$orange: #f77f00;
+$red: #d62828;
+$burgundy: #780116;
+
+/* --- start style --- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+/* --- header --- */
+.navbar{
+  background-color: $burgundy;
+
+  li{
+    :hover{
+      color: $burgundy;
+    }
+  }
+
+  a{
+    color: $dutch-white;
+
+    :hover{
+      color: $burgundy;
+    }
+  }
+}
+
+.navbar-toggle .icon-bar{
+  background-color: $dutch-white;
+}
+
+/* --- footer --- */
+#footer{
+  background-color: $burgundy;
+  color: $dutch-white;
+  padding: 5px auto;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+}
+
+/* --- button -- */
+.btn{
+  background-color: $yellow-red;
+
+  :hover{
+    background: $orange;
+  }
+}
+
+.btn-danger{
+  background-color: $red;
+}
