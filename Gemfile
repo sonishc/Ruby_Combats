@@ -40,7 +40,7 @@ end
 group :test do
   gem 'database_cleaner', '~> 1.5'
   gem 'faker', '~> 1.6.1'
-  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'shoulda-matchers', '~> 3.0'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

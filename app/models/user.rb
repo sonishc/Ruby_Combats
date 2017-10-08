@@ -8,6 +8,7 @@ class User < ApplicationRecord
          
   belongs_to :role, optional: true
   has_many :inventories
+  has_many :skills
 
   before_save :convert_email_to_downcase
 

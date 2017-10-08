@@ -44,13 +44,15 @@ ActiveRecord::Schema.define(version: 20170930093146) do
   end
 
   create_table "skills", force: :cascade do |t|
-    t.integer "power"
-    t.integer "dexterity"
-    t.integer "instinct"
-    t.integer "stamina"
-    t.integer "experience"
+    t.bigint "user_id"
+    t.integer "power", default: 1
+    t.integer "dexterity", default: 1
+    t.integer "instinct", default: 1
+    t.integer "stamina", default: 1
+    t.integer "experience", default: 50
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
