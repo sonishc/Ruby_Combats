@@ -29,9 +29,8 @@ class UsersController < ApplicationController
   end
 
   def fight
-    @user = current_user
-    @bot = @user.dup
-    @bot.handle_bot_hp(@user)
+    @bot = current_user.dup
+    @bot.handle_bot_hp(current_user)
   end
 
   def add_experience
@@ -57,5 +56,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:experience)
   end
-
 end
