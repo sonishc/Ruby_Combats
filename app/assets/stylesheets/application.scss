@@ -84,6 +84,7 @@ body {
     margin-bottom: 10%;
   }
 }
+<<<<<<< HEAD
   .user-items {
     width: 300px;
     display: block;
@@ -93,6 +94,17 @@ body {
     margin: 3px;
     border: 2px solid #e18916;
   }
+=======
+.user-items {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+.user-items > img{
+  margin: 3px;
+  border: 2px solid #e18916;
+}
+>>>>>>> Implemented incrementing user experience after the fight has ended
 
 meter::-webkit-meter-bar {
   background-image:

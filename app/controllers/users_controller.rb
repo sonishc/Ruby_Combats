@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[fight add_experience]
   skip_before_action :verify_authenticity_token
 
+<<<<<<< HEAD
   def index
     authorize @users
     @roles = Role.all
@@ -48,6 +49,11 @@ class UsersController < ApplicationController
 
   def online
     @users = User.where('last_request_at > ?', 5.minutes.ago)
+=======
+  def fight
+    @bot = current_user.dup
+    @bot.handle_bot_hp(current_user)
+>>>>>>> Implemented incrementing user experience after the fight has ended
   end
 
   def add_experience

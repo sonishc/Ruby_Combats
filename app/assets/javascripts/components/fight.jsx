@@ -263,9 +263,12 @@ class Fight extends React.Component {
   render () {
     return (
       <div className="container-fluid">
+
+        <FightTopHeader />
+
         <div className="row">
           <div className="col-md-3">
-            {this.propertyUserBot('User', this.state.user.hp, USER_DAMAGE * 2 * parseInt(this.state.user.level_id))}
+            {this.propertyUserBot('User', this.state.user.hp, USER_DAMAGE)}
 
             <SelectHitBlock handleChange={ this.handleChange.bind(this) }
               ref={instance => { this.child = instance; }} />
@@ -276,7 +279,7 @@ class Fight extends React.Component {
           </div>
 
           <div className="col-md-3">
-            { this.propertyUserBot('Bot', this.props.bot.hp, BOT_DAMAGE * 2.2 * parseInt(this.state.user.level_id)) }
+            { this.propertyUserBot('Bot', this.props.bot.hp, BOT_DAMAGE) }
 
             { I18n.t ("select_strike." + HIT_TYPES[this.state.botHit.selectedAttackIndex])}
 
