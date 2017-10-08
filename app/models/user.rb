@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
   has_many :inventories
+  has_one :skill
 
   before_save :convert_email_to_downcase
 
