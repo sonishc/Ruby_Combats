@@ -1,7 +1,7 @@
 function ButtonStart(props) {
 
     return (
-      <td>
+      <div className="col-md-3">
         <button 
           onClick={ props.changeFightProperty }
           disabled={ props.btnClick } 
@@ -9,6 +9,6 @@ function ButtonStart(props) {
         >
         STRIKE
         </button>
-      </td>
+      </div>
     )
 }

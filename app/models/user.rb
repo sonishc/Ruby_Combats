@@ -12,7 +12,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: false },
                     length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true,  uniqueness: true, length: { maximum: 99 }
-  validates :password, length: { minimum: 5 }
+
+  def handle_bot_hp(user)
+    self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
+  end
 
   private
 

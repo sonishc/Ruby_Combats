@@ -3,16 +3,9 @@ class SelectHitBlock extends React.Component {
   constructor() {
     super();
 
-    // For change select options count -> also add change in fight.jsx state.  
-    this.blocks = ['Block head', 'Block chest', 'Block stomach',
-                'Block back','Block belt','Block legs']
-
-    this.hits = ['Hit head', 'Hit chest', 'Hit stomach',
-              'lower back','Hit belt','Hit legs']
-
   }
   countOptions(){
-    return this.hits.length
+    return HIT_TYPES.length
   }
 
   renderItems(items, name) {
@@ -27,10 +20,10 @@ class SelectHitBlock extends React.Component {
 
   render () {
     return (
-      <td>
-        { this.renderItems(this.hits, 'attackU') }
-        { this.renderItems(this.blocks, 'blockU') } 
-      </td>
+      <div>
+        { this.renderItems(HIT_TYPES, 'selectedAttackIndex') }
+        { this.renderItems(BLOCK_TYPES, 'selectedBlockIndex') } 
+      </div>
     )
   }
 }
