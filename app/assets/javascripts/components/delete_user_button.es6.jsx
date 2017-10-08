@@ -22,7 +22,7 @@ class DeleteUserButton extends React.Component {
   render() {
 
     return (
-      <button onClick={() => this.sendRequest()}>Delete</button>
+      <button className="button_to" onClick={() => this.sendRequest()}>Delete</button>
     );
   }
 }

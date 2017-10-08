@@ -32,7 +32,9 @@ class UsersEditTable extends React.Component {
   }
 
   user_rows() {
+    const current_user = this.props.current_user;
     const users = this.state.users;
+    const roles = this.props.roles;
 
     const user_rows = users.map((user) => {
       return (
@@ -46,7 +48,7 @@ class UsersEditTable extends React.Component {
 
   render () {
     return (
-      <table>
+      <table className="table table-responsive table-hover">
         <thead>
           <tr>
             {this.generate_tags('th', constants.USERS_LIST_HEADERS)}
