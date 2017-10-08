@@ -1,4 +1,4 @@
- const BLOCK_TYPES = ['Block head', 'Block chest', 'Block stomach',
+const BLOCK_TYPES = ['Block head', 'Block chest', 'Block stomach',
                 'Block back','Block belt','Block legs'];
 
 const HIT_TYPES = ['Hit head', 'Hit chest', 'Hit stomach',
@@ -17,8 +17,6 @@ const LOGS = {
   botLog: "Bot hit",
   userLog: "User hit"
 }
-// const userH = [ attackU = '', blockU = '']
-// const botH = [ attackB = 0, blockB = 0 ]
-const btnClick = '';
-const demageU = 10;
-const demageB = 13;
+const USER_DAMAGE = 25;
+const BOT_DAMAGE = 25;
+const ARMOR_MULTIPLIER = 0.2;
