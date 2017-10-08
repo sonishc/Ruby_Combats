@@ -1,9 +1,12 @@
 class Fight extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const user = this.setStats(JSON.parse(props.user));
 
     this.state = {
+      user: user,
+      max_health: user.hp,
       currentHit: HITS_ANIMATIONS_URL.idle,
       userHit: {
         selectedAttackIndex: 0,
@@ -14,8 +17,14 @@ class Fight extends React.Component {
         selectedBlockIndex: null
       },
       currentLog: LOGS.idle,
-      btnClick: '',
+      buttonStatus: '',
     }
+  }
+
+  setStats(user) {
+    user.hp += user.stamina / 2;
+
+    return user;
   }
 
   setAnimationLog(currentHit, currentLog){
@@ -50,22 +59,40 @@ class Fight extends React.Component {
   }
 
   checkPlayersMiss(attack, block, player) {
-    if ( attack != block) {
-      if (player == 'Bot') {
-        this.props.bot.hp -= demageU;
-      }else
-       this.props.user.hp -= demageU;
+   if ( attack != block) {
+     if (player == 'Bot') {
+       this.props.bot.hp  -= this.getDamage('user');
+     } else
+       this.state.user.hp -= this.getDamage('bot');
+   }
+  }
+
+  getDamage(actor) {
+    let max = 0, armor_bonus = 0;
+    if (actor == 'user') {
+      max = USER_DAMAGE;
+    } else {
+      armor_bonus = Math.floor(this.state.user.armor * ARMOR_MULTIPLIER);
+      max = BOT_DAMAGE;
     }
+    const random = this.getRandomInt(1, max);
+    const actual = random - armor_bonus;
+    console.log(`${actor} - random: ${random}; max: ${max}; armor: ${armor_bonus}; hit: ${actual}`);
+    return actual >= 0 ? actual : 1;
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
   }
 
   runFight() {
     this.buttonEnabled(false);
-    this.botRandHit()
+    this.botRandHit();
 
     const { selectedAttackIndex, selectedBlockIndex } = this.state.userHit;
-    const { 
-      selectedAttackIndex: selectedBotAttackIndex, 
-      selectedBlockIndex: selectedBotBlockIndex 
+    const {
+      selectedAttackIndex: selectedBotAttackIndex,
+      selectedBlockIndex: selectedBotBlockIndex
     } = this.state.botHit;
 
     this.checkPlayersMiss(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
@@ -74,18 +101,19 @@ class Fight extends React.Component {
     const promise = new Promise(resolve => {
         setTimeout(() => resolve(this.buttonEnabled(true)), 4000);
       }).then(result => {
-        this.checkPlayersMiss(selectedBotAttackIndex , selectedBlockIndex, 'User')
-        this.setAnimationLog(HITS_ANIMATIONS_URL.hitReversed, LOGS.botLog)
+        this.checkPlayersMiss(selectedBotAttackIndex , selectedBlockIndex, 'User');
+        this.setAnimationLog(HITS_ANIMATIONS_URL.hitReversed, LOGS.botLog);
+        this.checkForWinner(this.state.user, this.props.bot);
       });
   }
 
   playerAlive(player, hp) {
     if (player == 'User') {
-      if (this.props.user.hp <= 0) {
-        this.props.user.hp = 0;
+      if (this.state.user.hp <= 0) {
+        this.state.user.hp = 0;
       }
 
-      return this.props.user.hp;
+      return this.state.user.hp;
     } else if (this.props.bot.hp <= 0) {
       this.props.bot.hp = 0;
     }
@@ -97,32 +125,35 @@ class Fight extends React.Component {
     return(
       <span>
         <p>HP: { this.playerAlive(player) } | Power: { demage }</p>
-        <meter value={ hp } min="0" max="100"></meter><br />
+        <meter value={ hp } min="0" max={ this.state.max_health }></meter><br />
         <br/>
         <img src={ player === 'User' ? USER_AVATAR_URL : BOT_AVATAR_URL } /><br/>
       </span>
     )
-  }  
+  }
 
   changeFightProperty() {
-    const user = this.props.user;
+    const user = this.state.user;
     const bot = this.props.bot;
+
+    if (!this.checkForWinner(user, bot))
+      this.runFight();
+  }
+
+  checkForWinner(user, bot)
+  {
     let EXP = 0;
     let winner = 'BOT';
 
     if (bot.hp <=0 || user.hp <=0) {
-      switch (true) {
-        case user.hp < 0 && bot.hp < 0:
-          EXP = 5;
-          winner = 'DRAW!. Really? It happens sometimes..';
-          break;
-        case user.hp > bot.hp:
-          EXP = 10;
-          winner = 'YOU';
-          break;
-        default:
-          EXP = 1;
-          break;
+      if (user.hp < 0 && bot.hp < 0) {
+        EXP = 5;
+        winner = 'DRAW!. Really? It happens sometimes..';
+      } else if (user.hp > bot.hp) {
+        EXP = 10;
+        winner = 'YOU';
+      } else {
+        EXP = 1;
       }
 
       this.sendExp(EXP).then(() => {
@@ -132,15 +163,16 @@ class Fight extends React.Component {
          `The fight has ENDED! And the winner is: ${winner}!` +
          `\nPlease, refresh the page to start a new one.`
         );
-      });
 
+        return true;
+      });
     } else {
-      this.runFight();
+      return false;
     }
   }
 
   sendExp(EXP) {
-    const url = `/users/${this.props.user.id}/addexp`;
+    const url = `/users/${this.state.user.id}/addexp`;
     this.initAxiosHeaders();
 
     return new Promise(
@@ -163,21 +195,22 @@ class Fight extends React.Component {
 
   buttonEnabled(enabled) {
     const status = enabled ? '' : 'true'
-    this.setState({ btnClick: status });
+    this.setState({ buttonStatus: status });
   }
 
-  render () {  
+  render () {
     return (
       <div className="container-fluid">
-        
+
         <FightTopHeader />
-        
+
         <div className="row">
           <div className="col-md-3">
-            {this.propertyUserBot('User', this.props.user.hp, demageU)}
-            
+            {this.propertyUserBot('User', this.state.user.hp, USER_DAMAGE)}
+
             <SelectHitBlock handleChange={ this.handleChange.bind(this) }
-              ref={instance => { this.child = instance; }} />   
+              ref={instance => { this.child = instance; }} />
+            <UserItems items={this.props.items}/>
           </div>
 
           <div className='col-md-6 arena-fights'>
@@ -186,7 +219,7 @@ class Fight extends React.Component {
           </div>
 
           <div className="col-md-3">
-            { this.propertyUserBot('Bot', this.props.bot.hp, this.state.demageB) }
+            { this.propertyUserBot('Bot', this.props.bot.hp, BOT_DAMAGE) }
 
             { HIT_TYPES[this.state.botHit.selectedAttackIndex] }
 
@@ -200,23 +233,21 @@ class Fight extends React.Component {
 
         <div className="row">
           <ButtonStart
-            btnClick={this.state.btnClick}
+            btnClick={this.state.buttonStatus}
             changeFightProperty={ this.changeFightProperty.bind(this)}
           />
           <div className='col-md-6 player-name'>
-            {this.props.user.name}
+            {this.state.user.name}
               <p className='player-info'>
-                Experience: 
-                [{this.props.user.experience}]
+                Experience:
+                [{this.state.user.experience}]
                 <br/>
                 Email:
-                [{this.props.user.email}]
+                [{this.state.user.email}]
               </p>
           </div>
         </div>
-        
       </div>
     )
   }
 }
-
