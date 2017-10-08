@@ -73,6 +73,15 @@ body {
     margin-bottom: 10%;
   }
 }
+.user-items {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+.user-items > img{
+  margin: 3px;
+  border: 2px solid #e18916;
+}
 
 meter::-webkit-meter-bar {
   background-image:
@@ -87,8 +96,8 @@ meter::-webkit-meter-bar {
 meter::-webkit-meter-optimum-value {
   box-shadow: 0 5px 5px -5px #999 inset;
   background-image: linear-gradient(
-    90deg, 
-    $light-green 0%, 
+    90deg,
+    $light-green 0%,
     #f28f68 0%,
     $primary-color 80%
   );
