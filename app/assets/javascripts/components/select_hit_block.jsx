@@ -12,7 +12,11 @@ class SelectHitBlock extends React.Component {
     return (
       <select className="select-hit" name={ name } onChange={ this.props.handleChange }>
         { items.map((item, index) => {
+<<<<<<< HEAD
           return <option key={ index } value={ index }>{ I18n.t ("select_strike." + item) }</option>
+=======
+          return <option key={ index } value={ index }>{ item }</option>
+>>>>>>> Delete unused files
         }) }
       </select>
     )

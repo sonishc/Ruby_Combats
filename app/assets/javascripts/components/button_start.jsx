@@ -7,7 +7,11 @@ function ButtonStart(props) {
           disabled={ props.btnClick } 
           className="btn btn-start" 
         >
+<<<<<<< HEAD
         { I18n.t ("strike") }
+=======
+        STRIKE
+>>>>>>> Delete unused files
         </button>
       </div>
     )
