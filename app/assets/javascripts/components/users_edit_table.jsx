@@ -11,7 +11,9 @@ class UsersEditTable extends React.Component {
   }
 
   user_rows() {
+    const current_user = this.props.current_user;
     const users = this.state.users;
+    const roles = this.props.roles;
 
     const user_rows = users.map((user) => {
       return (
@@ -19,6 +21,9 @@ class UsersEditTable extends React.Component {
           <td>{user.id}</td>
           <td>{user.name}</td>
           <td>{user.email}</td>
+          <td>
+            <SelectItems items={roles} user={user} user_id={user.id} current_user={current_user} />
+          </td>
           <td>
             <DeleteUserButton user_id={user.id} updateFunc={this.updateList} />
           </td>
@@ -30,12 +35,13 @@ class UsersEditTable extends React.Component {
 
   render () {
     return (
-      <table>
+      <table className="table table-responsive table-hover">
         <thead>
           <tr>
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Set Role</th>
             <th>Action</th>
           </tr>
         </thead>

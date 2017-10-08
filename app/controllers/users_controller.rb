@@ -1,6 +1,19 @@
 class UsersController < ApplicationController
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
+
   def index
-    @users = User.all
+    @users = policy_scope(User)
+    authorize User
+    @roles = Role.all
+    @current_user = current_user
+  end
+
+  def update
+    @user = User.find(params[:id])
+    authorize @user
+    @user.update(secure_params)
+    render users_url
   end
 
   def destroy
@@ -10,5 +23,11 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { render json: @users }
     end
+  end
+
+  private
+
+  def secure_params
+    params.require(:user).permit(:role_id)
   end
 end

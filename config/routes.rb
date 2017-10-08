@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  resources :users, only: %i[index destroy]
+  patch 'users', to: 'users#update'
+  resources :users, only: %i[index destroy update]
 end
