@@ -1,8 +1,8 @@
 class Fight extends React.Component {
-  
+
   constructor() {
     super();
-    
+
     this.state = {
       urlImg: "/assets/hit-static.gif",
       urlImgUser: "/assets/user-photo.gif",
@@ -63,13 +63,13 @@ class Fight extends React.Component {
 
     botH[0] = attack;
     botH[1] = block;
-    
+
     this.setState({botH})
   }
 
 
   checkPlayersMiss(attack, block, player) {
-    if ( attack != block) { 
+    if ( attack != block) {
       if (player == 'Bot') {
         this.props.bot.hp -= this.state.demageU;
       }else
@@ -78,21 +78,21 @@ class Fight extends React.Component {
   }
 
 
-  runFight() { 
-    this.setState({ btnClick: 'disaled' });
+  runFight() {
+    this.buttonEnabled(false);
     this.botRandHit()
-        
+
     let attackU = this.state.userH["attackU"]
     let blockU = this.state.userH["blockU"];
     let attackB = this.state.botH[0];
     let blockB = this.state.botH[1];
-      
+
     this.checkPlayersMiss(attackU, blockB, 'Bot')
     this.setAnimationLog("/assets/hit-1.gif", "User hit")
 
     let promise = new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(this.setState({ btnClick: '' }));
+        resolve(this.buttonEnabled(true));
       }, 4000);
     });
     promise
@@ -103,7 +103,7 @@ class Fight extends React.Component {
       }
     )
   }
- 
+
   playerAlive(player) {
     if (player == 'User') {
       if (this.props.user.hp <= 0)
@@ -120,18 +120,72 @@ class Fight extends React.Component {
   }
 
   changeFightProperty() {
-    if (this.props.bot.hp <=0 || this.props.user.hp <=0){
-      // Send to database EXP
-    }else {
+    const user = this.props.user;
+    const bot = this.props.bot;
+    let EXP = 0;
+    let winner = 'BOT';
+
+    if (bot.hp <=0 || user.hp <=0) {
+      switch (true) {
+        case user.hp < 0 && bot.hp < 0:
+          EXP = 5;
+          winner = 'DRAW!. Really? It happens sometimes..';
+          break;
+        case user.hp > bot.hp:
+          EXP = 10;
+          winner = 'YOU';
+          break;
+        default:
+          EXP = 1;
+          break;
+      }
+
+      this.sendExp(EXP).then(() => {
+        this.buttonEnabled(false);
+
+        alert (
+         `The fight has ENDED! And the winner is: ${winner}!` +
+         `\nPlease, refresh the page to start a new one.`
+        );
+      });
+
+    } else {
       this.runFight();
     }
+  }
+
+  sendExp(EXP) {
+    const url = `/users/${this.props.user.id}/addexp`;
+    this.initAxiosHeaders();
+
+    return new Promise(
+      (resolve, reject) => {
+        axios.post(url, {
+          experience: EXP
+        }).then(response => {
+          resolve();
+        });
+      }
+    )
+  }
+
+  initAxiosHeaders() {
+    const token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
+
+    axios.defaults.headers.common['X-CSRF-Token'] = token;
+    axios.defaults.headers.common['Accept'] = 'application/json';
+  }
+
+  buttonEnabled(enabled) {
+    const status = enabled ? '' : 'true'
+    this.setState({ btnClick: status });
   }
 
   render () {
     return (
       <div>
        <table className="table center">
-        <thead>          
+        <thead>
           <FightTopHeader player={'Player'} playInfo={'PLAY INFO'} bot={'Bot'}/>
           <tr>
              <td>
@@ -141,8 +195,8 @@ class Fight extends React.Component {
               <SelectHitBlock
                 handleChange={ this.handleChange.bind(this) }
                 ref={instance => { this.child = instance; }}
-                />
-           </td> 
+              />
+           </td>
             <td className='arena-fights'>
               <i>{ this.state.hitlog }</i>
               <img src={ this.state.urlImg } />
@@ -154,7 +208,7 @@ class Fight extends React.Component {
               <b>{this.state.attack[Object.keys(this.state.attack)[this.state.botH[0]]] }</b>
               <br />
               <b>{this.state.block[Object.keys(this.state.block)[this.state.botH[1]]]} </b>
-            </td> 
+            </td>
           </tr>
           <tr>
               <ButtonStart
@@ -165,7 +219,7 @@ class Fight extends React.Component {
               <h2>{this.props.user.name}</h2>
               <p>Experience: {this.props.user.experience}</p>
               <p>{this.props.user.email}</p>
-            </td> 
+            </td>
             <td></td>
           </tr>
         </thead>

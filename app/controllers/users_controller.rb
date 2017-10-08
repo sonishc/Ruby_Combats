@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[fight add_experience]
+
   def fight
-    @user = User.find(1) # Need for current_user = User.find(session[:user_id])
+    @user = current_user
     @bot = @user.dup
     @bot.hp = rand(@user.hp * 0.8..@user.hp + @user.hp * 0.2)
   end
@@ -11,6 +13,16 @@ class UsersController < ApplicationController
       render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
+    end
+  end
+
+  def add_experience
+    current_user.increment(:experience, params[:experience])
+
+    if current_user.save
+      render json: { status: 'OK' }.to_json
+    else
+      render json: current_user.errors, status: :unprocessable_entity
     end
   end
 
