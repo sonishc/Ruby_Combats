@@ -10,18 +10,34 @@ class UsersEditTable extends React.Component {
     this.setState({users: users});
   }
 
+  generate_tags(Tag, fields) {
+    const ths = fields.map((name, index) => {
+      return <Tag key={index}>{name}</Tag>;
+    });
+
+    return ths;
+  }
+
+  user_values(user) {
+    const values = [user.id, user.name, user.email];
+
+    let rows = this.generate_tags('td', values);
+
+    return [
+      rows,
+      <td key={values.count + 1}>
+        <DeleteUserButton user_id={user.id} updateFunc={this.updateList} />
+      </td>
+    ];
+  }
+
   user_rows() {
     const users = this.state.users;
 
     const user_rows = users.map((user) => {
       return (
         <tr key={user.id}>
-          <td>{user.id}</td>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>
-            <DeleteUserButton user_id={user.id} updateFunc={this.updateList} />
-          </td>
+          {this.user_values(user)}
         </tr>
       )
     });
@@ -33,10 +49,7 @@ class UsersEditTable extends React.Component {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Action</th>
+            {this.generate_tags('th', constants.USERS_LIST_HEADERS)}
           </tr>
         </thead>
         <tbody>
