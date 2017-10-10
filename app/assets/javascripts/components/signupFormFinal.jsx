@@ -10,32 +10,27 @@ class SignupFormFinal extends React.Component {
 
   handleSubmit(e) {
    e.preventDefault();
-   this.initAxiosHeaders();
    firsStepData = this.props.finalData;
+   $.ajax({
+      url:'/users/signup',
+      method:"POST",
+      beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+      data:{
+        user: {
+          name: this.state.name,
+          type: this.state.type,
+          email: firsStepData.email,
+          password: firsStepData.password,
+          password_confirmation: firsStepData.password_confirmation},
+      },
+      success:function(response) {
+       
+      },
+      error:function(){
+        alert("error");
+      }
 
-   axios.post('/users/signup', {user: {
-      name: this.state.name,
-      type: this.state.type,
-      email: firsStepData.email,
-      password: firsStepData.password,
-      password_confirmation: firsStepData.password_confirmation}
-   })
-   .then(function (response) {
-    if (response.data.success) {
-       window.location.assign('http://localhost:3000/persons/profile');
-    } else {
-      console.log(response.data.message);
-    }
-   })
-   .catch(function (error) {
-   });
-  }
-
-  initAxiosHeaders() {
-    const token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
-
-    axios.defaults.headers.common['X-CSRF-Token'] = token;
-    axios.defaults.headers.common['Accept'] = 'application/json';
+    });
   }
 
   render() {
