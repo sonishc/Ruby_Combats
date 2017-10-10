@@ -12,7 +12,7 @@ class UsersEditTable extends React.Component {
 
   generate_tags(Tag, fields) {
     const tags = fields.map((name, index) => {
-      return <Tag key={index}>{name}</Tag>;
+      return (<Tag key={index}>{name}</Tag>);
     });
 
     return tags;
