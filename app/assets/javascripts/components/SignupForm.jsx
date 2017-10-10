@@ -1,28 +1,30 @@
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       name: '',
       email: '',
       password: '',
       password_confirmation: '',
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault()
     axios.post('/users/signup', {user: {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password_confirmation: this.state.password_confirmation}
     })
-    .then(function (response) {
+    .then(response => {
       if (response.data.success) {
-        window.location.assign('http://localhost:3000/persons/profile');
+        window.location.assign('/persons/profile');
       } else {
-          alert(response.data.message);
+        alert(response.data.message);
       }
     })
   }
@@ -32,10 +34,7 @@ class SignupForm extends React.Component {
       <div className="wrapper">
         <div>
           <form className="new_user"
-                id="new_user"
-                onSubmit={this.handleSubmit}
-                acceptCharset="UTF-8"
-                method="post">
+                id="new_user">
             <fieldset>
               <legend>Sign Up</legend>
               <div className="box boxx">
@@ -76,7 +75,8 @@ class SignupForm extends React.Component {
                 <input
                       className='btn'
                       type='submit'
-                      value='submit'/>
+                      value='submit'
+                      onClick={this.handleSubmit}/>
               </div>
             </fieldset>
           </form>
