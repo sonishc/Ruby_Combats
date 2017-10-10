@@ -1,5 +1,5 @@
 class PersonsController < ApplicationController
   def profile
-    @user = User.last
+    @user = current_user
   end
 end
