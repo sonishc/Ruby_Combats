@@ -27,7 +27,7 @@ class SignupFormFinal extends React.Component {
        
       },
       error:function(){
-        alert("error");
+        
       }
 
     });
