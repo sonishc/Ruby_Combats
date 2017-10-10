@@ -17,11 +17,19 @@ class UserPolicy
 
   def destroy?
     return false if @current_user == @user
-    @Role.all[@current_user.role_id] != 'Player'
+    Role.all[@current_user.role_id] != 'Player'
   end
 
   def update?
-    Role.all[@current_user.role_id] != 'Player'
+    show?
+  end
+
+  def add_experience?
+    update?
+  end
+
+  def fight?
+    Role.all[@current_user.role_id] == 'Player'
   end
 
   class Scope
@@ -33,7 +41,7 @@ class UserPolicy
     end
 
     def resolve
-      @scope.order('id desc').select { |user| user.role_id > @user.role_id }
+      @scope.where('role_id > ?', @user.role_id).order(:id)
     end
   end
 end

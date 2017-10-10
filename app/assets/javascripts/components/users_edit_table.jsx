@@ -25,6 +25,9 @@ class UsersEditTable extends React.Component {
 
     return [
       rows,
+      <td key={user.id}>
+        <SelectItems items={this.props.roles} user={user} current_user={this.props.current_user} updateFunc={this.updateList}/>
+      </td>,
       <td key={values.count + 1}>
         <DeleteUserButton user_id={user.id} updateFunc={this.updateList} />
       </td>
