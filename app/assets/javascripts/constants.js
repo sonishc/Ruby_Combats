@@ -1,3 +1,3 @@
 const constants = {
-  USERS_LIST_HEADERS: ['ID', 'Username', 'Email', 'Action']
+  USERS_LIST_HEADERS: ['ID', 'Username', 'Email', 'Set Role', 'Action']
 }
