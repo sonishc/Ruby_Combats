@@ -2,8 +2,13 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   let(:role) { FactoryGirl.create(:role) }
-  let(:user_1) { FactoryGirl.create(:user, role_id: role.id) }
-  let(:user_2) { FactoryGirl.create(:user, role_id: role.id) }
+  let(:level) { FactoryGirl.create(:level) }
+  let(:user_1) do
+    FactoryGirl.create(:user, role_id: role.id, level_id: level.id)
+  end
+  let(:user_2) do
+    FactoryGirl.create(:user, role_id: role.id, level_id: level.id)
+  end
 
   it 'is invalid without a name' do
     user_1.name = nil
