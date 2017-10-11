@@ -25,10 +25,14 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
       # t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
-      # t.integer  :failed_attempts,
-      # default: 0, null: false # Only if lock strategy is :failed_attempts
+      # Only if lock strategy is :failed_attempts
+      # t.integer  :failed_attempts, default: 0, null: false
+      #
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+
+      # Uncomment below if timestamps were not included in your original model.
+      # t.timestamps null: false
     end
 
     add_index :users, :email,                unique: true
@@ -38,6 +42,10 @@ class AddDeviseToUsers < ActiveRecord::Migration[5.1]
   end
 
   def self.down
+    # By default, we don't want to make any assumption
+    # about how to roll back a migration when your
+    # model already existed. Please edit below which fields
+    # you would like to remove in this migration.
     raise ActiveRecord::IrreversibleMigration
   end
 end
