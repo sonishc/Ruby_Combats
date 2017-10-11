@@ -11,12 +11,8 @@ AllCops:
     - config/**
     - app/assets/javascript
     - app/javascript
-    - config/initializers/**
 Metrics/MethodLength:  
   Max: 20
-
-Metrics/LineLength:
-  Max: 90
 
 Documentation:  
  Enabled: false
