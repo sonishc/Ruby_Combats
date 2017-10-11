@@ -41,9 +41,9 @@ class SelectItems extends React.Component {
 	const token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
 	return(
 	  <form onSubmit={this.handleSubmit}>
-      <ItemsList items={items} user={user} change={this.handleChange} value={this.state.value}/>
-      <input className="btn btn-success" type="submit" value="Submit" />
-      <input name="authenticity_token" value={token} type="hidden"/>
+            <ItemsList items={items} user={user} change={this.handleChange} value={this.state.value}/>
+            <input className="btn btn-success" type="submit" value="Submit" />
+            <input name="authenticity_token" value={token} type="hidden"/>
 	  </form>
 	  );
   }
