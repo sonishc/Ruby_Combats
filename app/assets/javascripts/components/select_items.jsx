@@ -23,9 +23,9 @@ class SelectItems extends React.Component {
     this.initHeaders();
     axios.patch('/users/' + this.props.user.id, {user: {
       role_id: this.state.value
-	  }}).then(response => {
-	    this.props.updateFunc(response.data);	
-	  });
+    }}).then(response => {
+      this.props.updateFunc(response.data);	
+    });
   }
 
   render() {
@@ -38,13 +38,13 @@ class SelectItems extends React.Component {
       	return item.id > current_user.role_id
       };
     });
-	const token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
-	return(
-	  <form onSubmit={this.handleSubmit}>
-            <ItemsList items={items} user={user} change={this.handleChange} value={this.state.value}/>
-            <input className="btn btn-success" type="submit" value="Submit" />
-            <input name="authenticity_token" value={token} type="hidden"/>
-	  </form>
-	  );
-  }
+  const token = document.querySelector("meta[name=csrf-token]").getAttribute('content');
+    return(
+      <form onSubmit={this.handleSubmit}>
+        <ItemsList items={items} user={user} change={this.handleChange} value={this.state.value}/>
+        <input className="btn btn-success" type="submit" value="Submit" />
+        <input name="authenticity_token" value={token} type="hidden"/>
+      </form>
+      );
+   }
 }
