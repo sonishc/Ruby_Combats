@@ -16,11 +16,7 @@ class UserSignout extends React.Component {
   handleSubmit(e) {
       $.ajax({
          url:'/users/sign_out',
-         method: 'post',
-         data: {
-           _method:"delete",
-           //authenticity_token: 'eweSO1Sr59uZ/AiACUKa2pu0mZd+UYZPECPSlkheNTBDFBqb0Eq+li8gfTkInlI5P3EnAkGPvMm4Cy9PRUcOzw=='
-         }
+         method: 'delete',
        }).done(function(response) {
         console.log('LOL');
          });
