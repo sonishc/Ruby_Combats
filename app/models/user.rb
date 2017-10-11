@@ -13,6 +13,10 @@ class User < ApplicationRecord
                     length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
   validates :name, presence: true,  uniqueness: true, length: { maximum: 99 }
 
+  def handle_bot_hp(user)
+    self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
+  end
+
   private
 
   def convert_email_to_downcase

@@ -10,10 +10,15 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.1'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
 gem 'pundit', '~> 1.1.0'
 gem 'rails', '~> 5.1.4'
+<<<<<<< HEAD
+=======
+gem 'react-bootstrap-rails', '~> 0.30.2'
+>>>>>>> a4cab51c8759d6525e5053da9bd20a20535a956e
 gem 'react-rails-img'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'

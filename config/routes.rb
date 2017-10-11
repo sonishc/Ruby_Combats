@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   patch 'users', to: 'users#update'
   resources :users, only: %i[index destroy update]
 
+  get 'users/fight'
+  post 'users/:id/addexp', to: 'users#add_experience'
+
 end
