@@ -4,6 +4,7 @@ class User < ApplicationRecord
 
   belongs_to :role
   has_many :inventories
+  has_one :skill
 
   before_save :convert_email_to_downcase
   before_create :set_default_role
