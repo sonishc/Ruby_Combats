@@ -73,15 +73,15 @@ body {
     margin-bottom: 10%;
   }
 }
-.user-items {
-  width: 300px;
-  display: block;
-  margin: auto;
-}
-.user-items > img{
-  margin: 3px;
-  border: 2px solid #e18916;
-}
+  .user-items {
+    width: 300px;
+    display: block;
+    margin: auto;
+  }
+  .user-items > img{
+    margin: 3px;
+    border: 2px solid #e18916;
+  }
 
 meter::-webkit-meter-bar {
   background-image:
