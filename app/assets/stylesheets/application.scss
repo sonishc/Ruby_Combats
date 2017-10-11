@@ -1,5 +1,5 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+/*@import "bootstrap-sprockets";
+@import "bootstrap";*/
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 @font-face {
@@ -13,7 +13,7 @@ $white: #ffffff;
 $black: #000000;
 
 body {
-  background-color: #E9F1F1;
+  /*background-color: #E9F1F1;*/
   font-family: 'Roboto', sans-serif;
   font-size: 1.4rem;
   text-align: center;

@@ -25,6 +25,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { render json: @users }
+    end
+  end
 
   def fight
     @user = current_user
@@ -55,4 +57,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:experience)
   end
+
 end
