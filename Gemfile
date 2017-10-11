@@ -15,10 +15,7 @@ gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
 gem 'pundit', '~> 1.1.0'
 gem 'rails', '~> 5.1.4'
-<<<<<<< HEAD
-=======
 gem 'react-bootstrap-rails', '~> 0.30.2'
->>>>>>> a4cab51c8759d6525e5053da9bd20a20535a956e
 gem 'react-rails-img'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
