@@ -1,4 +1,3 @@
-# Cretate user policy
 class UserPolicy
   attr_reader :current_user, :model
 

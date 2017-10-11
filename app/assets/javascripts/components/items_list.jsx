@@ -7,21 +7,21 @@ class ItemsList extends React.Component {
   	return tags;
   }
   
-  selectList(items){	
-  	let options = this.generate_opt('option', items)
-	 return (
-	   <select className="form-control selcls" value={this.props.value} onChange={this.props.change} >
-	     {options}
-	   </select>
-	 );
+  selectList(items){
+    let options = this.generate_opt('option', items)
+    return (
+      <select className="form-control selcls" value={this.props.value} onChange={this.props.change} >
+        {options}
+      </select>
+    );
   }
   
   render() {
-  	const items = this.props.items
-	return(
-	  <label>
-	    {this.selectList(items)}
-	  </label>
-	)
+    const items = this.props.items
+    return(
+      <label>
+        {this.selectList(items)}
+      </label>
+    )
   }
 }

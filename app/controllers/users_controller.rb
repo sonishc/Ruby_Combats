@@ -19,8 +19,8 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @users.find(params[:id]).destroy
     authorize @user
+    @users.find(params[:id]).destroy
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { render json: @users }
