@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :role
-  belongs_to :level
+  belongs_to :role, optional: true
+  belongs_to :level, optional: true
   has_many :inventories
   has_many :items, through: :inventories
   has_one :skill

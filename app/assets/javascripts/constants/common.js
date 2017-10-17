@@ -22,6 +22,10 @@ const NAVBAR_LINKS = [
   {
     url: '/users/sign_out',
     title: 'Sign Out'
+  },
+  {
+    url: '/users/',
+    title: 'Dashboard'
   }
 ];
   

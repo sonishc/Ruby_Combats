@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'persons/profile', to: 'persons#profile'
 
-  devise_for :users
+  devise_for :users, :controllers => {sessions: 'sessions'}
   
   devise_scope :user do
     root to: 'devise/sessions#new'

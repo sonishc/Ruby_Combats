@@ -25,6 +25,9 @@ class SignupFormFinal extends React.Component {
       },
       success:function(response) {
        
+	if (response.error) {
+          alert(response.message);
+        }      
       },
       error:function(){
         
