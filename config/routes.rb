@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'persons/profile', to: 'persons#profile'
+  get 'users/profile', to: 'users#profile'
 
   devise_for :users
   

@@ -1,6 +1,10 @@
 class Navbar extends React.Component {
-  constructor() {
-   super();
+  constructor(props) {
+    super(props);
+      this.state = {
+      user:this.props.user,
+      show_link: 'visible'
+      };
   }
 
   generate_spans(span_list) {
@@ -13,12 +17,24 @@ class Navbar extends React.Component {
 
   generate_links(links_list) {
     const links = links_list.map((value, index) => {
-      return  (<li key={index}>
-                <a href={value.url} >{value.title}</a>
+      return  (<li key={value.id} >
+                <a href={value.url} id={value.id} className={this.state.show_link}>{value.title}</a>
               </li>);
     });
-
     return links;
+  }
+
+  show_links(links){
+    if (this.state.user && (this.state.user.role_id < 4)){
+      links = [links[0], links[2], links[3], links[4], links[5]];
+      return links;
+    } else if (this.state.user && (this.state.user.role_id == 4)){
+      links = [links[0], links[3], links[4], links[5]];
+      return links;
+    } else {
+      links = [links[0], links[1]];
+      return links;
+    }
   }
 
   render() {
@@ -27,7 +43,6 @@ class Navbar extends React.Component {
       <div>
         <nav className="navbar">
           <div className="container-fluid">
-            
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
@@ -40,7 +55,8 @@ class Navbar extends React.Component {
 
             <div className="collapse navbar-collapse" id="navbar-collapse">
               <ul className="nav navbar-nav pull-right">
-                { this.generate_links(NAVBAR_LINKS) }
+                { this.show_links(this.generate_links(NAVBAR_LINKS))}
+                
               </ul>
             </div>
           </div>
