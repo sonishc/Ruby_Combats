@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	def profile
+  def profile
     @user = current_user
   end
 end
