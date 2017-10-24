@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 99 }
 
+  DEFAULT_ARMOR = [1, 2, 3, 4, 5, 6, 7, 8].freeze
+
   def handle_bot_hp(user)
     self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
   end
@@ -45,8 +47,8 @@ class User < ApplicationRecord
   end
 
   def set_items
-    Item.all.each do |item|
-      items << item
+    DEFAULT_ARMOR.each do |item|
+      items << Item.find(item)
     end
   end
 
