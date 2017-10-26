@@ -24,5 +24,5 @@ Rails.application.routes.draw do
   post 'users/:id/addexp', to: 'users#add_experience'
 
   put '/locale' => 'application#change_locale'
-
+  post 'users/:id/remove_item', to: 'users#remove_item'
 end

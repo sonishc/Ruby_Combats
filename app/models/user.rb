@@ -6,15 +6,13 @@ class User < ApplicationRecord
   has_many :inventories
   has_many :items, through: :inventories
   has_one :skill
-<<<<<<< HEAD
   has_one :image, class_name: 'Image', as: :attachable
   accepts_nested_attributes_for :image
 
   before_create :set_default_role
 =======
-
-  before_save :convert_email_to_downcase
->>>>>>> Implemented incrementing user experience after the fight has ended
+  before_validation :set_default_role
+>>>>>>> Implemented effects functionality for items
   after_create :set_items
   after_find :calculate_stats
 
@@ -46,10 +44,15 @@ class User < ApplicationRecord
     self.role_id ||= Role.find_by(title: 'Player').id
   end
 
+  def equip_items
+    inventories.where(item_id: DEFAULT_ARMOR).update_all(equipped: true)
+  end
+
   def set_items
     DEFAULT_ARMOR.each do |item|
       items << Item.find(item)
     end
+    equip_items
   end
 
   def calculate_stats

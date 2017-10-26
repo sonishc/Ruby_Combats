@@ -20,3 +20,6 @@ const LOGS = {
 let USER_DAMAGE = 30;
 let BOT_DAMAGE = 30;
 const ARMOR_MULTIPLIER = 0.2;
+const EFFECTS = {
+  HEALING: 1,
+}

@@ -3,11 +3,15 @@ class Fight extends React.Component {
   constructor(props) {
     super(props);
     const user = this.setStats(JSON.parse(props.user));
-
+    const inventory = JSON.parse(props.inventory);
     this.state = {
       user: user,
       locations: this.props.locations,
       max_health: user.hp,
+      inventory: inventory,
+      effect_id: null,
+      effect_type: null,
+      effect_value: null,
       currentHit: HITS_ANIMATIONS_URL.idle,
       userHit: {
         selectedAttackIndex: 0,
@@ -58,13 +62,16 @@ class Fight extends React.Component {
     return this.setState({botHit});
   }
 
-  checkPlayersMiss(attack, block, player) {
-   if ( attack != block) {
-     if (player == 'Bot') {
-       this.props.bot.hp  -= this.getDamage('user');
-     } else
-       this.state.user.hp -= this.getDamage('bot');
-   }
+  initAttack(attack, block, player) {
+    if ( attack != block) {
+      if (player == 'Bot') {
+        if (this.state.effect_id !== null)
+          this.applyEffect();
+        else
+          this.props.bot.hp  -= this.getDamage('user');
+      } else
+        this.state.user.hp -= this.getDamage('bot');
+    }
   }
 
   getDamage(actor) {
@@ -147,13 +154,13 @@ class Fight extends React.Component {
       selectedBlockIndex: selectedBotBlockIndex
     } = this.state.botHit;
 
-    this.checkPlayersMiss(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
+    this.initAttack(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
     this.setAnimationLog(HITS_ANIMATIONS_URL.hit, LOGS.userLog)
 
     const promise = new Promise(resolve => {
         setTimeout(() => resolve(this.buttonEnabled(true)), 4000);
       }).then(result => {
-        this.checkPlayersMiss(selectedBotAttackIndex , selectedBlockIndex, 'User');
+        this.initAttack(selectedBotAttackIndex , selectedBlockIndex, 'User');
         this.setAnimationLog(HITS_ANIMATIONS_URL.hitReversed, LOGS.botLog);
         this.checkForWinner(this.state.user, this.props.bot);
       });
@@ -173,7 +180,7 @@ class Fight extends React.Component {
     return this.props.bot.hp;
   }
 
-  propertyUserBot(player, hp, demage) {
+  propertyUserBot(player, hp, damage) {
     return(
       <span>
         <p>{ I18n.t ("fight." + player) }</p>
@@ -272,7 +279,9 @@ class Fight extends React.Component {
 
             <SelectHitBlock handleChange={ this.handleChange.bind(this) }
               ref={instance => { this.child = instance; }} />
-            <UserItems items={this.props.items}/>
+            <UserItems items={this.props.equipment}/>
+            <h4>Inventory items:</h4>
+            <Inventory items={this.state.inventory} handleClick={(item) => this.initEffect(item)}/>
           </div>
           <div className='col-md-6 arena-fights' style={this.setImage(this.state.locations)}>
             <img src={ this.state.currentHit } />
