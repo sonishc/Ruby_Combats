@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :skill
 
   before_save :convert_email_to_downcase
+  before_validation :set_default_role
   after_create :set_items
   after_find :calculate_stats
 
@@ -32,10 +33,15 @@ class User < ApplicationRecord
     self.role_id ||= Role.find_by(title: 'Player').id
   end
 
+  def equip_items
+    inventories.where(item_id: DEFAULT_ARMOR).update_all(equipped: true)
+  end
+
   def set_items
     DEFAULT_ARMOR.each do |item|
       items << Item.find(item)
     end
+    equip_items
   end
 
   def calculate_stats

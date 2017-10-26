@@ -3,10 +3,14 @@ class Fight extends React.Component {
   constructor(props) {
     super(props);
     const user = this.setStats(JSON.parse(props.user));
-
+    const inventory = JSON.parse(props.inventory);
     this.state = {
       user: user,
       max_health: user.hp,
+      inventory: inventory,
+      effect_id: null,
+      effect_type: null,
+      effect_value: null,
       currentHit: HITS_ANIMATIONS_URL.idle,
       userHit: {
         selectedAttackIndex: 0,
@@ -58,13 +62,16 @@ class Fight extends React.Component {
     });
   }
 
-  checkPlayersMiss(attack, block, player) {
-   if ( attack != block) {
-     if (player == 'Bot') {
-       this.props.bot.hp  -= this.getDamage('user');
-     } else
-       this.state.user.hp -= this.getDamage('bot');
-   }
+  initAttack(attack, block, player) {
+    if ( attack != block) {
+      if (player == 'Bot') {
+        if (this.state.effect_id !== null)
+          this.applyEffect();
+        else
+          this.props.bot.hp  -= this.getDamage('user');
+      } else
+        this.state.user.hp -= this.getDamage('bot');
+    }
   }
 
   getDamage(actor) {
@@ -77,7 +84,7 @@ class Fight extends React.Component {
     }
     const random = this.getRandomInt(1, max);
     const actual = random - armor_bonus;
-    console.log(`${actor} - random: ${random}; max: ${max}; armor: ${armor_bonus}; hit: ${actual}`);
+
     return actual >= 0 ? actual : 1;
   }
 
@@ -95,13 +102,13 @@ class Fight extends React.Component {
       selectedBlockIndex: selectedBotBlockIndex
     } = this.state.botHit;
 
-    this.checkPlayersMiss(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
+    this.initAttack(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
     this.setAnimationLog(HITS_ANIMATIONS_URL.hit, LOGS.userLog)
 
     const promise = new Promise(resolve => {
         setTimeout(() => resolve(this.buttonEnabled(true)), 4000);
       }).then(result => {
-        this.checkPlayersMiss(selectedBotAttackIndex , selectedBlockIndex, 'User');
+        this.initAttack(selectedBotAttackIndex , selectedBlockIndex, 'User');
         this.setAnimationLog(HITS_ANIMATIONS_URL.hitReversed, LOGS.botLog);
         this.checkForWinner(this.state.user, this.props.bot);
       });
@@ -121,10 +128,10 @@ class Fight extends React.Component {
     return this.props.bot.hp;
   }
 
-  propertyUserBot(player, hp, demage) {
+  propertyUserBot(player, hp, damage) {
     return(
       <span>
-        <p>HP: { this.playerAlive(player) } | Power: { demage }</p>
+        <p>HP: { this.playerAlive(player) } | Power: { damage }</p>
         <meter value={ hp } min="0" max={ this.state.max_health }></meter><br />
         <br/>
         <img src={ player === 'User' ? USER_AVATAR_URL : BOT_AVATAR_URL } /><br/>
@@ -198,6 +205,57 @@ class Fight extends React.Component {
     this.setState({ buttonStatus: status });
   }
 
+  initEffect(item) {
+    let id = null, effect_type = null, effect_value = null;
+
+    if (this.state.effect_id !== item.id)
+      ({id, effect_type, effect_value} = item)
+
+    this.setEffect(id, effect_type, effect_value);
+  }
+
+  setEffect(id, type, value) {
+    this.setState({
+      effect_id: id,
+      effect_type: type,
+      effect_value: value,
+    });
+  }
+
+  applyEffect() {
+    let {effect_id, effect_type, effect_value} = this.state;
+    let [hp, max_hp] = [this.state.user.hp, this.state.max_health];
+
+    switch(effect_type) {
+      case EFFECTS.HEALING:
+        this.state.user.hp = effect_value + hp >= max_hp ? max_hp : effect_value + hp;
+        break;
+    }
+
+    this.setEffect(null, null, null);
+    this.removeItem(effect_id);
+  }
+
+  removeItem(id) {
+    const items = this.state.inventory;
+    const url = `/users/${this.state.user.id}/remove_item`;
+    const index = items.findIndex(obj => obj.id == id);
+
+    if (items[index].count > 1)
+      items[index].count = items[index].count - 1;
+    else
+      items.splice(index, 1);
+
+    this.setState({
+      inventory: items,
+    });
+
+    this.initAxiosHeaders();
+    axios.post(url, {
+      item_id: id
+    });
+  }
+
   render () {
     return (
       <div className="container-fluid">
@@ -210,7 +268,9 @@ class Fight extends React.Component {
 
             <SelectHitBlock handleChange={ this.handleChange.bind(this) }
               ref={instance => { this.child = instance; }} />
-            <UserItems items={this.props.items}/>
+            <UserItems items={this.props.equipment}/>
+            <h4>Inventory items:</h4>
+            <Inventory items={this.state.inventory} handleClick={(item) => this.initEffect(item)}/>
           </div>
 
           <div className='col-md-6 arena-fights'>

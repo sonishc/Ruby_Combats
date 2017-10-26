@@ -1,5 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 @font-face {
@@ -73,14 +71,20 @@ body {
     margin-bottom: 10%;
   }
 }
-.user-items {
-  width: 300px;
+.user-items, .inventory-items {
+  width: 264px;
   display: block;
-  margin: auto;
+  text-align: left;
 }
-.user-items > img{
+.user-items > img, .inventory-items > img{
   margin: 3px;
   border: 2px solid #e18916;
+  width: 60px;
+  height: 60px;
+}
+
+.inventory-items > img.activated {
+  border: 10px solid green;
 }
 
 meter::-webkit-meter-bar {
