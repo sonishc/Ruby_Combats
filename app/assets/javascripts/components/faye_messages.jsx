@@ -1,0 +1,47 @@
+class FayeMessages extends React.Component {
+  constructor(props) {
+    super(props);
+     this.state = {
+      urlType:`/assets/chatroom.jpg`
+      };
+  }
+
+  activity(evt, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("chat_order");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tab_button");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display='flex';
+    evt.currentTarget.className += " active";
+  }
+
+  render() {
+
+    return (
+
+    <div className="chat_container" >
+      { message_box(this.props.name) }
+      <div className="tabulation">
+        <input id="tab-1" className="tab_button"  type="radio" name="tab-group" defaultChecked="checked"/>
+        <label className="tabs" htmlFor="tab-1" onClick={() => {this.activity(event, 'chat_room')}}>Global Chat</label>
+        <input id="tab-2" className="tab_button" type="radio" name="tab-group" />
+        <label className="tabs" htmlFor="tab-2" onClick={() => {this.activity(event, 'chat_room-2')}}>Local Chat</label>
+        <input id="tab-3" className="tab_button" type="radio" name="tab-group" />
+        <label className="tabs" htmlFor="tab-3" onClick={() => {this.activity(event, 'chat_room-3')}}>Chat of fight</label>    
+      </div>
+      <div id="chat_room" className="chat_order" ></div> 
+      <div id="chat_room-2" className="chat_order" >Local chat temporary unavaliable</div> 
+      <div id="chat_room-3" className="chat_order" >Chat of fight temporary unavaliable</div>
+      <form id="new_message_form" method="post" className="chat_input" data-remote="true">
+        <input type="text" id="message" name="message" className="input_location" autoComplete="off"/>
+        <input type="submit" value="Send" className = "button_location"/>
+      </form> 
+    </div>
+    );
+  }
+}

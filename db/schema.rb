@@ -10,22 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927110812) do
+ActiveRecord::Schema.define(version: 20171011051947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-
-
-
-  create_table "roles", force: :cascade do |t|
-    t.string "title", null: false
-  end
 
   create_table "inventories", force: :cascade do |t|
     t.boolean "equipped", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -40,19 +35,57 @@ ActiveRecord::Schema.define(version: 20170927110812) do
     t.integer "dexterity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "img"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.integer "hp"
-    t.integer "experience"
+  create_table "levels", force: :cascade do |t|
     t.integer "level"
-    t.string "locale"
-    t.integer "role"
+    t.integer "experience_level"
+    t.integer "health_point_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "title", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "power", default: 1
+    t.integer "dexterity", default: 1
+    t.integer "instinct", default: 1
+    t.integer "stamina", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_skills_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.bigint "role_id"
+    t.string "name", limit: 99
+    t.string "email"
+    t.string "locale", default: "en"
+    t.integer "hp", default: 100
+    t.integer "experience"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "type"
+    t.bigint "level_id"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["level_id"], name: "index_users_on_level_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
+  end
+
+  add_foreign_key "users", "levels"
 end

@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   before_save :convert_email_to_downcase
   after_create :set_items
+  before_create :set_default_role
   after_find :calculate_stats
 
   attr_accessor :armor, :stamina

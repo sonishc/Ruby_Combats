@@ -11,7 +11,7 @@ class UserProfile extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-2">
             <img src={ this.state.urlType } alt={ this.props.user.name } className="img-responsive" />
           </div>
           <div className="col-md-9">
@@ -34,6 +34,7 @@ class UserProfile extends React.Component {
             <a href="/users/fight" className="btn btn-danger btn-lg">Let's Fight!</a>
           </div>
         </div>
+        <FayeMessages name={this.props.user.name}/>
       </div>
     );
   }

@@ -20,7 +20,9 @@ class LoginForm extends React.Component {
           password: this.state.password,
           name: this.state.name},
       },
+     
       success:function(response) {
+        console.log(response);
         console.log("Login success!")
       },
       error:function(){
