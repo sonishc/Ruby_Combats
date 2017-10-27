@@ -14,24 +14,61 @@
 
 }
 
-.dark_fone{
+p.dark_fone{
+  position: relative;
   display: table;
   word-wrap:break-word;
   text-overflow: ellipsis; 
   border-color: #ccc;
   background-color: #ddd;
-  border-radius: 20px;
+  border-radius: 2px;
   text-align: left;
   padding: 0.5% 5% 0.5% 5%;
-  margin: 0.5% 5%;
+  margin: 0.5% 5% 1% 5%;
   font-size: 12px;
 }
 
+/*p.dark_fone:before{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 5px;
+  top: 15px;
+  border: 5px solid #ccc;
+  border-color: #ddd transparent transparent #ddd;
+}*/
+
+p.dark_fone:after {
+  content: ' ';
+  position: relative;
+  width: 0;
+  height: 0;
+  left: 5px;
+  top: 5px;
+  border: 5px solid #ccc;
+  border-color: #ddd transparent transparent #ddd;
+}
+
 .chat_order{
+  height: 200px;
+  width: 100%;
+/*	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 100%;
+	/*border: solid firebrick;*/
+	/*flex-direction: column;*/
+}
+
+.user_list{
+	width: 30%;
+}
+
+.message_list{
 	height: 200px;
 	overflow-y: scroll;
 	overflow-x: hidden;
-	width: 100%;
+	width: 70%;
 	/*border: solid firebrick;*/
 	flex-direction: column;
 }

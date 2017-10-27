@@ -4,7 +4,7 @@ function message_box(name) {
     // Create a new client to connect to Faye
     var client = new Faye.Client('http://localhost:9292/faye');
     var time = new Date();
-    var message_to_bottom = document.getElementById('chat_room');
+    var message_to_bottom = document.getElementById('list');
 
     $('#new_message_form').submit(function(){
   
@@ -20,7 +20,7 @@ function message_box(name) {
       // },
       // 100);
 
-      $('.chat_order').on('DOMNodeInserted', 'p', function () {
+      $('.message_list').on('DOMNodeInserted', 'p', function () {
         window.setTimeout(function() {
           message_to_bottom.scrollTop = message_to_bottom.scrollHeight;
         }, 100);
@@ -33,7 +33,7 @@ function message_box(name) {
  
     // Subscribe to the public channel
     var public_subscription = client.subscribe('/messages/public', function(data) {
-      $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('#chat_room');
+      $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
     }); 
   });
 }

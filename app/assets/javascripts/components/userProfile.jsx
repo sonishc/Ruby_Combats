@@ -34,7 +34,7 @@ class UserProfile extends React.Component {
             <a href="/users/fight" className="btn btn-danger btn-lg">Let's Fight!</a>
           </div>
         </div>
-        <FayeMessages name={this.props.user.name}/>
+        <FayeMessages name={this.props.user.name} users={this.props.users} />
       </div>
     );
   }
