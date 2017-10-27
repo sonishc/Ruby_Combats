@@ -17,4 +17,6 @@ Rails.application.routes.draw do
   get 'users/fight'
   post 'users/:id/addexp', to: 'users#add_experience'
 
+  devise_for :users
+  put '/locale' => 'application#change_locale'
 end

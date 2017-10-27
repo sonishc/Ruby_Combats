@@ -6,6 +6,16 @@ $yellow-red: #fcbf49;
 $orange: #f77f00;
 $red: #d62828;
 $burgundy: #780116;
+$primary-color: #9F182C;
+$light-green: #D3EBBC;
+$white: #ffffff;
+$black: #000000;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+}
 
 /* --- start style --- */
 html {
@@ -19,6 +29,14 @@ body {
 }
 
 /* --- header --- */
+.nav {
+  li:last-child {
+    :hover {
+      background-color : transparent;
+      cursor: pointer;
+    }
+  }
+}
 .navbar{
   background-color: $burgundy;
 
@@ -68,30 +86,6 @@ body {
 
 .dl-horizontal dd{
   margin-left: 100px;
-}
- /*  */
-
-
-
-/*@import "bootstrap-sprockets";
-@import "bootstrap";*/
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
-@font-face {
-    font-family: myFirstFont;
-    src: url(sansation_light.woff);
-}
-
-$primary-color: #9F182C;
-$light-green: #D3EBBC;
-$white: #ffffff;
-$black: #000000;
-
-body {
-  /*background-color: #E9F1F1;*/
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.4rem;
-  text-align: center;
 }
 
 .center {
@@ -170,3 +164,19 @@ meter::-webkit-meter-optimum-value {
   background-size: 100% 100%;
 }
 
+/* --- locale internationalization -- */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 15px;
+  display: block;
+}
+
+.dropdown-locale:hover .dropdown-content {
+  display: block;
+}

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_locale
 
   protected
 
@@ -11,10 +12,20 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name type])
   end
 
+  def change_locale
+    current_user.update_attribute(:locale, params[:locale])
+    redirect_back(fallback_location: user_session)
+  end
+
   private
 
   def user_not_authorized
     flash[:alert] = 'Access denied.'
     redirect_to(request.referrer || root_path)
+  end
+
+  def set_locale
+    I18n.locale = (current_user.locale unless current_user.nil?) ||
+                  I18n.default_locale
   end
 end
