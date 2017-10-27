@@ -7,12 +7,18 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+    
+    <%= javascript_include_tag "i18n" %>
+    <%= javascript_include_tag "i18n/translations" %>
+
+    <%= render 'layouts/set_js_locales' %>
+
   </head>
 
   <body>
-    <%= react_component("Navbar") %>
-
+    <%= react_component("Navbar", locale: current_user ? current_user.locale : 'en') %>
+    
     <div class="container">
       <%= yield %>
     </div>

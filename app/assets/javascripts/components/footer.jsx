@@ -10,7 +10,7 @@ class Footer extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-xs-12 text-right">
-              &copy; 2017, Lv-261-Ruby
+              &copy; 2017, { I18n.t ("footer.mark") }
             </div>
           </div>
         </div>
