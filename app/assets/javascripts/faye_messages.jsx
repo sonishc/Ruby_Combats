@@ -6,19 +6,46 @@ function message_box(name) {
     var time = new Date();
     var message_to_bottom = document.getElementById('list');
 
+    // $('#new_message_form').submit(function(){
+  
+    //   // Publish the message to the public channel
+    //   client.publish('/messages/public', {
+    //     username: name,
+    //     msg: $('#message').val(),
+    //     time: time.toLocaleTimeString()
+    //   });
+
+
+
+    //   $('.message_list').on('DOMNodeInserted', 'p', function () {
+    //     window.setTimeout(function() {
+    //       message_to_bottom.scrollTop = message_to_bottom.scrollHeight;
+    //     }, 100);
+    //   });
+
+    //   // Clear the message box
+    //   $('#message').val('')
+    //   return false;
+    // });
+
+
     $('#new_message_form').submit(function(){
   
       // Publish the message to the public channel
-      client.publish('/messages/public', {
-        username: name,
-        msg: $('#message').val(),
-        time: time.toLocaleTimeString()
-      });
+      if (matches = $('#message').val().match(/@(.+) (.+)/)) {
+        client.publish('/messages/private/' + matches[1], {
+          username: name,
+          msg: matches[2],
+          time: time.toLocaleTimeString()
+        });
+      else {
+        client.publish('/messages/public', {
+          username: name,
+          msg: $('#message').val(),
+          time: time.toLocaleTimeString()
+        });
+      }
 
-      // window.setTimeout(function() {
-      //   message_to_bottom.scrollTop = message_to_bottom.scrollHeight;
-      // },
-      // 100);
 
       $('.message_list').on('DOMNodeInserted', 'p', function () {
         window.setTimeout(function() {
@@ -30,10 +57,33 @@ function message_box(name) {
       $('#message').val('')
       return false;
     });
+
+
+     $('#new_message_form').submit(function(){
+      // Is it a private message?
+      if (matches = $('#message').val().match(/@(.+) (.+)/)) {
+        client.publish('/messages/private/' + matches[1], {
+          username: '<%= session[:username] %>',
+          msg: matches[2]
+        });
+      }
+      else {
+        // It's a public message
+        client.publish('/messages/public', {
+          username: '<%= session[:username] %>',
+          msg: $('#message').val()
+        });
+      }
  
     // Subscribe to the public channel
     var public_subscription = client.subscribe('/messages/public', function(data) {
       $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
+    });
+
+
+    // Our own private channel
+    var private_subscription = client.subscribe('/messages/private/<%= session[:username] %>', function(data) {
+  $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
     }); 
   });
 }
