@@ -25,3 +25,11 @@ function generate_row(row_list) { // generate rows in user profile with user inf
 
   return tableRow;
 }
+
+function generate_option(option_list){ // generate options tochhose Class
+  const option = option_list.map((value, index) => {
+    return (<option key={index} value={value.option}>{value.title}</option>);
+  });
+
+  return option;
+}

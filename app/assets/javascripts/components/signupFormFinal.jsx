@@ -31,14 +31,6 @@ class SignupFormFinal extends React.Component {
     });
   }
 
-  generate_option(option_list){
-    const option = option_list.map((value, index) => {
-      return (<option key={index} value={value.option}>{value.title}</option>);
-    });
-
-    return option;
-  }
-
   render() {
 
     return (
@@ -62,7 +54,7 @@ class SignupFormFinal extends React.Component {
                       name="type" 
                       value={this.state.type}
                       onChange={e => this.setState({type: e.target.value})}>
-                { this.generate_option(USER_CLASS_OPTION) }
+                { generate_option(USER_CLASS_OPTION) }
               </select>
             </div>
 
