@@ -32,15 +32,15 @@
 //         <input id="tab-2" className="tab_button" type="radio" name="tab-group" />
 //         <label className="tabs" htmlFor="tab-2" onClick={() => {this.activity(event, 'chat_room-2')}}>Local Chat</label>
 //         <input id="tab-3" className="tab_button" type="radio" name="tab-group" />
-//         <label className="tabs" htmlFor="tab-3" onClick={() => {this.activity(event, 'chat_room-3')}}>Chat of fight</label>    
+//         <label className="tabs" htmlFor="tab-3" onClick={() => {this.activity(event, 'chat_room-3')}}>Chat of fight</label>
 //       </div>
-//       <div id="chat_room" className="chat_order" ></div> 
-//       <div id="chat_room-2" className="chat_order" >Local chat temporary unavaliable</div> 
+//       <div id="chat_room" className="chat_order" ></div>
+//       <div id="chat_room-2" className="chat_order" >Local chat temporary unavaliable</div>
 //       <div id="chat_room-3" className="chat_order" >Chat of fight temporary unavaliable</div>
 //       <form id="new_message_form" method="post" className="chat_input" data-remote="true">
 //         <input type="text" id="message" name="message" className="input_location" autoComplete="off"/>
 //         <input type="submit" value="Send" className = "button_location"/>
-//       </form> 
+//       </form>
 //     </div>
 //     );
 //   }
@@ -79,7 +79,7 @@ class FayeMessages extends React.Component {
   //   }
   // }
 
-  generate_users_list(user_list) {
+  generate_users_online(user_list) {
     var users = user_list.map((user, index) => {
       return (<p key={index}>{user.name}</p>);
     });
@@ -93,20 +93,20 @@ class FayeMessages extends React.Component {
 
     <div className="chat_container" >
       { message_box(this.props.name) }
-      { console.log(this.props.users[0]) }
+      { console.log(this.props.users) }
       <div className="tabulation">
         <input id="tab-1" className="tab_button"  type="radio" name="tab-group" defaultChecked="checked"/>
         <label className="tabs" htmlFor="tab-1" onClick={() => {this.activity(event, 'chat_room')}}>Global Chat</label>
         <input id="tab-2" className="tab_button" type="radio" name="tab-group" />
         <label className="tabs" htmlFor="tab-2" onClick={() => {this.activity(event, 'chat_room-2')}}>Local Chat</label>
         <input id="tab-3" className="tab_button" type="radio" name="tab-group" />
-        <label className="tabs" htmlFor="tab-3" onClick={() => {this.activity(event, 'chat_room-3')}}>Chat of fight</label>    
+        <label className="tabs" htmlFor="tab-3" onClick={() => {this.activity(event, 'chat_room-3')}}>Chat of fight</label>
       </div>
 
 
       <div id="chat_room" className="chat_order" >
         <div className="user_list">
-          { this.generate_users_list(this.props.users) }
+          { this.generate_users_online(this.props.users) }
         </div>
         <div className="message_list" id="list"></div>
       </div>
@@ -114,12 +114,12 @@ class FayeMessages extends React.Component {
       <div id="chat_room-2" className="chat_order" >
         <div className="user_list"></div>
         <div className="message_list" id="list">Local chat temporary unavaliable</div>
-      </div> 
+      </div>
       <div id="chat_room-3" className="chat_order" >Chat of fight temporary unavaliable</div>
       <form id="new_message_form" method="post" className="chat_input" data-remote="true">
         <input type="text" id="message" name="message" className="input_location" autoComplete="off"/>
         <input type="submit" value="Send" className = "button_location"/>
-      </form> 
+      </form>
     </div>
     );
   }
