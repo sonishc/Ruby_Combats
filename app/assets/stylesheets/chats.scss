@@ -41,11 +41,11 @@ p.dark_fone{
 
 p.dark_fone:after {
   content: ' ';
-  position: relative;
+  position: absolute;
   width: 0;
   height: 0;
-  left: 5px;
-  top: 5px;
+  left: 2px;
+  bottom: -5px;
   border: 5px solid #ccc;
   border-color: #ddd transparent transparent #ddd;
 }
