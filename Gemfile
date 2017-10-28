@@ -11,7 +11,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.1'
 gem 'i18n-js', '~> 3.0', '>= 3.0.1'
 gem 'jbuilder', '~> 2.5'
+<<<<<<< 97f438abadf60e1707c25fc99fcb61da602ceb4e
 gem 'jquery-rails'
+=======
+gem 'paperclip', '~> 5.0.0'
+>>>>>>> RUB-39: Sign Up form to set name and choose Class, Edit Profile implementation
 gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
 gem 'pundit', '~> 1.1.0'

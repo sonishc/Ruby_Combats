@@ -1,1 +1,2 @@
-<%= react_component("UserProfile", user: @user, user_type: @user.type, level: @level, next_level: @next_level) %>
+<% @user.image ? image = @user.image.image.url(:medium) : nil %>
+<%= react_component("UserProfilePage", user: @user, user_type: @user.type, image: image, level: @level, next_level: @next_level) %>

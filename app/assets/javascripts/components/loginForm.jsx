@@ -4,6 +4,7 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
+      urlArena: "/assets/arena11.gif"
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -31,44 +32,49 @@ class LoginForm extends React.Component {
 
   render(){
     return(
-        <div className="wrapper">
-          <div>
-            <link href='https://fonts.googleapis.com/css?family=Open+Sans:700,600' rel='stylesheet' type='text/css'/>
-            <form className="new_user"
-                  id="new_user"
-                  // action="/users/sign_in"
-                  acceptCharset="UTF-8"
-                  method="post">
-              <fieldset>
-                <legend>Log in</legend>
-                <div className="box">
-                  <input className="form-control"
-                    id="user_email"
-                    type="email"
-                    value={this.state.email}
-                    onChange={e => this.setState({email: e.target.value})}
-                    name="user[email]"
-                    placeholder="Enter email" 
-                    required />
-                  <input className="form-control"
-                    id="user_password"
-                    type="password"
-                    value={this.state.password}
-                    onChange={e => this.setState({password: e.target.value})}
-                    name="user[password]"
-                    placeholder="Enter password" 
-                    required />
+        <div className="container">
+          <div className="row">
+              <div className="col-md-4">
+                
+                <form className="new_user">
+                  <legend>Log in</legend>
+                    
+                  <div className="form-group">
+                    <input className="form-control"
+                      id="user_email"
+                      type="email"
+                      value={this.state.email}
+                      onChange={e => this.setState({email: e.target.value})}
+                      name="user[email]"
+                      placeholder="Enter email" 
+                      required />
+                  </div>
+                      
+                  <div className="form-group">  
+                    <input className="form-control"
+                      id="user_password"
+                      type="password"
+                      value={this.state.password}
+                      onChange={e => this.setState({password: e.target.value})}
+                      name="user[password]"
+                      placeholder="Enter password" 
+                      required />
+                  </div>
+
+                  <a href="/users/sign_up" className="btn pull-left">Sign Up</a>&nbsp;
                   <button
                     onClick={this.handleSubmit}
-                    className="btn">Submit!
+                    className="btn pull-right">Submit!
                   </button>
-                    <a href="/users/sign_up" className="btn">Sign Up</a>
-                </div>
-            </fieldset>
-          </form>
-          <a href="/users/password/new">Forgot your password?</a>
+                  
+              </form>
+
+            </div>
+            <div className="col-md-8 hidden-sm hidden-xs">
+              <img src={ this.state.urlArena } alt="Fight Club Arena" />
+            </div>
+          </div>
         </div>
-      </div>
     );
   }
 }

@@ -1,38 +1,61 @@
 const NAVBAR_LINKS = [
   {
+<<<<<<< 97f438abadf60e1707c25fc99fcb61da602ceb4e
     url: '/',
-    title: 'home'
+    title: 'home',
+    id: 'link_home'
   },
   {
     url: '/users/sign_in',
-    title: 'sign_i'
-  },
-  {
-    url: '/users/sign_up',
-    title: 'sign_up'
-  },
-  {
-    url: '/users/profile',
-    title: 'profile'
-  },
-  {
-    url: '/location/page',
-    title: 'location'
-  },
-  {
-    url: '/users/fight',
-    title: 'fight'
-  },
-  {
-    url: '/users/sign_out',
-    title: 'sign_o'
+    title: 'sign_i',
+    id: 'link_sign_in'
   },
   {
     url: '/users/',
-    title: 'dashboard'
+    title: 'dashboard',
+    id: 'link_dashboard'
+  },
+  {
+    url: '/users/profile',
+    title: 'profile',
+    id: 'link_profile'
+  },
+  {
+    url: '/location/page',
+    title: 'location',
+    id: 'link_location'
+  },
+  {
+    url: '/users/fight',
+    title: 'fight',
+    id: 'link_fight'
+  },
+  {
+    url: '/users/sign_out',
+    title: 'sign_o',
+    id: 'link_sign_out'
   }
 ];
 
+const USER_CLASS_OPTION = [
+      {
+        title:"Select your Player type:", 
+        option: ""
+      },
+      {
+        title:"Magician", 
+        option: "Magician"
+      },
+      {
+        title:"Rogue", 
+        option: "Rogue"
+      },
+      {
+        title:"Warrior", 
+        option: "Warrior"
+      }
+    ];
+  
 const NAVBAR_SPANS = ['icon-bar','icon-bar','icon-bar'];
 
 const SITE_LOGO_IMG = '/assets/logo_nav.png';

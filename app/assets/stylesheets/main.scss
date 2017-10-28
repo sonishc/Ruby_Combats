@@ -46,18 +46,28 @@ i {
   background-color: $burgundy;
 
   li{
-    :hover{
+
+    a{
+      color: $dutch-white;
+    }
+
+    a:hover{
       color: $burgundy;
     }
   }
 
-  a{
-    color: $dutch-white;
+  li.active{
+     background-color: $yellow-red;
 
-    :hover{
+     a{
       color: $burgundy;
-    }
+     }
   }
+
+  li:hover{
+    color: $burgundy;
+  }
+
 }
 
 /* --- footer --- */
@@ -91,6 +101,39 @@ i {
 
 .dl-horizontal dd{
   margin-left: 100px;
+}
+
+
+/* --- userptofile --- */
+.userptofile{
+  table{
+    tr td:first-child{
+      font-weight: bold;
+    }
+  }
+}
+
+/*  */
+
+/*@import "bootstrap-sprockets";
+@import "bootstrap";*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+$primary-color: #9F182C;
+$light-green: #D3EBBC;
+$white: #ffffff;
+$black: #000000;
+
+body {
+  /*background-color: #E9F1F1;*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
 }
 
 .center {

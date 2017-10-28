@@ -6,8 +6,9 @@ class User < ApplicationRecord
   has_many :inventories
   has_many :items, through: :inventories
   has_one :skill
+  has_one :image, class_name: 'Image', as: :attachable
+  accepts_nested_attributes_for :image
 
-  before_save :convert_email_to_downcase
   before_create :set_default_role
   after_create :set_items
   after_find :calculate_stats
@@ -33,10 +34,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def convert_email_to_downcase
-    self.email = email.downcase
-  end
 
   def set_default_role
     self.role_id ||= Role.find_by(title: 'Player').id

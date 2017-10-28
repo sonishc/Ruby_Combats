@@ -1,25 +1,22 @@
 class Navbar extends React.Component {
-
   constructor(props) {
-   super();
+    super(props);
+      this.state = {
+      user:this.props.user
+      };
   }
 
-  generate_spans(span_list) {
-    const spans = span_list.map((name, index) => {
-      return (<span key={index} className={name}></span>);
-    });
-
-    return spans;
-  }
-
-  generate_links(links_list) {
-    const links = links_list.map((value, index) => {
-      return  (<li key={index}>
-                <a href={value.url} >{I18n.t ("navbar.nav." + value.title) }</a>
-              </li>);
-    });
-
-    return links;
+  show_links(links){
+    if (this.state.user && (this.state.user.role_id < 4)){
+      links = [links[0], links[2], links[3], links[4], links[5]];
+      return links;
+    } else if (this.state.user && (this.state.user.role_id == 4)){
+      links = [links[0], links[3], links[4], links[5]];
+      return links;
+    } else {
+      links = [links[0], links[1]];
+      return links;
+    }
   }
 
   render() {
@@ -28,11 +25,10 @@ class Navbar extends React.Component {
       <div>
         <nav className="navbar">
           <div className="container-fluid">
-            
             <div className="navbar-header">
               <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
                 <span className="sr-only">Toggle navigation</span>
-                { this.generate_spans(NAVBAR_SPANS) }
+                { generate_spans(NAVBAR_SPANS) }
               </button>
               <a className="navbar-brand" href={ NAVBAR_LINKS.urlRoot }>
                 <img src={ SITE_LOGO_IMG } alt="Fight Club" />
@@ -41,7 +37,8 @@ class Navbar extends React.Component {
 
             <div className="collapse navbar-collapse" id="navbar-collapse">
               <ul className="nav navbar-nav pull-right">
-                { this.generate_links(NAVBAR_LINKS) }
+
+                { this.show_links(generate_links(NAVBAR_LINKS))}
                 <li className="dropdown-locale">
                   <a>
                     <span className="lang-sm" lang={this.props.locale}></span>
@@ -50,6 +47,7 @@ class Navbar extends React.Component {
                     { generate_locale_links(LOCALE, this.props.locale) }
                   </div>     
                 </li>
+                
               </ul>
             </div>
           </div>

@@ -24,15 +24,19 @@ class SignupFormFinal extends React.Component {
           password_confirmation: firsStepData.password_confirmation},
       },
       success:function(response) {
-        if (response.error) {
+	      if (response.error) {
           alert(response.message);
         }
-      },
-      error:function(){
-
       }
-
     });
+  }
+
+  generate_option(option_list){
+    const option = option_list.map((value, index) => {
+      return (<option key={index} value={value.option}>{value.title}</option>);
+    });
+
+    return option;
   }
 
   render() {
@@ -43,25 +47,22 @@ class SignupFormFinal extends React.Component {
           <legend>Sign Up</legend>
           <form  id="new_user_2" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <input name="name"
+              <input name="name" 
                      className="form-control"
                      placeholder="Enter your name:"
                      value={this.state.name}
-                     type="text"
-                     required
+                     type="text" 
+                     required 
                      onChange={e => this.setState({name: e.target.value})}/>
             </div>
 
             <div className="form-group">
               <select required
-                      className="form-control"
-                      name="type"
+                      className="form-control" 
+                      name="type" 
                       value={this.state.type}
                       onChange={e => this.setState({type: e.target.value})}>
-                <option value="">Select your Player type:</option>
-                <option value="Magician">Magician</option>
-                <option value="Rogue">Rogue</option>
-                <option value="Warrior">Warrior</option>
+                { this.generate_option(USER_CLASS_OPTION) }
               </select>
             </div>
 

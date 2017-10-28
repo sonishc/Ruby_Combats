@@ -75,7 +75,7 @@ class SignupForm extends React.Component {
                 </div>
                  <button
                        onClick={this.resetForm}
-                       className="btn btn-danger">Cancel
+                       className="btn btn-danger pull-left">Cancel
                  </button>
                  <button
                        type="submit"

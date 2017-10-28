@@ -1,49 +1,43 @@
 class UserProfile extends React.Component {
   constructor(props) {
     super(props);
-      this.state = {
+    this.state = {
       urlType:`/assets/${this.props.user_type}.jpg`,
-      active: false,
-      toggle: false,
-      };
-      this.handleClick = this.handleClick.bind(this);
+      name: this.props.user.name,
+      userAvatar: this.props.user_image
+    };    
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick (img_path) {
-    arena.backgroundImage = 'url(' + img_path + ')';
-    this.setAttribute('id', 'locationGalleryActive');
+  handleClick(e) {
+    e.preventDefault();
+    this.props.sendData(
+      {
+        isShow: false
+      });
   }
 
   render() {
+    let rowLinks = [
+      {title: '', data: <h1><u>  {this.props.user.name} </u></h1>},
+      {title: 'e-mail:', data: this.props.user.email},
+      {title: 'Class:', data: this.props.user_type},
+      {title: 'Experience:', data: this.props.user.experience},
+      {title: 'Level:', data: this.props.user.level}
+    ];
+
     return (
       <div className="container">
-        <div className="wrap">
-          <div className="img-wrap">
-            <img src={ this.state.urlType } alt={ this.props.user.name } id='warrior' />
+        <div className="row">
+          <div className="col-md-2 hidden-xs">
+            <img src={ this.state.userAvatar ? this.state.userAvatar : this.state.urlType } alt={ this.props.user.name } className="img-responsive" />
           </div>
-          <div className='side'>
-            <div className="statTable">
-              <h1 id='name'><i>{ this.props.user.name }</i></h1>
-            </div>
-            <dl className="dl-horizontal">
-              <dt>{ I18n.t ("person.e_mail") }</dt>
-              <dd>{ this.props.user.email }</dd>
-
-              <dt>{ I18n.t ("person.class") }</dt>
-              <dd>{ I18n.t ("class." + this.props.user_type) }</dd>
-
-              <dt>{ I18n.t ("person.experience") }</dt>
-              <dd>
-                { this.props.user.experience + " " }
-                <meter value={this.props.user.experience} min="0" max={ this.props.next_level.experience_level }></meter>
-                {" "}{ this.props.next_level.experience_level }
-              </dd>
-
-              <dt>{ I18n.t ("person.level") }</dt>
-              <dd>{ this.props.level.level }</dd>
-              <dt>{ I18n.t ("person.health") }</dt>
-              <dd>{ this.props.level.health_point_level }</dd>
-            </dl>
+          <div className="col-md-10 text-left">
+            <table>
+              <tbody>{ generate_row(rowLinks) }</tbody>
+            </table>
+          
+            <button className="btn" onClick={this.handleClick}>Edit Profile</button>
           </div>
         </div>
       </div>

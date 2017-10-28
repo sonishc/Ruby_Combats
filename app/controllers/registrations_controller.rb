@@ -16,6 +16,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def update
+    @user = current_user
+    @user.build_image(image_params)
+    @user.update(account_update_params)
+    redirect_to users_profile_path
+  end
+
   def sign_up(resource_name, resource)
     sign_in(resource_name, resource)
   end
@@ -29,4 +36,13 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(*)
     '/location'
   end
+
+  def account_update_params
+    devise_parameter_sanitizer.sanitize(:account_update)
+  end
+
+  def image_params
+    params.require(:user).permit(:image)
+  end
+
 end

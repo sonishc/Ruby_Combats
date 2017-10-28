@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'devise/sessions#new'
     post '/users/signup', to: 'registrations#create'
+    patch '/users/update_password' , to: 'users#update_password'
+    put '/users/profile', to: 'registrations#update'
     get '/users/sign_out', to: 'devise/sessions#destroy'
     get '/users/edit', to: 'devise/registrations#edit'
   end
@@ -21,4 +23,5 @@ Rails.application.routes.draw do
   post 'users/:id/addexp', to: 'users#add_experience'
 
   put '/locale' => 'application#change_locale'
+
 end
