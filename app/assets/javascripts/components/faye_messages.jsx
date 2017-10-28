@@ -117,7 +117,7 @@ class FayeMessages extends React.Component {
       </div> 
       <div id="chat_room-3" className="chat_order" >Chat of fight temporary unavaliable</div>
       <form id="new_message_form" method="post" className="chat_input" data-remote="true">
-        <input type="text" id="message" name="message" className="input_location" autoComplete="off"/>
+        <input type="text" id="message" name="message" className="input_location" autoComplete="off" required="required" pattern="[A-Za-z0-9]{1,20}"/>
         <input type="submit" value="Send" className = "button_location"/>
       </form> 
     </div>

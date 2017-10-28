@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Chat conteiner
+// Chat container
 
 .chat_container {
   width:60%;
@@ -28,17 +28,6 @@ p.dark_fone{
   font-size: 12px;
 }
 
-/*p.dark_fone:before{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 5px;
-  top: 15px;
-  border: 5px solid #ccc;
-  border-color: #ddd transparent transparent #ddd;
-}*/
-
 p.dark_fone:after {
   content: ' ';
   position: absolute;
@@ -53,11 +42,6 @@ p.dark_fone:after {
 .chat_order{
   height: 200px;
   width: 100%;
-/*	overflow-y: scroll;
-	overflow-x: hidden;
-	width: 100%;
-	/*border: solid firebrick;*/
-	/*flex-direction: column;*/
 }
 
 .user_list{
@@ -69,7 +53,6 @@ p.dark_fone:after {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	width: 70%;
-	/*border: solid firebrick;*/
 	flex-direction: column;
 }
 
@@ -96,16 +79,9 @@ p.dark_fone:after {
 	justify-content: space-around;
 }
 
-/*.tab_button input {
-    visibility: hidden;
-    position: absolute;
-}*/
-
 .tab_button {
 	visibility: hidden;
   position: absolute;
-	/*width: 33.333%;*/
-	/*background-color: firebrick;*/
 }
 
 .tab_button:hover{
