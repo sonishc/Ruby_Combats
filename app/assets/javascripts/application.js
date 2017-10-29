@@ -18,5 +18,7 @@
 //= require_tree .
 //= require react_bootstrap
 //= require jquery
+//= require jquery_ujs.js
 //= require bootstrap-sprockets
 //= require react_rails_img
+//= require private_pub

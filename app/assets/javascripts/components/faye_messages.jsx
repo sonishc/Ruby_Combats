@@ -81,7 +81,7 @@ class FayeMessages extends React.Component {
 
   generate_users_list(user_list) {
     var users = user_list.map((user, index) => {
-      return (<p key={index}>{user.name}</p>);
+      return (<p key={index}>{user.name}</p>)
     });
 
     return users;

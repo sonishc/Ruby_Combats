@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'foreman'
+gem 'private_pub', git: 'https://github.com/ryanb/private_pub.git'
 gem 'thin'
 gem 'faye'
 gem 'bcrypt', '3.1.11'

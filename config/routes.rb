@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   get '/persons/profile', to: 'persons#profile'
   post '/persons/profile', to: 'persons#profile'
+  # post '/persons/profile', to: 'persons#new_message', as: :new_message
+
+  post '/new_message' => 'persons#new_message', :as => :new_message
 
   devise_for :users, :controllers => {sessions: 'sessions'}
   
@@ -15,6 +18,8 @@ Rails.application.routes.draw do
 
   patch 'users', to: 'users#update'
   resources :users, only: %i[index destroy update]
+
+  # post '/new_message' => 'chats#new_message', :as => :new_message
 
 
   # get 'users/fight'

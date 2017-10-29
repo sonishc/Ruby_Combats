@@ -1,3 +1,10 @@
 <%= react_component("UserProfile", user: @user, users: @users, user_type: @user.type) %>
 
+<%= subscribe_to "/messages/public" %>
+<!-- <%= subscribe_to "/messages/private/#name" %> -->
+<%= subscribe_to "/messages/private/#{session[:name]}" %>
 
+<%= form_tag new_message_path, :remote => true do %>
+  <%= text_field_tag :message %>
+  <%= submit_tag "Send" %>
+<% end %>
