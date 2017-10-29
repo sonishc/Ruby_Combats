@@ -7,7 +7,7 @@ function ButtonStart(props) {
           disabled={ props.btnClick } 
           className="btn btn-start" 
         >
-        STRIKE
+        { I18n.t ("strike") }
         </button>
       </div>
     )

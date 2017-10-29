@@ -49,13 +49,11 @@ class Fight extends React.Component {
 
     let attack = Math.floor(Math.random() * countSelect) + 0 ;
     let block =  Math.floor(Math.random() * countSelect) + 0 ;
+   
+    botHit['selectedAttackIndex'] = attack ;
+    botHit['selectedBlockIndex'] = block;
 
-    this.setState({
-      botHit: {
-        selectedAttackIndex: attack,
-        selectedBlockIndex: block
-      }
-    });
+    return this.setState({botHit});
   }
 
   checkPlayersMiss(attack, block, player) {
@@ -68,12 +66,13 @@ class Fight extends React.Component {
   }
 
   getDamage(actor) {
+    alert(USER_DAMAGE * 2 * parseInt(this.state.user.level_id))
     let max = 0, armor_bonus = 0;
     if (actor == 'user') {
-      max = USER_DAMAGE;
+      max = USER_DAMAGE * 2 * parseInt(this.state.user.level_id);
     } else {
       armor_bonus = Math.floor(this.state.user.armor * ARMOR_MULTIPLIER);
-      max = BOT_DAMAGE;
+      max = BOT_DAMAGE * 2.2 * parseInt(this.state.user.level_id);
     }
     const random = this.getRandomInt(1, max);
     const actual = random - armor_bonus;
@@ -97,7 +96,7 @@ class Fight extends React.Component {
 
     this.checkPlayersMiss(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
     this.setAnimationLog(HITS_ANIMATIONS_URL.hit, LOGS.userLog)
-
+    
     const promise = new Promise(resolve => {
         setTimeout(() => resolve(this.buttonEnabled(true)), 4000);
       }).then(result => {
@@ -124,7 +123,8 @@ class Fight extends React.Component {
   propertyUserBot(player, hp, demage) {
     return(
       <span>
-        <p>HP: { this.playerAlive(player) } | Power: { demage }</p>
+        <p>{ I18n.t ("fight." + player) }</p>
+        <p>{ I18n.t ("person.health") } { this.playerAlive(player) } | { I18n.t ("fight.power") }: { demage }</p>
         <meter value={ hp } min="0" max={ this.state.max_health }></meter><br />
         <br/>
         <img src={ player === 'User' ? USER_AVATAR_URL : BOT_AVATAR_URL } /><br/>
@@ -201,12 +201,9 @@ class Fight extends React.Component {
   render () {
     return (
       <div className="container-fluid">
-
-        <FightTopHeader />
-
         <div className="row">
           <div className="col-md-3">
-            {this.propertyUserBot('User', this.state.user.hp, USER_DAMAGE)}
+            {this.propertyUserBot('User', this.state.user.hp, USER_DAMAGE * 2 * parseInt(this.state.user.level_id))}
 
             <SelectHitBlock handleChange={ this.handleChange.bind(this) }
               ref={instance => { this.child = instance; }} />
@@ -214,18 +211,18 @@ class Fight extends React.Component {
           </div>
 
           <div className='col-md-6 arena-fights'>
-            <i>{ LOGS.idle }</i>
+            <i>{ this.state.currentLog }</i>
             <img src={ this.state.currentHit } />
           </div>
 
           <div className="col-md-3">
-            { this.propertyUserBot('Bot', this.props.bot.hp, BOT_DAMAGE) }
+            { this.propertyUserBot('Bot', this.props.bot.hp, BOT_DAMAGE * 2.2 * parseInt(this.state.user.level_id)) }
 
-            { HIT_TYPES[this.state.botHit.selectedAttackIndex] }
+            { I18n.t ("select_strike." + HIT_TYPES[this.state.botHit.selectedAttackIndex])}
 
             <br />
 
-            { BLOCK_TYPES[this.state.botHit.selectedBlockIndex] }
+            { I18n.t ("select_strike." + BLOCK_TYPES[this.state.botHit.selectedBlockIndex]) }
 
           </div>
 
@@ -239,11 +236,11 @@ class Fight extends React.Component {
           <div className='col-md-6 player-name'>
             {this.state.user.name}
               <p className='player-info'>
-                Experience:
-                [{this.state.user.experience}]
+                { I18n.t ("person.experience") }
+                {this.state.user.experience}
                 <br/>
-                Email:
-                [{this.state.user.email}]
+                { I18n.t ("person.e_mail") }
+                {this.state.user.email}
               </p>
           </div>
         </div>

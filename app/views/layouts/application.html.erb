@@ -17,8 +17,8 @@
   </head>
 
   <body>
-    <%= react_component("Navbar", locale: current_user.locale) %>
-    
+    <%= react_component("Navbar", locale: current_user ? current_user.locale : 'en') %>
+
     <div class="container">
       <%= yield %>
     </div>

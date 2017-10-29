@@ -4,17 +4,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :set_locale
+  before_action :set_locale, :set_last_request_at
+
+  def change_locale
+    current_user.update_attribute(:locale, params[:locale])
+    redirect_back(fallback_location: user_session)
+  end
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name type])
-  end
-
-  def change_locale
-    current_user.update_attribute(:locale, params[:locale])
-    redirect_back(fallback_location: user_session)
   end
 
   private
@@ -27,5 +27,10 @@ class ApplicationController < ActionController::Base
   def set_locale
     I18n.locale = (current_user.locale unless current_user.nil?) ||
                   I18n.default_locale
+  end
+
+  def set_last_request_at
+    current_user.update_attribute(:last_request_at, Time.current) if
+      user_signed_in?
   end
 end

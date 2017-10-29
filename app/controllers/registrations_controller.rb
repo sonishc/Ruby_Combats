@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
       else
         expire_session_data_after_sign_in!
       end
-      redirect_to '/persons/profile/'
+      redirect_to '/users/profile/'
     else
       clean_up_passwords resource
       render json: { error: true, message: resource.errors.full_messages }
@@ -27,7 +27,6 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(*)
-    '/persons/profile/'
+    '/users/profile/'
   end
 end
-

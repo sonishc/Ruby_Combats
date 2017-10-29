@@ -1,0 +1,25 @@
+uk:
+  strike: "АТАКУВАТИ"
+  fight:
+    Bot: "Противник"
+    play_info: "Гра"
+    User: "Гравець"
+    power: "Сила"
+  select_strike:
+    belt: "Ударити пояс"
+    chest: "Ударити груди"
+    head: "Ударити голову"
+    legs: "Ударити ноги"
+    lower_back: "Ударити спину"
+    stomach: "Ударити живіт"
+    belt_block: "Захистити пояс"
+    chest_block: "Захистити груди"
+    head_block: "Захистити голову"
+    legs_block: "Захистити ноги"
+    lower_back_block: "Захистити спину"
+    stomach_block: "Захистити живіт"
+    undefined: ''
+  log:
+    idle: "Починай атакувати"
+    botLog: "Атака противника"
+    userLog: "Ваша атака"

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'persons/profile', to: 'persons#profile'
+  get 'users/profile', to: 'users#profile'
 
   devise_for :users, :controllers => {sessions: 'sessions'}
   
@@ -16,7 +16,6 @@ Rails.application.routes.draw do
 
   get 'users/fight'
   post 'users/:id/addexp', to: 'users#add_experience'
-
-  devise_for :users
+  
   put '/locale' => 'application#change_locale'
 end

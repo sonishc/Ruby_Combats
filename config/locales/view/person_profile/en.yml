@@ -1,0 +1,13 @@
+en:
+  person:
+    class: 'Сlass:'
+    e_mail: 'E-mail:'
+    experience: 'Experience:'
+    health: 'Health:'
+    level: 'Level:'
+  controll_input:
+    lets_figth: 'Lets figth'
+  class:
+    Rogue: "Rogue"
+    Warrior: "Warrior"
+    Magician: "Magican"

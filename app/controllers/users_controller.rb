@@ -28,13 +28,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def profile
+    @user = current_user
+    @level = Level.includes(:users).find_by(users: { level_id: @user.level_id })
+    @next_level = Level.find_by(id:  @user.level_id == 12 ? @user.level_id : @user.level_id.next )
+    if current_user.save
+      render 'profile'
+    else
+      render json: current_user.errors, status: :unprocessable_entity
+    end
+  end
+
   def fight
+    @health_level = Level.includes(:users).find_by(users: { level_id: current_user.level_id })
+    current_user.hp = @health_level.health_point_level
     @bot = current_user.dup
     @bot.handle_bot_hp(current_user)
   end
 
+  def online
+    @users = User.where('last_request_at > ?', 5.minutes.ago)
+  end # users: @users, {console.log(this.props.users)}
+
   def add_experience
     current_user.increment(:experience, params[:experience])
+    current_user.level_up
 
     if current_user.save
       render json: { status: 'OK' }.to_json

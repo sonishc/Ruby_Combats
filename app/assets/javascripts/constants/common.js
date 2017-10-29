@@ -12,7 +12,7 @@ const NAVBAR_LINKS = [
     title: 'sign_up'
   },
   {
-    url: '/persons/profile',
+    url: '/users/profile',
     title: 'profile'
   },
   {
@@ -25,7 +25,7 @@ const NAVBAR_LINKS = [
   },
   {
     url: '/users/',
-    title: 'Dashboard'
+    title: 'dashboard'
   }
 ];
   

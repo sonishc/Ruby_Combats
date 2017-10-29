@@ -1,8 +1,8 @@
-const BLOCK_TYPES = ['Block head', 'Block chest', 'Block stomach',
-                'Block back','Block belt','Block legs'];
+const BLOCK_TYPES = ['head_block', 'chest_block', 'stomach_block',
+                'lower_back_block','belt_block','legs_block'];
 
-const HIT_TYPES = ['Hit head', 'Hit chest', 'Hit stomach',
-              'Hit lower back','Hit belt','Hit legs'];
+const HIT_TYPES = ['head', 'chest', 'stomach',
+              'lower_back','belt','legs'];
 
 const USER_AVATAR_URL = "/assets/user-photo.gif";
 const BOT_AVATAR_URL = "/assets/bot1.gif";
@@ -17,6 +17,6 @@ const LOGS = {
   botLog: "Bot hit",
   userLog: "User hit"
 }
-const USER_DAMAGE = 25;
-const BOT_DAMAGE = 25;
+let USER_DAMAGE = 30;
+let BOT_DAMAGE = 30;
 const ARMOR_MULTIPLIER = 0.2;

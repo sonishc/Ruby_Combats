@@ -28,6 +28,11 @@ body {
     margin-bottom: 20px;
 }
 
+i {
+  color: $dutch-white;
+  background-color: $red;
+}
+
 /* --- header --- */
 .nav {
   li:last-child {

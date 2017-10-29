@@ -1,0 +1,13 @@
+uk:
+  person:
+    class: "Клас:"
+    e_mail: "Емейл:"
+    experience: "Досвід:"
+    health: "Здоров'я:"
+    level: "Рівень:"
+  controll_input:
+    lets_figth: "До бою"
+  class:
+    Rogue: "Злодій"
+    Warrior: "Вояка"
+    Magician: "Мольфар"
