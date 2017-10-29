@@ -33,3 +33,15 @@ function generate_option(option_list){ // generate options tochhose Class
 
   return option;
 }
+
+function generate_level_row(row_list) { // generate rows in user profile with user info
+  const tableRow = row_list.map((value, index) => {
+    return (<tr key={index} >
+              <td>{value.level}</td>
+              <td>{value.experience_level}</td>
+              <td>{value.health_point_level}</td>
+            </tr>);
+  });
+
+  return tableRow;
+}

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'static#index'
   get 'users/profile', to: 'users#profile'
 
   devise_for :users
