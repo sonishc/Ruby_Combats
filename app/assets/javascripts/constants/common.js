@@ -1,6 +1,5 @@
 const NAVBAR_LINKS = [
   {
-<<<<<<< 97f438abadf60e1707c25fc99fcb61da602ceb4e
     url: '/',
     title: 'home',
     id: 'link_home'
@@ -148,4 +147,19 @@ const LIST_TO_GENERATE = [
     description:'No place for newbie here...',
     step: '12'
   }
+];
+
+const LEVELS_INFO = [
+  {level: 1, experience_level: 50, health_point_level: 100},
+  {level: 2, experience_level: 350, health_point_level: 600},
+  {level: 3, experience_level: 666, health_point_level: 1000},
+  {level: 4, experience_level: 1111, health_point_level: 2000},
+  {level: 5, experience_level: 2222, health_point_level: 3000},
+  {level: 6, experience_level: 3333, health_point_level: 4000},
+  {level: 7, experience_level: 4444, health_point_level: 5000},
+  {level: 8, experience_level: 5555, health_point_level: 6000},
+  {level: 9, experience_level: 6666, health_point_level: 7000},
+  {level: 10, experience_level: 7777, health_point_level: 8000},
+  {level: 11, experience_level: 8888, health_point_level: 9000},
+  {level: 12, experience_level: 10000, health_point_level: 10000}
 ];

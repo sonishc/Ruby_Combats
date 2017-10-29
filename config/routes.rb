@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'static#index'
   get 'users/profile', to: 'users#profile'
   get '/location', to: 'location#index'
   post '/location', to: 'location#update'

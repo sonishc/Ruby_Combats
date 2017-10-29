@@ -18,6 +18,7 @@ class UserProfile extends React.Component {
   }
 
   render() {
+
     let rowLinks = [
       {title: '', data: <h1><u>  {this.props.user.name} </u></h1>},
       {title: 'e-mail:', data: this.props.user.email},

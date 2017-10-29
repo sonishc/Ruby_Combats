@@ -27,7 +27,7 @@ class UserSignup extends React.Component {
             { showForm } 
           </div>
           <div className="col-md-8 hidden-sm hidden-xs">
-            <img src={ this.state.urlArena } alt="Fight Club Arena" />
+            <img src={ this.state.urlArena } alt="Fight Club Arena" className="img-responsive" />
           </div>
         </div>
       </div>

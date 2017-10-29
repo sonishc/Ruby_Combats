@@ -1,6 +1,6 @@
 class UserEditPassword extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       password: '',
       password_confirmation: '',
