@@ -38,8 +38,12 @@ class User < ApplicationRecord
   end
 
   def set_items
-    DEFAULT_ARMOR.each do |item|
-      items << Item.find(item)
+    equipment = Item.where(id: DEFAULT_ARMOR)
+
+    return if equipment.count.zero?
+
+    equipment.each do |item|
+      items << item
     end
     equip_items
   end
