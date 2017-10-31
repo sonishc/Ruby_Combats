@@ -1,0 +1,113 @@
+// Place all the styles related to the chats controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.chat_container {
+  width:100%;
+  border: 2px solid firebrick;
+  background-color: #DEB887;
+  word-wrap:break-word;
+  text-overflow: ellipsis; 
+  background-image: url(/assets/chatroom.jpeg);
+}
+
+p.dark_fone{
+  position: relative;
+  display: table;
+  word-wrap:break-word;
+  text-overflow: ellipsis; 
+  border-color: #ccc;
+  background-color: #ddd;
+  border-radius: 2px;
+  text-align: left;
+  padding: 0.5% 5% 0.5% 5%;
+  margin: 0.5% 5% 1% 5%;
+  font-size: 12px;
+}
+
+p.dark_fone:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 5px;
+  bottom: -5px;
+  border: 5px solid #ccc;
+  border-color: #ddd transparent transparent #ddd;
+}
+
+p.floralwhite_fone{
+  position: relative;
+  display: table;
+  word-wrap:break-word;
+  text-overflow: ellipsis; 
+  border-color: #ccc;
+  background-color: floralwhite;
+  border-radius: 2px;
+  text-align: left;
+  padding: 0.5% 5% 0.5% 5%;
+  margin: 0.5% 5% 1% 5%;
+  font-size: 12px;
+}
+
+p.floralwhite_fone:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 5px;
+  bottom: -5px;
+  border: 5px solid #ccc;
+  border-color: floralwhite transparent transparent floralwhite;
+}
+
+.chat_order{
+  height: 200px;
+  width: 100%;
+}
+
+.user_list{
+  width: 30%;
+  border-right: solid 2px firebrick;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.message_list{
+  height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 70%;
+  flex-direction: column;
+}
+
+.chat_input{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.input_location{
+  width: 70%;
+}
+
+.button_location{
+  width: 30%;
+}
+
+#chat_room{
+  display: flex;
+}
+
+.users_list {
+  margin: 5px;
+  border: solid 2px white;
+  background: darkgrey;
+  border-radius: 3px;
+}
+
+.chat_word {
+  color: firebrick;
+  line-height: 60px;
+  font-size: 30px;
+  font-weight: 600;
+}
