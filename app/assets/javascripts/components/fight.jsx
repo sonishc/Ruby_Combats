@@ -238,7 +238,7 @@ class Fight extends React.Component {
 
   removeItem(id) {
     const items = this.state.inventory;
-    const url = `/users/${this.state.user.id}/remove_item`;
+    const url = `/item/${id}/remove`;
     const index = items.findIndex(obj => obj.id == id);
 
     if (items[index].count > 1)
@@ -251,9 +251,7 @@ class Fight extends React.Component {
     });
 
     this.initAxiosHeaders();
-    axios.post(url, {
-      item_id: id
-    });
+    axios.post(url);
   }
 
   render () {
