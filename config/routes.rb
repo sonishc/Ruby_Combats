@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
   get 'persons/profile', to: 'persons#profile'
+  get '/location', to: 'location#index'
+  post '/location', to: 'location#update'
+  get 'location/page', to: 'location#page'
 
   devise_for :users, :controllers => {sessions: 'sessions'}
-  
+
   devise_scope :user do
     root to: 'devise/sessions#new'
     post '/users/signup', to: 'registrations#create'

@@ -6,6 +6,7 @@ class Fight extends React.Component {
 
     this.state = {
       user: user,
+      locations: this.props.locations,
       max_health: user.hp,
       currentHit: HITS_ANIMATIONS_URL.idle,
       userHit: {
@@ -198,6 +199,15 @@ class Fight extends React.Component {
     this.setState({ buttonStatus: status });
   }
 
+  setImage(location) {
+    return ({
+              backgroundImage: `url(${imgUrl[location]})`,
+              backgroundRepeat: 'no-repeat',
+              maxWidth: '100%',
+              maxHeight: '100%'
+  });
+  }
+
   render () {
     return (
       <div className="container-fluid">
@@ -213,7 +223,7 @@ class Fight extends React.Component {
             <UserItems items={this.props.items}/>
           </div>
 
-          <div className='col-md-6 arena-fights'>
+          <div className='col-md-6 arena-fights' style={this.setImage(this.state.locations)}>
             <i>{ LOGS.idle }</i>
             <img src={ this.state.currentHit } />
           </div>
