@@ -6,6 +6,7 @@ class Fight extends React.Component {
 
     this.state = {
       user: user,
+      locations: this.props.locations,
       max_health: user.hp,
       currentHit: HITS_ANIMATIONS_URL.idle,
       userHit: {
@@ -49,7 +50,7 @@ class Fight extends React.Component {
 
     let attack = Math.floor(Math.random() * countSelect) + 0 ;
     let block =  Math.floor(Math.random() * countSelect) + 0 ;
-   
+
     botHit['selectedAttackIndex'] = attack ;
     botHit['selectedBlockIndex'] = block;
 
@@ -96,7 +97,7 @@ class Fight extends React.Component {
 
     this.checkPlayersMiss(selectedAttackIndex, selectedBotBlockIndex, 'Bot')
     this.setAnimationLog(HITS_ANIMATIONS_URL.hit, LOGS.userLog)
-    
+
     const promise = new Promise(resolve => {
         setTimeout(() => resolve(this.buttonEnabled(true)), 4000);
       }).then(result => {
@@ -198,6 +199,15 @@ class Fight extends React.Component {
     this.setState({ buttonStatus: status });
   }
 
+  setImage(location) {
+    return ({
+              backgroundImage: `url(${imgUrl[location]})`,
+              backgroundRepeat: 'no-repeat',
+              maxWidth: '100%',
+              maxHeight: '100%'
+  });
+  }
+
   render () {
     return (
       <div className="container-fluid">
@@ -209,8 +219,7 @@ class Fight extends React.Component {
               ref={instance => { this.child = instance; }} />
             <UserItems items={this.props.items}/>
           </div>
-
-          <div className='col-md-6 arena-fights'>
+          <div className='col-md-6 arena-fights' style={this.setImage(this.state.locations)>
             <i>{ this.state.currentLog }</i>
             <img src={ this.state.currentHit } />
           </div>

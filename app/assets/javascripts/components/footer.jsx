@@ -9,7 +9,7 @@ class Footer extends React.Component {
       <footer id="footer">
         <div className="container">
           <div className="row">
-            <div className="col-xs-12 text-right">
+            <div id='copy' className="col-xs-12 text-right">
               &copy; 2017, { I18n.t ("footer.mark") }
             </div>
           </div>
