@@ -258,13 +258,53 @@ class Fight extends React.Component {
     this.setState({ buttonStatus: status });
   }
 
-  setImage(location) {
-    return ({
-              backgroundImage: `url(${imgUrl[location]})`,
-              backgroundRepeat: 'no-repeat',
-              maxWidth: '100%',
-              maxHeight: '100%'
-  });
+  initEffect(item) {
+    let id = null, effect_type = null, effect_value = null;
+
+    if (this.state.effect_id !== item.id)
+      ({id, effect_type, effect_value} = item)
+
+    this.setEffect(id, effect_type, effect_value);
+  }
+
+  setEffect(id, type, value) {
+    this.setState({
+      effect_id: id,
+      effect_type: type,
+      effect_value: value,
+    });
+  }
+
+  applyEffect() {
+    let {effect_id, effect_type, effect_value} = this.state;
+    let [hp, max_hp] = [this.state.user.hp, this.state.max_health];
+
+    switch(effect_type) {
+      case EFFECTS.HEALING:
+        this.state.user.hp = effect_value + hp >= max_hp ? max_hp : effect_value + hp;
+        break;
+    }
+
+    this.setEffect(null, null, null);
+    this.removeItem(effect_id);
+  }
+
+  removeItem(id) {
+    const items = this.state.inventory;
+    const url = `/item/${id}/remove`;
+    const index = items.findIndex(obj => obj.id == id);
+
+    if (items[index].count > 1)
+      items[index].count = items[index].count - 1;
+    else
+      items.splice(index, 1);
+
+    this.setState({
+      inventory: items,
+    });
+
+    this.initAxiosHeaders();
+    axios.post(url);
   }
 
   render () {

@@ -1,10 +1,9 @@
 class UsersController < ApplicationController
 <<<<<<< HEAD
   before_action :retrieve_users, :authenticate_user!
-  before_action :authenticate_user!, only: %i[fight add_experience]
+  before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
-<<<<<<< HEAD
   def index
     authorize @users
     @roles = Role.all
@@ -40,9 +39,6 @@ class UsersController < ApplicationController
       render json: current_user.errors, status: :unprocessable_entity
     end
   end
-=======
-  before_action :authenticate_user!
->>>>>>> Implemented effects functionality for items
 
   def fight
     @health_level = Level.includes(:users).find_by(users: { level_id: current_user.level_id })
@@ -58,11 +54,11 @@ class UsersController < ApplicationController
 
   def online
     @users = User.where('last_request_at > ?', 5.minutes.ago)
-=======
+  end
+
   def fight
     @bot = current_user.dup
     @bot.handle_bot_hp(current_user)
->>>>>>> Implemented incrementing user experience after the fight has ended
   end
 
   def add_experience
@@ -76,13 +72,13 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def update_password
     @user = current_user
     @user.update(password_params)
     bypass_sign_in(@user)
     redirect_to users_profile_path
-=======
+  end
+
   def remove_item
     item = Inventory.find_by(user_id: current_user.id,
                              item_id: params[:item_id])
@@ -91,7 +87,6 @@ class UsersController < ApplicationController
     else
       item.destroy
     end
->>>>>>> Implemented effects functionality for items
   end
 
   private
