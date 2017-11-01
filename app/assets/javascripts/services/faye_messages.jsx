@@ -1,5 +1,5 @@
 function message_box(name) {
-
+  
     $(function() {
     var client = new Faye.Client('http://localhost:9292/faye');
     var time = new Date();
@@ -15,10 +15,10 @@ function message_box(name) {
         if(matches[1] !== name){
           var form_time = time.toLocaleTimeString();
           var create_data = document.createElement('p');
-          var paragraph_with_text = form_time +' - '+name+': '+matches[2];
+          var paragraph_with_text = form_time +' - '+name+' '+matches[2];
           var add_time = document.createTextNode(paragraph_with_text);
           var paragraph = create_data.appendChild(add_time);
-          create_data.className = "dark_fone";
+          create_data.className = "floralwhite_fone";
           document.getElementsByClassName('message_list')[0].appendChild(create_data).appendChild(paragraph);
         }
       }
@@ -29,7 +29,7 @@ function message_box(name) {
           time: time.toLocaleTimeString()
         });
       }
-
+ 
       $('.message_list').on('DOMNodeInserted', 'p', function () {
         window.setTimeout(function() {
           message_to_bottom.scrollTop = message_to_bottom.scrollHeight;
@@ -42,10 +42,10 @@ function message_box(name) {
 
     var public_subscription = client.subscribe('/messages/public', function(data) {
       $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
-    });
+    }); 
 
     var private_subscription = client.subscribe('/messages/private/' + name, function(data) {
-      $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
-    });
+      $('<p class="floralwhite_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
+    }); 
   });
 }
