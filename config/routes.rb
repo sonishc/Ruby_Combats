@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/location', to: 'location#index'
   post '/location', to: 'location#update'
   get 'location/page', to: 'location#page'
+  post 'location/page', to: 'location#page'
 
   devise_for :users, :controllers => {sessions: 'sessions'}
 

@@ -13,20 +13,8 @@ class UserProfile extends React.Component {
     arena.backgroundImage = 'url(' + img_path + ')';
     this.setAttribute('id', 'locationGalleryActive');
   }
-  generateLocations (list) {
-    const elem = list.map((element) => {
-      return(
-        <li className='locationGallery' >
-          <img src={element.img} alt={element.h3} onClick={(e) => this.handleClick(element.img)}/>
-          <h3>{element.h3}</h3>
-          <p>{element.p}</p>
-        </li>
-      );
-    })
-    return elem;
-  }
-  render() {
 
+  render() {
     return (
       <div className="container">
         <div className="wrap">

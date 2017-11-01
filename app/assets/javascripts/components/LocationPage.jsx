@@ -6,7 +6,7 @@ class LocationPage extends React.Component {
 
     this.state = {
       user: this.props.user
-    }
+    };
   }
   handleClick(location) {
     arena.backgroundImage = 'url(' + imgUrl[location] + ')';
@@ -30,11 +30,7 @@ class LocationPage extends React.Component {
         </div>
         <div className='col-md-3 right-side'>
           <aside className='chat'>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Possimus iure illo aliquam magnam, odio suscipit
-              recusandae beatae quos quam perferendis ullam ipsa ullam ipsa
-              deleniti temporibus reiciendis tempora, fuga praesentium aliquid,
-              repellat in necessitatibus itaque accusamus voluptas! Excepturi ducimus
+            <FayeMessages name={this.props.name} users={this.props.users} />
           </aside>
           <div className='nav-panel'>
             <a className='btn btn-danger nav-button' href='/location'>Back</a>
