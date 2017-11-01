@@ -40,6 +40,20 @@
         &:hover {
           border: 5px solid #780116;
           opacity: 1;
+
+          .blocked-location {
+            .location-img {
+              -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+              filter: grayscale(0%);
+            }
+          }
+        }
+
+        .blocked-location {
+          .location-img {
+            -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+            filter: grayscale(100%);
+          }
         }
 
         .title {

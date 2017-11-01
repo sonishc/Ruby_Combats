@@ -17,7 +17,7 @@ const NAVBAR_LINKS = [
   },
   {
     url: '/location/page',
-    title: 'Location'
+    title: 'location'
   },
   {
     url: '/users/fight',
@@ -69,50 +69,60 @@ const LIST_TO_GENERATE = [
   {
     img:locationImg[0],
     title:'Trojan War',
-    description:'Brutte forse is not a solution. Find a way to survive!'
+    description:'Brutte forse is not a solution. Find a way to survive!',
+    step: '1'
   },
   {
     img:locationImg[1],
     title:'Mad City',
-    description:'Texas Chainsaw Massacre...'
+    description:'Texas Chainsaw Massacre...',
+    step: '2'
   },
   {
     img:locationImg[2],
     title:'Babylon',
-    description:'Once united?...Homo homini lupus est'
+    description:'Once united?...Homo homini lupus est',
+    step: '3'
   },
   {
     img:locationImg[3],
     title:'Hello Kitty',
-    description:'Japanese terror is not a joke at all!'
+    description:'Japanese terror is not a joke at all!',
+    step: '4'
   },
   { img:locationImg[4],
     title:'Rainy death',
-    description:'Rainbow is waiting for you.'
+    description:'Rainbow is waiting for you.',
+    step: '6'
   },
   {
     img:locationImg[5],
     title:'Mountain Battle',
-    description:'You should be completely insane to fight with giants!'
+    description:'You should be completely insane to fight with giants!',
+    step: '7'
   },
   {
     img:locationImg[6],
     title:'Piece and Harmony',
-    description:'Let the Force be with you...'
+    description:'Let the Force be with you...',
+    step: '8'
   },
   {
     img:locationImg[7],
     title:'Temple',
-    description:'Be smart and quick...'
+    description:'Be smart and quick...',
+    step: '10'
   },
   {
     img:locationImg[8],
     title:'Bloody Moon',
-    description:'Feel yourself a pirate, arr...'
+    description:'Feel yourself a pirate, arr...',
+    step: '11'
   },
   {
     img:locationImg[9],
     title:'Dragon Arena Fight',
-    description:'No place for newbie here...'
+    description:'No place for newbie here...',
+    step: '12'
   }
 ];

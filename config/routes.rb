@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-
-<<<<<<< HEAD
   get 'users/profile', to: 'users#profile'
-=======
-  get 'persons/profile', to: 'persons#profile'
   get '/location', to: 'location#index'
   post '/location', to: 'location#update'
   get 'location/page', to: 'location#page'
->>>>>>> Add location
 
   devise_for :users, :controllers => {sessions: 'sessions'}
 
@@ -23,6 +18,6 @@ Rails.application.routes.draw do
 
   get 'users/fight'
   post 'users/:id/addexp', to: 'users#add_experience'
-  
+
   put '/locale' => 'application#change_locale'
 end

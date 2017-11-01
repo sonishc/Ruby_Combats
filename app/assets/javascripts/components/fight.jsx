@@ -219,8 +219,7 @@ class Fight extends React.Component {
               ref={instance => { this.child = instance; }} />
             <UserItems items={this.props.items}/>
           </div>
-          <div className='col-md-6 arena-fights' style={this.setImage(this.state.locations)>
-            <i>{ this.state.currentLog }</i>
+          <div className='col-md-6 arena-fights' style={this.setImage(this.state.locations)}>
             <img src={ this.state.currentHit } />
           </div>
 
@@ -232,16 +231,14 @@ class Fight extends React.Component {
             <br />
 
             { I18n.t ("select_strike." + BLOCK_TYPES[this.state.botHit.selectedBlockIndex]) }
-
           </div>
-
         </div>
 
         <div className="row">
           <ButtonStart
             btnClick={this.state.buttonStatus}
-            changeFightProperty={ this.changeFightProperty.bind(this)}
-          />
+            changeFightProperty={ this.changeFightProperty.bind(this)}/>
+
           <div className='col-md-6 player-name'>
             {this.state.user.name}
               <p className='player-info'>

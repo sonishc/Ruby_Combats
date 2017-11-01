@@ -5,6 +5,7 @@ uk:
       sign_i: 'Увійти'
       sign_up: 'Зареєструватись'
       profile: 'Профіль'
+      location: 'Локація'
       fight: 'Вступити у бій'
       sign_o: 'Вийти'
       dashboard: 'Адмін. Панель'

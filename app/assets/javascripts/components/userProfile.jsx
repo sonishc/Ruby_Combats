@@ -36,6 +36,7 @@ class UserProfile extends React.Component {
           <div className='side'>
             <div className="statTable">
               <h1 id='name'><i>{ this.props.user.name }</i></h1>
+            </div>
             <dl className="dl-horizontal">
               <dt>{ I18n.t ("person.e_mail") }</dt>
               <dd>{ this.props.user.email }</dd>
