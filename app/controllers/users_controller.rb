@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def profile
+    @user = current_user
     @level = Level.includes(:users).find_by(users: { level_id: @user.level_id })
     @next_level = Level.find_by(id:  @user.level_id == 12 ? @user.level_id : @user.level_id.next )
     if current_user.save

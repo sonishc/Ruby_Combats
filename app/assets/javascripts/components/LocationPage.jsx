@@ -14,7 +14,7 @@ class LocationPage extends React.Component {
   render() {
     return (
       <div id="location-page">
-        <div className='col-md-9 left-side'>
+        <div className='col-md-6 left-side'>
           <div className='description-image'>
             <img src={imgUrl[this.state.user]} className='img-responsive desc-image' alt='location image'/>
           </div>
@@ -28,10 +28,10 @@ class LocationPage extends React.Component {
             </p>
           </div>
         </div>
-        <div className='col-md-3 right-side'>
-          <aside className='chat'>
+        <div className='col-md-6 right-side'>
+        <div className='chat'>
             <FayeMessages name={this.props.name} users={this.props.users} />
-          </aside>
+        </div>
           <div className='nav-panel'>
             <a className='btn btn-danger nav-button' href='/location'>Back</a>
             <a className='btn btn-danger nav-button' onClick={e => this.handleClick(this.state.user)} href='/users/fight'>Fight</a>
