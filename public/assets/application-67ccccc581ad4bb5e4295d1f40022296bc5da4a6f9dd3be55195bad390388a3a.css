@@ -1,0 +1,283 @@
+@charset "UTF-8";
+/*@import "bootstrap-sprockets";
+@import "bootstrap";*/
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+/* line 16, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+body {
+  /*background-color: #E9F1F1;*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* line 23, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.center {
+  text-align: center;
+}
+
+/* line 27, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.player-name {
+  background-color: #9F182C;
+  color: #D3EBBC;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2%;
+  font-size: 1.6rem;
+  border: 1px solid #000000;
+}
+/* line 36, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.player-name .player-info {
+  color: #ffffff;
+}
+
+/* line 41, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.log {
+  color: #9F182C;
+}
+
+/* line 45, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.btn-start {
+  background-color: #ffffff;
+  color: #9F182C;
+  border: 2px solid #9F182C;
+}
+
+/* line 51, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.select-hit {
+  background-color: #9F182C;
+  border-radius: 3px;
+  color: #ffffff;
+  margin: 3px;
+  font-weight: bold;
+  width: 50%;
+  height: 20px;
+  border: 1px solid #000000;
+}
+
+/* line 62, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.head-game {
+  background-color: #ffffff;
+}
+
+/* line 66, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.arena-fights {
+  background-image: url(/assets/arena8-551def3a6ed03ba351e9a8e0a6ef3aee2dde4a742bf1dcb6a9d0de62a4465014.gif);
+  background-size: 100% 100%;
+  border: 10px solid #000000;
+  opacity: 0.9;
+}
+/* line 71, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.arena-fights i {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+/* line 77, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.user-items {
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+/* line 82, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+.user-items > img {
+  margin: 3px;
+  border: 2px solid #e18916;
+}
+
+/* line 87, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+meter::-webkit-meter-bar {
+  background-image: linear-gradient(transparent, #D3EBBC 33%, #D3EBBC 66%);
+  border: 1px solid #000000;
+}
+
+/* line 97, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/application.scss */
+meter::-webkit-meter-optimum-value {
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background-image: linear-gradient(90deg, #D3EBBC 0%, #f28f68 0%, #9F182C 80%);
+  background-size: 100% 100%;
+}
+@charset "UTF-8";
+/* Basic style */
+/* --- Colors --- */
+/* --- start style --- */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+/* line 12, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* line 17, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+body {
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+/* --- header --- */
+/* line 23, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.navbar {
+  background-color: #780116;
+}
+/* line 27, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.navbar li :hover {
+  color: #780116;
+}
+/* line 32, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.navbar a {
+  color: #eae2b7;
+}
+/* line 35, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.navbar a :hover {
+  color: #780116;
+}
+
+/* --- footer --- */
+/* line 42, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+#footer {
+  background-color: #780116;
+  color: #eae2b7;
+  padding: 5px auto;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+}
+
+/* --- button -- */
+/* line 54, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.btn {
+  background-color: #fcbf49;
+}
+/* line 57, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.btn :hover {
+  background: #f77f00;
+}
+
+/* line 62, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.btn-danger {
+  background-color: #d62828;
+}
+
+/* line 66, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.dl-horizontal dt {
+  width: 100px;
+}
+
+/* line 70, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.dl-horizontal dd {
+  margin-left: 100px;
+}
+
+/*  */
+/*@import "bootstrap-sprockets";
+@import "bootstrap";*/
+@font-face {
+  font-family: myFirstFont;
+  src: url(sansation_light.woff);
+}
+/* line 91, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+body {
+  /*background-color: #E9F1F1;*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* line 98, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.center {
+  text-align: center;
+}
+
+/* line 102, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.player-name {
+  background-color: #9F182C;
+  color: #D3EBBC;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2%;
+  font-size: 1.6rem;
+  border: 1px solid #000000;
+}
+/* line 111, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.player-name .player-info {
+  color: #ffffff;
+}
+
+/* line 116, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.log {
+  color: #9F182C;
+}
+
+/* line 120, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.btn-start {
+  background-color: #ffffff;
+  color: #9F182C;
+  border: 2px solid #9F182C;
+}
+
+/* line 126, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.select-hit {
+  background-color: #9F182C;
+  border-radius: 3px;
+  color: #ffffff;
+  margin: 3px;
+  font-weight: bold;
+  width: 50%;
+  height: 20px;
+  border: 1px solid #000000;
+}
+
+/* line 137, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.head-game {
+  background-color: #ffffff;
+}
+
+/* line 141, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.arena-fights {
+  background-image: url(/assets/arena8-551def3a6ed03ba351e9a8e0a6ef3aee2dde4a742bf1dcb6a9d0de62a4465014.gif);
+  background-size: 100% 100%;
+  border: 10px solid #000000;
+  opacity: 0.9;
+}
+/* line 146, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+.arena-fights i {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10%;
+}
+
+/* line 153, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+meter::-webkit-meter-bar {
+  background-image: linear-gradient(transparent, #D3EBBC 33%, #D3EBBC 66%);
+  border: 1px solid #000000;
+}
+
+/* line 163, /home/mayar/Стільниця/Amazo/Ruby_Combats/app/assets/stylesheets/main.scss */
+meter::-webkit-meter-optimum-value {
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background-image: linear-gradient(90deg, #D3EBBC 0%, #f28f68 0%, #9F182C 80%);
+  background-size: 100% 100%;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

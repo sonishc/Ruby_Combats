@@ -6,8 +6,11 @@ class User < ApplicationRecord
   has_many :inventories
   has_many :items, through: :inventories
   has_one :skill
+  has_one :image, as: :attachable
+  accepts_nested_attributes_for :image
 
   before_save :convert_email_to_downcase
+  before_create :set_default_role
   after_create :set_items
   after_find :calculate_stats
 
