@@ -20,11 +20,11 @@ class UserProfile extends React.Component {
   render() {
 
     let rowLinks = [
-      {title: '', data: <h1><u>  {this.props.user.name} </u></h1>},
-      {title: 'e-mail:', data: this.props.user.email},
-      {title: 'Class:', data: this.props.user_type},
-      {title: 'Experience:', data: this.props.user.experience},
-      {title: 'Level:', data: this.props.user.level}
+      {title: 'name', data: <h1><u>  {this.props.user.name} </u></h1>},
+      {title: 'e_mail', data: this.props.user.email},
+      {title: 'class', data: I18n.t ("class." + this.props.user_type)},
+      {title: 'experience', data: this.props.user.experience},
+      {title: 'level', data: this.props.user.level}
     ];
 
     return (
@@ -38,7 +38,7 @@ class UserProfile extends React.Component {
               <tbody>{ generate_row(rowLinks) }</tbody>
             </table>
           
-            <button className="btn" onClick={this.handleClick}>Edit Profile</button>
+            <button className="btn" onClick={this.handleClick}>{ I18n.t ("edit_profile")}</button>
           </div>
         </div>
       </div>

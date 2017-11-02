@@ -37,7 +37,7 @@ class UserEditPassword extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <table className="">
             <tr>
-              <td>Password:</td>
+              <td>{ I18n.t ("person.password") }</td>
               <td>
                 <input className="form-control"
                         placeholder="Enter your password.."
@@ -52,7 +52,7 @@ class UserEditPassword extends React.Component {
             </tr>
 
             <tr>
-              <td>Password confirmation:</td>
+              <td>{ I18n.t ("person.password_confirmation") }</td>
               <td>
                 <input className="form-control"
                         placeholder="Retype your password.."
@@ -66,7 +66,7 @@ class UserEditPassword extends React.Component {
               </td>
             </tr>
           </table>
-          <button className="btn" type="submit">Save</button>
+          <button className="btn" type="submit">{ I18n.t ("save_profile") }</button>
         </form>
       </div>
     );

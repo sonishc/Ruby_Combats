@@ -61,7 +61,7 @@ class UserEdit extends React.Component {
               <table className="text-left ">
                 <tbody>
                 <tr>
-                  <td>Avatar</td>
+                  <td></td>
                   <td>
                     <input name="image"
                            id="file" 
@@ -71,7 +71,7 @@ class UserEdit extends React.Component {
                 </tr>
                 
                 <tr>
-                  <td>name:</td>
+                  <td>{ I18n.t ("person.user_name") }</td>
                   <td><input name="name" 
                          className="form-control"
                          placeholder="Enter your name:"
@@ -82,7 +82,7 @@ class UserEdit extends React.Component {
                 </tr>
 
                 <tr>
-                  <td>e-mail:</td>
+                  <td>{ I18n.t ("person.e_mail") }</td>
                   <td>
                     <input name="name" 
                          className="form-control"
@@ -94,27 +94,27 @@ class UserEdit extends React.Component {
                 </tr>
 
                 <tr>
-                  <td>Сlass:</td>
+                  <td>{ I18n.t ("person.class") }</td>
                   <td>{ this.props.user_type }</td>
                 </tr>
 
                 <tr>
-                  <td>Experience:</td>
+                  <td>{ I18n.t ("person.experience") }</td>
                   <td>
                     { this.props.user.experience }  <meter value={this.props.user.experience} min="0" max="100"></meter>
                   </td>
                 </tr>
 
                 <tr>
-                  <td>Level:</td>
+                  <td>{ I18n.t ("person.level") }</td>
                   <td>{ this.props.user.level }</td>
                 </tr>
                 </tbody>
               </table>
             
-            <a href="/users/profile" className="btn">Cancel</a> &nbsp;
-            <button className="btn" type="submit">Save</button> &nbsp;
-            <button className="btn" onClick={this.handleClick}>Change Password</button>
+            <a href="/users/profile" className="btn">{ I18n.t ("cancel") }</a> &nbsp;
+            <button className="btn" type="submit">{ I18n.t ("save_profile") }</button> &nbsp;
+            <button className="btn" onClick={this.handleClick}>{ I18n.t ("change_password") }</button>
             { this.state.showEditPassword ? <UserEditPassword ></UserEditPassword> : null }
             </form>
           </div>
