@@ -12,8 +12,8 @@ class UserEdit extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleSubmit(e) {
-   e.preventDefault();
+  handleSubmit(event) {
+   event.preventDefault();
    
    let data = new FormData();
    
@@ -34,16 +34,12 @@ class UserEdit extends React.Component {
         if (response.error) {
           alert(response.message);
         }
-      },
-      error:function(){
-        
       }
-
     });
   }
 
-  handleClick(e){
-    e.preventDefault();
+  handleClick(event){
+    event.preventDefault();
     const currentState = this.state.showEditPassword;
     this.setState({ showEditPassword: !currentState });
   }
@@ -66,7 +62,7 @@ class UserEdit extends React.Component {
                     <input name="image"
                            id="file" 
                            type="file" 
-                           onChange={e => this.setState({image: e.target.value})}/>
+                           onChange={event => this.setState({image: event.target.value})}/>
                   </td>
                 </tr>
                 
@@ -77,7 +73,7 @@ class UserEdit extends React.Component {
                          placeholder="Enter your name:"
                          value={ this.state.name }
                          type="text" 
-                         onChange={e => this.setState({name: e.target.value})}/>
+                         onChange={event => this.setState({name: event.target.value})}/>
                   </td>
                 </tr>
 
@@ -89,7 +85,7 @@ class UserEdit extends React.Component {
                          placeholder="Enter your email:"
                          value={ this.state.email }
                          type="email" 
-                         onChange={e => this.setState({email: e.target.value})}/>
+                         onChange={event => this.setState({email: event.target.value})}/>
                   </td>
                 </tr>
 

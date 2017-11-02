@@ -8,8 +8,8 @@ class UserEditPassword extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-   e.preventDefault();
+  handleSubmit(event) {
+   event.preventDefault();
    $.ajax({
       url:'/users/update_password',
       method:"PATCH",
@@ -21,10 +21,6 @@ class UserEditPassword extends React.Component {
           password: this.state.password,
           password_confirmation: this.state.password_confirmation,
         },
-      },
-      success:function(response) {
-      },
-      error:function(){
       }
     });
   }
@@ -43,7 +39,7 @@ class UserEditPassword extends React.Component {
                         placeholder="Enter your password.."
                         type="password"
                         value={this.state.password}
-                        onChange={e => this.setState({password: e.target.value})}
+                        onChange={event => this.setState({password: event.target.value})}
                         name="password"
                         id="user_password"
                         minLength="6"
@@ -58,7 +54,7 @@ class UserEditPassword extends React.Component {
                         placeholder="Retype your password.."
                         type="password"
                         value={this.state.password_confirmation}
-                        onChange={e => this.setState({ password_confirmation: e.target.value})}
+                        onChange={event => this.setState({ password_confirmation: event.target.value})}
                         name="password_confirmation"
                         id="user_password"
                         minLength="6"
