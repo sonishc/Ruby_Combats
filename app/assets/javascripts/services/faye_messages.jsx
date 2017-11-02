@@ -13,11 +13,11 @@ function message_box(name) {
           time: time.toLocaleTimeString()
         });
         if(matches[1] !== name){
-          var form_time = time.toLocaleTimeString();
-          var create_data = document.createElement('p');
-          var paragraph_with_text = form_time +' - '+name+' '+matches[2];
-          var add_time = document.createTextNode(paragraph_with_text);
-          var paragraph = create_data.appendChild(add_time);
+          let form_time = time.toLocaleTimeString();
+          let create_data = document.createElement('p');
+          let paragraph_with_text = form_time +' - '+name+' '+matches[2];
+          let add_time = document.createTextNode(paragraph_with_text);
+          let paragraph = create_data.appendChild(add_time);
           create_data.className = "floralwhite_fone";
           document.getElementsByClassName('message_list')[0].appendChild(create_data).appendChild(paragraph);
         }

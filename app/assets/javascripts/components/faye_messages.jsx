@@ -7,15 +7,14 @@ class FayeMessages extends React.Component {
   }
 
   generate_private_chat(e) {
-    var name = e.target.innerHTML;
+    let name = e.target.innerHTML;
     if (!document.querySelector(`#${name}`)) {
-      console.log(this.props.name);
       document.getElementById('message').value = '@'+name+' (private message): ';
     }
   };
 
   generate_users_online(user_list) {
-    var users = user_list.map((user, index) => {
+    let users = user_list.map((user, index) => {
       if(user.name !== this.props.name){
         return (<p className="users_list" onClick={this.generate_private_chat.bind(this)} key={index}>{user.name}</p>);
       }
