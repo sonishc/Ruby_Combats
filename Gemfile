@@ -6,14 +6,17 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt', '3.1.11'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.1'
 gem 'faye'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
 gem 'pry', '~> 0.11.0'
 gem 'puma', '~> 3.7'
 gem 'pundit', '~> 1.1.0'
 gem 'rails', '~> 5.1.4'
+gem 'react-bootstrap-rails', '~> 0.30.2'
 gem 'react-rails-img'
 gem 'sass-rails', '~> 5.0'
 gem 'thin'
@@ -37,12 +40,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
-end
-
-group :test do
-  gem 'database_cleaner', '~> 1.5'
-  gem 'faker', '~> 1.6.1'
-  gem 'shoulda-matchers', '~> 3.0', require: false
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
