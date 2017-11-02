@@ -1,43 +1,46 @@
 class FayeMessages extends React.Component {
   constructor(props) {
     super(props);
-     this.state = {
+    this.state = {
       urlType:`/assets/chatroom.jpg`
-      };
+    };
   }
 
-  generate_private_chat(e) {
-    let name = e.target.innerHTML;
-    if (!document.querySelector(`#${name}`)) {
+  generatePrivateChat(event) {
+    let name = event.target.innerHTML;
+    if (!document.getElementById(`#${name}`)) {
       document.getElementById('message').value = '@'+name+' (private message): ';
     }
   };
 
-  generate_users_online(user_list) {
+  generateUsersOnline(user_list) {
     let users = user_list.map((user, index) => {
       if(user.name !== this.props.name){
-        return (<p className="users_list" onClick={this.generate_private_chat.bind(this)} key={index}>{user.name}</p>);
+        return (<p className="users_list" onClick={this.generatePrivateChat.bind(this)} key={index}>{user.name}</p>);
       }
     });
     return users;
   }
 
   render() {
-    return (  
-    <div className="chat_container" >
-      { message_box(this.props.name) }
-      <div id="container"></div>
-      <div id="chat_room" className="chat_order" >
-        <div className="user_list">
-          { this.generate_users_online(this.props.users) }
+    return (
+      <div>
+        <p className='chat_word'>{ I18n.t('chat.chat_title') }</p>
+        <div className="chat_container" >
+          { messageBox(this.props.name) }
+          <div id="container"></div>
+          <div id="chat_room" className="chat_order" >
+            <div className="user_list">
+              { this.generateUsersOnline(this.props.users) }
+            </div>
+            <div className="message_list" id="list"></div>
+          </div>
+          <form id="new_message_form" method="post" className="chat_input" data-remote="true">
+            <input type="text" id="message" name="message" className="input_location" autoComplete="off"/>
+            <input type="submit" value={ I18n.t('chat.send')} className = "btn btn-danger nav-button button_location"/>
+          </form>
         </div>
-        <div className="message_list" id="list"></div>
       </div>
-      <form id="new_message_form" method="post" className="chat_input" data-remote="true">
-        <input type="text" id="message" name="message" className="input_location" autoComplete="off"/>
-        <input type="submit" value="Send" className = "button_location"/>
-      </form>
-    </div>
     );
   }
 }

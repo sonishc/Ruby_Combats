@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Chat container
-
 .chat_container {
   width:100%;
   border: 2px solid firebrick;
@@ -63,33 +61,6 @@ p.floralwhite_fone:after {
   border-color: floralwhite transparent transparent floralwhite;
 }
 
-
-
-p.khaki_fone{
-  position: relative;
-  display: table;
-  word-wrap:break-word;
-  text-overflow: ellipsis; 
-  border-color: #ccc;
-  background-color: khaki;
-  border-radius: 2px;
-  text-align: left;
-  padding: 0.5% 5% 0.5% 5%;
-  margin: 0.5% 5% 1% 5%;
-  font-size: 12px;
-}
-
-p.khaki_fone:after {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 5px;
-  bottom: -5px;
-  border: 5px solid #ccc;
-  border-color: khaki transparent transparent khaki;
-}
-
 .chat_order{
   height: 200px;
   width: 100%;
@@ -132,4 +103,11 @@ p.khaki_fone:after {
   border: solid 2px white;
   background: darkgrey;
   border-radius: 3px;
+}
+
+.chat_word {
+  color: firebrick;
+  line-height: 60px;
+  font-size: 30px;
+  font-weight: 600;
 }
