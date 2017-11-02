@@ -38,10 +38,13 @@ function messageBox(name) {
 
     let public_subscription = client.subscribe('/messages/public', function(data) {
       $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
-    }); 
+    });
 
     let private_subscription = client.subscribe('/messages/private/' + name, function(data) {
       $('<p class="floralwhite_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.message_list');
-    }); 
+    });
+    let public_sub = client.subscribe('/messages/fight', function(data) {
+      $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + " - " + data.msg).appendTo('#chat_room');
+    });
   });
 }

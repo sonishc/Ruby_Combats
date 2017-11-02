@@ -2,14 +2,9 @@ class LocationPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
-
     this.state = {
       user: this.props.user
     };
-  }
-  handleClick(location) {
-    arena.backgroundImage = 'url(' + imgUrl[location] + ')';
   }
   render() {
     return (
@@ -34,7 +29,7 @@ class LocationPage extends React.Component {
         </div>
           <div className='nav-panel'>
             <a className='btn btn-danger nav-button' href='/location'>Back</a>
-            <a className='btn btn-danger nav-button' onClick={e => this.handleClick(this.state.user)} href='/users/fight'>Fight</a>
+            <a className='btn btn-danger nav-button' href='/users/fight'>Fight</a>
           </div>
         </div>
       </div>
