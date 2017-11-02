@@ -1,5 +1,6 @@
 class Navbar extends React.Component {
-  constructor() {
+
+  constructor(props) {
    super();
   }
 
@@ -14,7 +15,7 @@ class Navbar extends React.Component {
   generate_links(links_list) {
     const links = links_list.map((value, index) => {
       return  (<li key={index}>
-                <a href={value.url} >{value.title}</a>
+                <a href={value.url} >{I18n.t ("navbar.nav." + value.title) }</a>
               </li>);
     });
 
@@ -41,6 +42,14 @@ class Navbar extends React.Component {
             <div className="collapse navbar-collapse" id="navbar-collapse">
               <ul className="nav navbar-nav pull-right">
                 { this.generate_links(NAVBAR_LINKS) }
+                <li className="dropdown-locale">
+                  <a>
+                    <span className="lang-sm" lang={this.props.locale}></span>
+                  </a>
+                  <div className="dropdown-content">
+                    { generate_locale_links(LOCALE, this.props.locale) }
+                  </div>     
+                </li>
               </ul>
             </div>
           </div>

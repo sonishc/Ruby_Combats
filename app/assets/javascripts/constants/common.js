@@ -1,30 +1,32 @@
 const NAVBAR_LINKS = [
   {
     url: '/',
-    title: 'Home'
+    title: 'home'
   },
   {
     url: '/users/sign_in',
-    title: 'Sign In'
+    title: 'sign_i'
   },
   {
     url: '/users/sign_up',
-    title: 'Sign Up'
+    title: 'sign_up'
   },
   {
     url: '/persons/profile',
-    title: 'Profile'
+    title: 'profile'
   },
   {
     url: '/users/fight',
-    title: 'Fight'
+    title: 'fight'
   },
   {
     url: '/users/sign_out',
-    title: 'Sign Out'
+    title: 'sign_o'
   }
 ];
   
 const NAVBAR_SPANS = ['icon-bar','icon-bar','icon-bar'];
 
 const SITE_LOGO_IMG = '/assets/logo_nav.png';
+
+const LOCALE = ['en','uk'];
