@@ -18,7 +18,7 @@ class UserSignout extends React.Component {
          url:'/users/sign_out',
          method: 'delete',
        }).done(function(response) {
-        console.log('LOL');
+        console.log('success');
          });
   }
 
