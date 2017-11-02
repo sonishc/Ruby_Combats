@@ -8,8 +8,8 @@ class SignupFormFinal extends React.Component {
    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-   e.preventDefault();
+  handleSubmit(event) {
+   event.preventDefault();
    firsStepData = this.props.finalData;
    $.ajax({
       url:'/users/signup',
@@ -45,7 +45,7 @@ class SignupFormFinal extends React.Component {
                      value={this.state.name}
                      type="text" 
                      required 
-                     onChange={e => this.setState({name: e.target.value})}/>
+                     onChange={event => this.setState({name: event.target.value})}/>
             </div>
 
             <div className="form-group">
@@ -53,7 +53,7 @@ class SignupFormFinal extends React.Component {
                       className="form-control" 
                       name="type" 
                       value={this.state.type}
-                      onChange={e => this.setState({type: e.target.value})}>
+                      onChange={event => this.setState({type: event.target.value})}>
                 { generate_option(USER_CLASS_OPTION) }
               </select>
             </div>

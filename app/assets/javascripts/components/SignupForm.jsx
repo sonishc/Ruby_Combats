@@ -10,8 +10,8 @@ class SignupForm extends React.Component {
     this.resetForm = this.resetForm.bind(this);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleSubmit(event) {
+    event.preventDefault();
     this.props.sendData(
       {
         email: this.state.email,
@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
                         placeholder="Enter your e-mail.."
                         type="email"
                         value={this.state.email}
-                        onChange={e => this.setState({email: e.target.value})}
+                        onChange={event => this.setState({email: event.target.value})}
                         name="email"
                         id="user_email"
                         required/>
@@ -55,7 +55,7 @@ class SignupForm extends React.Component {
                         placeholder="Enter your password.."
                         type="password"
                         value={this.state.password}
-                        onChange={e => this.setState({password: e.target.value})}
+                        onChange={event => this.setState({password: event.target.value})}
                         name="password"
                         id="user_password"
                         minLength="6"
@@ -67,7 +67,7 @@ class SignupForm extends React.Component {
                         placeholder="Retype your password.."
                         type="password"
                         value={this.state.password_confirmation}
-                        onChange={e => this.setState({ password_confirmation: e.target.value})}
+                        onChange={event => this.setState({ password_confirmation: event.target.value})}
                         name="password_confirmation"
                         id="user_password"
                         minLength="6"

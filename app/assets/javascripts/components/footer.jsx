@@ -1,8 +1,4 @@
 class Footer extends React.Component {
-  constructor() {
-   super();
-  }
-
   render() {
 
     return (

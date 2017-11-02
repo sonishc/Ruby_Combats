@@ -9,8 +9,8 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleSubmit(e) {
-  e.preventDefault();
+  handleSubmit(event) {
+  event.preventDefault();
    $.ajax({
       url:'/users/sign_in',
       method:"POST",
@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
                       id="user_email"
                       type="email"
                       value={this.state.email}
-                      onChange={e => this.setState({email: e.target.value})}
+                      onChange={event => this.setState({email: event.target.value})}
                       name="user[email]"
                       placeholder="Enter email" 
                       required />
@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
                       id="user_password"
                       type="password"
                       value={this.state.password}
-                      onChange={e => this.setState({password: e.target.value})}
+                      onChange={event => this.setState({password: event.target.value})}
                       name="user[password]"
                       placeholder="Enter password" 
                       required />
