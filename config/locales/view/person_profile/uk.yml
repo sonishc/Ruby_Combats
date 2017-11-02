@@ -1,13 +1,21 @@
 uk:
   person:
+    name: ""
+    user_name: "Ім'я"
     class: "Клас:"
     e_mail: "Емейл:"
     experience: "Досвід:"
     health: "Здоров'я:"
     level: "Рівень:"
+    password: 'Пароль:'
+    password_confirmation: 'Підтвердження пароля:'
   controll_input:
     lets_figth: "До бою"
   class:
     Rogue: "Злодій"
     Warrior: "Вояка"
     Magician: "Мольфар"
+  edit_profile: 'Редагувати профіль'
+  save_profile: 'Зберегти'
+  change_password: 'Змінити пароль'
+  cancel: 'Відмінити'

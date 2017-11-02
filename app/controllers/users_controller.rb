@@ -59,8 +59,6 @@ class UsersController < ApplicationController
     else
       render json: current_user.errors, status: :unprocessable_entity
     end
-  def profile
-    @user = current_user
   end
 
   def update_password

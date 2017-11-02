@@ -16,11 +16,7 @@ Metrics/MethodLength:
   Max: 20
 
 Metrics/LineLength:
-<<<<<<< 97f438abadf60e1707c25fc99fcb61da602ceb4e
-  Max: 90
-=======
   Max: 120
->>>>>>> RUB-39: Sign Up form to set name and choose Class, Edit Profile implementation
 
 Documentation:  
  Enabled: false

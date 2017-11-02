@@ -101,13 +101,15 @@ class UserEdit extends React.Component {
                 <tr>
                   <td>{ I18n.t ("person.experience") }</td>
                   <td>
-                    { this.props.user.experience }  <meter value={this.props.user.experience} min="0" max="100"></meter>
+                    { this.props.user.experience + " " }
+                    <meter value={this.props.user.experience} min="0" max={ this.props.next_level.experience_level }></meter>
+                    {" "}{ this.props.next_level.experience_level }
                   </td>
                 </tr>
 
                 <tr>
                   <td>{ I18n.t ("person.level") }</td>
-                  <td>{ this.props.user.level }</td>
+                  <td>{ this.props.level.level }</td>
                 </tr>
                 </tbody>
               </table>

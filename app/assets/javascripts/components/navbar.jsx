@@ -8,14 +8,31 @@ class Navbar extends React.Component {
 
   show_links(links){
     if (this.state.user && (this.state.user.role_id < 4)){
-      links = [links[0], links[2], links[3], links[4], links[5]];
+      links = [links[0], links[2], links[3], links[4], links[5], links[6]];
       return links;
     } else if (this.state.user && (this.state.user.role_id == 4)){
-      links = [links[0], links[3], links[4], links[5]];
+      links = [links[0], links[3], links[4], links[5], links[6]];
       return links;
     } else {
       links = [links[0], links[1]];
       return links;
+    }
+  }
+
+  show_locale(){
+    let locale_nav = (<li className="dropdown-locale">
+                        <a>
+                          <span className="lang-sm" lang={this.props.locale}></span>
+                        </a>
+                        <div className="dropdown-content">
+                          { generate_locale_links(LOCALE, this.props.locale) }
+                        </div>     
+                      </li>);
+    
+    if (this.state.user){
+      return locale_nav
+    } else {
+      return null;
     }
   }
 
@@ -37,17 +54,9 @@ class Navbar extends React.Component {
 
             <div className="collapse navbar-collapse" id="navbar-collapse">
               <ul className="nav navbar-nav pull-right">
-
                 { this.show_links(generate_links(NAVBAR_LINKS))}
-                <li className="dropdown-locale">
-                  <a>
-                    <span className="lang-sm" lang={this.props.locale}></span>
-                  </a>
-                  <div className="dropdown-content">
-                    { generate_locale_links(LOCALE, this.props.locale) }
-                  </div>     
-                </li>
                 
+                {this.show_locale()}
               </ul>
             </div>
           </div>
