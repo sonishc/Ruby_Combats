@@ -84,24 +84,9 @@ body {
     margin-bottom: 10%;
   }
 }
-<<<<<<< HEAD:app/assets/stylesheets/application.scss
-<<<<<<< HEAD
-  .user-items {
-    width: 300px;
-    display: block;
-    margin: auto;
-  }
-  .user-items > img{
-    margin: 3px;
-    border: 2px solid #e18916;
-  }
-=======
-.user-items {
-  width: 300px;
-=======
+
 .user-items, .inventory-items {
   width: 264px;
->>>>>>> Implemented effects functionality for items:app/assets/stylesheets/fight.scss
   display: block;
   text-align: left;
 }
@@ -115,7 +100,6 @@ body {
 .inventory-items > img.activated {
   border: 10px solid green;
 }
->>>>>>> Implemented incrementing user experience after the fight has ended
 
 meter::-webkit-meter-bar {
   background-image:
@@ -146,7 +130,24 @@ meter::-webkit-meter-optimum-value {
   }
 }
 
-.container{
+.container {
   width: 100%;
   height: 100%;
+}
+.splash {
+  width: 1170px;
+  height: 645px;
+  position: absolute;
+  background: #150303b3;
+  z-index: 9;
+  text-align: center;
+  color: white;
+  line-height: 645px;
+  font-size: 24px;
+}
+.user-invite {
+  margin: 10px 0;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 20px;
 }

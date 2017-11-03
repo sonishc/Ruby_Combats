@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   include Pundit
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   protect_from_forgery with: :exception
-
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale, :set_last_request_at
 
@@ -33,5 +32,11 @@ class ApplicationController < ActionController::Base
   def set_last_request_at
     current_user.update_attribute(:last_request_at, Time.current) if
       user_signed_in?
+  end
+
+  def broadcast(channel, msg)
+    message = { channel: channel, data: msg }
+    uri = URI.parse('http://localhost:9292/faye')
+    Net::HTTP.post_form(uri, message: message.to_json)
   end
 end

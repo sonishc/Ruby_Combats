@@ -10,9 +10,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :image
 
   before_create :set_default_role
-=======
-  before_validation :set_default_role
->>>>>>> Implemented effects functionality for items
   after_create :set_items
   after_find :calculate_stats
 
@@ -21,10 +18,6 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { maximum: 99 }
 
   DEFAULT_ARMOR = [1, 2, 3, 4, 5, 6, 7, 8].freeze
-
-  def handle_bot_hp(user)
-    self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
-  end
 
   def level_up
     exp = [50, 350, 666, 1111, 2222, 3333, 4444, 5555, 6666, 7777, 8888, 10_000]
@@ -35,6 +28,13 @@ class User < ApplicationRecord
         update_attribute(:level_id, i.next) &&
           update_attribute(:hp, health[i])
       end
+    end
+  end
+
+  def usable_items_with_count
+    items.useable.map do |item|
+      item.count = item.inventories.first.count
+      item
     end
   end
 

@@ -1,0 +1,2 @@
+<%= react_component 'Fight', {user: current_user.to_json(methods: [:stamina, :armor]), enemy: @enemy.to_json(methods: [:stamina, :armor]), equipment: @equipment,
+                              inventory: @useable.to_json(methods: [:count]), status: @status, fight_hash: params[:id]} %>
