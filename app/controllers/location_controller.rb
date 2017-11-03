@@ -5,6 +5,7 @@ class LocationController < ApplicationController
   def update
     if params.require(:level) >= params.require(:level).to_s
       @user = User.find(current_user.id)
+
       if @user.update_attribute(:location, params.require(:location))
         redirect_to '/location/page'
       else

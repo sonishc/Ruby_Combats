@@ -1,17 +1,13 @@
 class LocationPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      user: this.props.user
-    };
-  }
   render() {
     return (
-      <div id="location-page">
+      <div id='location-page'>
         <div className='col-md-6 left-side'>
           <div className='description-image'>
-            <img src={imgUrl[this.state.user]} className='img-responsive desc-image' alt='location image'/>
+            <img
+              src={imgUrl[this.props.user]}
+              className='img-responsive desc-image'
+              alt='location image'/>
           </div>
           <div className='description'>
             <p>
