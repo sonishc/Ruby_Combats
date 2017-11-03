@@ -24,7 +24,7 @@ const NAVBAR_LINKS = [
     title: 'Sign Out'
   }
 ];
-  
+
 const NAVBAR_SPANS = ['icon-bar','icon-bar','icon-bar'];
 
 const SITE_LOGO_IMG = '/assets/logo_nav.png';

@@ -5,18 +5,56 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   belongs_to :role
   has_many :inventories
+  has_many :items, through: :inventories
+  has_one :skill
 
   before_save :convert_email_to_downcase
+  before_validation :set_default_role
+  after_create :set_items
+  after_find :calculate_stats
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, uniqueness: { case_sensitive: false },
-                    length: { maximum: 50 }, format: { with: VALID_EMAIL_REGEX }
-  validates :name, presence: true,  uniqueness: true, length: { maximum: 99 }
-  validates :password, length: { minimum: 5 }
+  attr_accessor :armor, :stamina
+
+  validates :name, presence: true, uniqueness: true, length: { maximum: 99 }
+
+  DEFAULT_ARMOR = [1, 2, 3, 4, 5, 6, 7, 8].freeze
+
+  def handle_bot_hp(user)
+    self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
+  end
 
   private
 
   def convert_email_to_downcase
     self.email = email.downcase
+  end
+
+  def set_default_role
+    self.role_id ||= Role.find_by(title: 'Player').id
+  end
+
+  def equip_items
+    inventories.where(item_id: DEFAULT_ARMOR).update_all(equipped: true)
+  end
+
+  def set_items
+    equipment = Item.where(id: DEFAULT_ARMOR)
+
+    return if equipment.count.zero?
+
+    equipment.each do |item|
+      items << item
+    end
+    equip_items
+  end
+
+  def calculate_stats
+    self.stamina = 0
+    self.armor = 0
+
+    items.each do |item|
+      self.stamina += item.stamina
+      self.armor += item.armor
+    end
   end
 end
