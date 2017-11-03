@@ -107,3 +107,20 @@ meter::-webkit-meter-optimum-value {
   );
   background-size: 100% 100%;
 }
+.splash {
+  width: 1170px;
+  height: 645px;
+  position: absolute;
+  background: #150303b3;
+  z-index: 9;
+  text-align: center;
+  color: white;
+  line-height: 645px;
+  font-size: 24px;
+}
+.user-invite {
+  margin: 10px 0;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 20px;
+}

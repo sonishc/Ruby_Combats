@@ -23,6 +23,13 @@ class User < ApplicationRecord
     self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
   end
 
+  def usable_items_with_count
+    items.useable.map do |item|
+      item.count = item.inventories.first.count
+      item
+    end
+  end
+
   private
 
   def convert_email_to_downcase
