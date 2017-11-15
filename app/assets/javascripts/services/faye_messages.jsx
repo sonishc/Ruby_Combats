@@ -1,7 +1,7 @@
 function messageBox(name) {
 
   $(function() {
-    let client = new Faye.Client('http://localhost:9292/faye');
+    let client = new Faye.Client('http://18.221.225.135:9292/faye');
     let time = new Date();
     let messageToBottom = document.getElementById('list');
 
