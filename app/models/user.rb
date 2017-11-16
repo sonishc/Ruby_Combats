@@ -20,18 +20,12 @@ class User < ApplicationRecord
 
   private
 
-  def convert_email_to_downcase
-    self.email = email.downcase
-  end
-
   def set_default_role
     self.role_id ||= Role.find_by(title: 'Player').id
   end
 
   def set_items
-    Item.all.each do |item|
-      items << item
-    end
+    items << Item.all
   end
 
   def calculate_stats
