@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .chat_container {
-  width:100%;
+  width: 100%;
   border: 2px solid firebrick;
   background-color: #DEB887;
   word-wrap:break-word;
@@ -62,18 +62,26 @@ p.floralwhite_fone:after {
 }
 
 .chat_order{
-  height: 200px;
+  height: 265px;
   width: 100%;
 }
 
 .user_list{
-  width: 30%;
-  border-right: solid 2px firebrick;
+    width: 30%;
+    border-right: solid 2px firebrick;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    flex-direction: column;
+    display: flex;
+}
+.message_list{
+  height: 265px;
   overflow-y: scroll;
   overflow-x: hidden;
+  flex-direction: column;
 }
 
-.message_list{
+.message_list1{
   height: 200px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -110,4 +118,40 @@ p.floralwhite_fone:after {
   line-height: 60px;
   font-size: 30px;
   font-weight: 600;
+}
+
+.public_messages{
+  height: 265px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  flex-direction: column;
+}
+
+.tab-content{
+  width:70%;
+}
+
+.text0{
+  background: dimgrey;
+  color: white;
+  font-weight: 600;
+  vertical-align: bottom;
+  padding: 2px 10px;
+  border-radius: 7px;
+}
+
+.text1{
+  background: dimgrey;
+  color: white;
+  border-radius: 10px;
+  }
+
+.text{
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 2px;
+}
+
+#message1{
+  visibility: hidden;
 }

@@ -18,6 +18,6 @@ class LocationController < ApplicationController
   end
 
   def page
-    @users = User.where('last_request_at > ?', 1.minutes.ago)
+    @users = User.where('last_request_at > ?', 5.minutes.ago)
   end
 end
