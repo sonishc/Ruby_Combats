@@ -1,0 +1,25 @@
+en:
+  strike: 'STRIKE'
+  fight:
+    User: 'Player'
+    play_info: 'PLAY INFO'
+    Bot: 'Bot'
+    power: 'Power'
+  select_strike:
+      belt: "Hit belt"
+      chest: "Hit chest"
+      head: "Hit head"
+      legs: "Hit legs'"
+      lower_back: "Hit lower back"
+      stomach: "Hit stomach"
+      belt_block: "Block belt"
+      chest_block: "Block chest"
+      head_block: "Block head"
+      legs_block: "Block legs"
+      lower_back_block: "Block lower back"
+      stomach_block: "Block stomach"
+      undefined: ''
+  log:
+    idle: "Select Attack"
+    botLog: "Bot hit"
+    userLog: "You hit"

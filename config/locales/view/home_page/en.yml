@@ -1,0 +1,16 @@
+en:
+  home:
+    jumbotron:
+      h1: 'Welcome to Fight Club!'
+      p: 'The best fighting game'
+    about:
+      h2: 'About'
+      text_line_1: 'Fight Club is an exciting browser game in which everyone can feel like a Rogue, Warrior or Magician.'
+      text_line_2: 'During sign up user can choose Class of its player: Rogue, Warrior or Magician, can upload Avatar for character and start fighting with bot or other players.'
+      text_line_3: 'Any fight consists of a consistent exchange of punches between two players. During the fight, players are given a choice between the hit and block zones. Zones are the head, chest, stomach, waist and legs.'
+      text_line_4: 'After the fight, each player gets an experience. If a player has enough experience, he will be assigned a new level. The game has 12 levels (see table).'
+      text_line_5: 'Also, at each level, the player can use Items that increase the strength of his strike or defense.'
+    levels_title: 'Levels in game'
+    level: 'Level'
+    experience: 'Experience'
+    health_point: 'Health point'

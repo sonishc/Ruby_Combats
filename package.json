@@ -1,5 +1,24 @@
 {
   "name": "combats",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "description": "This project aims to create the online  Ruby game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rokor/Ruby_Combats.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rokor/Ruby_Combats/issues"
+  },
+  "homepage": "https://github.com/rokor/Ruby_Combats#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
 }
