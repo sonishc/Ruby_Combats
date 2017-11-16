@@ -1,5 +1,5 @@
 class SelectHitBlock extends React.Component {
-  
+
   constructor() {
     super();
 
@@ -12,11 +12,7 @@ class SelectHitBlock extends React.Component {
     return (
       <select className="select-hit" name={ name } onChange={ this.props.handleChange }>
         { items.map((item, index) => {
-<<<<<<< HEAD
           return <option key={ index } value={ index }>{ I18n.t ("select_strike." + item) }</option>
-=======
-          return <option key={ index } value={ index }>{ item }</option>
->>>>>>> Delete unused files
         }) }
       </select>
     )
@@ -26,7 +22,7 @@ class SelectHitBlock extends React.Component {
     return (
       <div>
         { this.renderItems(HIT_TYPES, 'selectedAttackIndex') }
-        { this.renderItems(BLOCK_TYPES, 'selectedBlockIndex') } 
+        { this.renderItems(BLOCK_TYPES, 'selectedBlockIndex') }
       </div>
     )
   }

@@ -9,11 +9,8 @@ gem 'bcrypt', '3.1.11'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise', '~> 4.1'
-<<<<<<< HEAD
-gem 'i18n-js', '~> 3.0', '>= 3.0.1'
-=======
 gem 'faye'
->>>>>>> Implemented fight with another player
+gem 'i18n-js', '~> 3.0', '>= 3.0.1'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'paperclip', '~> 5.0.0'
@@ -27,7 +24,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'thin'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'faye'
 gem 'thin'
 
 group :development, :test do

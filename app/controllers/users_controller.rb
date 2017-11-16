@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-<<<<<<< HEAD
   before_action :retrieve_users, :authenticate_user!
   before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
