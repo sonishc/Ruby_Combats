@@ -77,7 +77,7 @@ class Fight extends React.Component {
     }
     const random = this.getRandomInt(1, max);
     const actual = random - armor_bonus;
-    console.log(`${actor} - random: ${random}; max: ${max}; armor: ${armor_bonus}; hit: ${actual}`);
+    
     return actual >= 0 ? actual : 1;
   }
 
