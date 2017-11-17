@@ -1,0 +1,13 @@
+uk:
+  navbar:
+    nav:
+      home: 'Головна'
+      sign_i: 'Увійти'
+      sign_up: 'Зареєструватись'
+      profile: 'Профіль'
+      location: 'Локація'
+      fight: 'Вступити у бій'
+      sign_o: 'Вийти'
+      dashboard: 'Адмін. Панель'
+  footer:
+    mark: 'ЛВ-261-Рубі'

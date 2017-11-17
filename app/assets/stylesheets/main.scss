@@ -1,0 +1,237 @@
+/* Basic style */
+/* --- Colors --- */
+
+$dutch-white: #eae2b7;
+$yellow-red: #fcbf49;
+$orange: #f77f00;
+$red: #d62828;
+$burgundy: #780116;
+$primary-color: #9F182C;
+$light-green: #D3EBBC;
+$white: #ffffff;
+$black: #000000;
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* --- start style --- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+i {
+  color: $dutch-white;
+  background-color: $red;
+}
+
+/* --- header --- */
+.nav {
+  li:last-child {
+    :hover {
+      background-color : transparent;
+      cursor: pointer;
+    }
+  }
+}
+.navbar{
+  background-color: $burgundy;
+
+  li{
+
+    a{
+      color: $dutch-white;
+    }
+
+    a:hover{
+      color: $burgundy;
+    }
+  }
+
+  li.active{
+     background-color: $yellow-red;
+
+     a{
+      color: $burgundy;
+     }
+  }
+
+  li:hover{
+    color: $burgundy;
+  }
+
+}
+
+/* --- start log window -- */
+.log{
+  background-color: #EEEEEE;
+  padding: 0;
+}
+/* --- end log window -- */
+
+/* --- footer --- */
+#footer{
+  background-color: $burgundy;
+  color: $dutch-white;
+  padding: 5px auto;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 100%;
+}
+
+/* --- button -- */
+.btn{
+  background-color: $yellow-red;
+
+  :hover{
+    background: $orange;
+  }
+}
+
+.btn-danger{
+  background-color: $red;
+}
+
+.dl-horizontal dt{
+  width: 100px;
+}
+
+.dl-horizontal dd{
+  margin-left: 100px;
+}
+
+
+/* --- userptofile --- */
+.userptofile{
+  table{
+    tr td:first-child{
+      font-weight: bold;
+    }
+  }
+}
+
+/*  */
+
+/*@import "bootstrap-sprockets";
+@import "bootstrap";*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+}
+
+$primary-color: #9F182C;
+$light-green: #D3EBBC;
+$white: #ffffff;
+$black: #000000;
+
+body {
+  /*background-color: #E9F1F1;*/
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.player-name {
+  background-color: $primary-color;
+  color: $light-green;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 2%;
+  font-size: 1.6rem;
+  border: 1px solid $black;
+
+  .player-info {
+    color: $white ;
+  }
+}
+
+.log {
+  color: $primary-color;
+}
+
+.btn-start{
+  background-color: $white;
+  color: $primary-color;
+  border: 2px solid $primary-color;
+}
+
+.select-hit {
+  background-color: $primary-color;
+  border-radius: 3px;
+  color: $white;
+  margin: 3px;
+  font-weight: bold;
+  width: 50%;
+  height: 20px;
+  border: 1px solid $black;
+}
+
+.head-game {
+  background-color: $white;
+}
+
+.arena-fights {
+  background-image: image_url('arena8.gif');
+  background-size: 100% 100%;
+  border: 10px solid $black;
+  opacity: 0.9;
+  i {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10%;
+  }
+}
+
+meter::-webkit-meter-bar {
+  background-image:
+    linear-gradient(
+      transparent,
+      $light-green 33%,
+      $light-green 66%
+    );
+      border: 1px solid $black;
+}
+
+meter::-webkit-meter-optimum-value {
+  box-shadow: 0 5px 5px -5px #999 inset;
+  background-image: linear-gradient(
+    90deg,
+    $light-green 0%,
+    #f28f68 0%,
+    $primary-color 80%
+  );
+  background-size: 100% 100%;
+}
+
+/* --- locale internationalization -- */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 15px;
+  display: block;
+}
+
+.dropdown-locale:hover .dropdown-content {
+  display: block;
+}

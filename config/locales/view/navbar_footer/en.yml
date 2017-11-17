@@ -1,0 +1,14 @@
+en:
+  navbar:
+    nav:
+      home: 'Home'
+      sign_i: 'Sign In'
+      sign_up: 'Sign Up'
+      profile: 'Profile'
+      location: 'Location'
+      fight: 'Fight'
+      sign_o: 'Sign Out'
+      dashboard: 'Dashboard'
+  footer:
+    mark: 'Lv-261-Ruby'
+
