@@ -1,10 +1,10 @@
 function messageBox(name) {
 
-  $(function() {    
-    let client = new Faye.Client('http://18.221.225.135:9292/faye');
+  $(function() {
+    let client = new Faye.Client('http://localhost:9292/faye');
     let time = new Date();
 
-    $('#new_message_form').submit(function(){
+    $('#new_message_form').submit(() => {
       if (matches = $('#message').val().match(/@(\w+) (.+)/)) {
         client.publish('/messages/private/' + matches[1], {
           username: name,
@@ -12,7 +12,11 @@ function messageBox(name) {
           time: time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
         });
       if(matches[1] !== name){
-        let formTime = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}), createData = document.createElement('p'), paragraphWithText = formTime +' - '+name+' '+matches[2], addTime = document.createTextNode(paragraphWithText), paragraph = createData.appendChild(addTime);
+        let formTime = time.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+            createData = document.createElement('p'),
+            paragraphWithText = `${formTime} - ${name} ${matches[2]}`,
+            addTime = document.createTextNode(paragraphWithText),
+            paragraph = createData.appendChild(addTime);
         createData.className = `floralwhite_fone ${matches[1]}`;
         document.getElementById(`${matches[1]}`).appendChild(createData).appendChild(paragraph);
         }
@@ -25,14 +29,14 @@ function messageBox(name) {
         });
       }
 
-      $('.message_list').on('DOMNodeInserted', 'p', function () {
+      $('.message_list').on('DOMNodeInserted', 'p', () => {
         setTimeout(function() {
           let messageToBottomPrivate = document.getElementById(matches[1]);
           messageToBottomPrivate.scrollTop = messageToBottomPrivate.scrollHeight;
         }, 100);
       });
 
-      $('.public_messages').on('DOMNodeInserted', 'p', function () {
+      $('.public_messages').on('DOMNodeInserted', 'p', () => {
         setTimeout(function() {
           let messageToBottomPublic = document.getElementById("list");
           messageToBottomPublic.scrollTop = messageToBottomPublic.scrollHeight;
@@ -43,11 +47,11 @@ function messageBox(name) {
         return false;
       });
 
-    let public_subscription = client.subscribe('/messages/public', function(data) {
-      $('<p class="dark_fone" ></p>').html(data.time  + " - " + data.username + ": " + data.msg).appendTo('.public_messages');
+    let public_subscription = client.subscribe('/messages/public', (data) => {
+      $('<p class="dark_fone" ></p>').html(`${data.time} - ${data.username} : ${data.msg}`).appendTo('.public_messages');
     }); 
 
-    let private_subscription = client.subscribe('/messages/private/' + name, function(data) {
+    let private_subscription = client.subscribe('/messages/private/' + name, (data) => {
       appendMessage(data); 
     }); 
   });
@@ -61,15 +65,14 @@ function messageBox(name) {
       message_box.innerHTML = `${data.time} - ${data.username}: ${data.msg}`;
       document.getElementById(data.username).appendChild(message_box);
     }
-
-    document.getElementById('message').value = '@'+data.username+' (private message): ';
+    document.getElementById('message').value = `@${data.username} (private message): `;
   }
 
   function createTab({username, time, msg = null}) {
     console.log(username, time, msg);
-    let createPersonalChatWindow = document.createElement('div');
-    let createChatText = 'Chat history with ' + username;
-    let createChatInfo = document.createTextNode(createChatText);
+    let createPersonalChatWindow = document.createElement('div'),
+        createChatText = `Chat history with ${username}`,
+        createChatInfo = document.createTextNode(createChatText);
     createPersonalChatWindow.appendChild(createChatInfo);
     createPersonalChatWindow.className = 'message_list tab-pane fade in active';
     createPersonalChatWindow.id = username;
