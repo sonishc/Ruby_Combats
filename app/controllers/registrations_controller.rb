@@ -1,19 +1,16 @@
 class RegistrationsController < Devise::RegistrationsController
   respond_to :json
-  def create
-    build_resource(sign_up_params)
 
-    if resource.save
-      if resource.active_for_authentication?
-        sign_up(resource_name, resource)
+def create
+        @user = User.new(sign_up_params)    
+      if @user.save
+        UserMailer.registration_confirmation(@user).deliver
+        flash[:success] = "Please confirm your email address to continue"
+        redirect_to '/users/sign_in'
       else
-        expire_session_data_after_sign_in!
+        flash[:error] = "Ooooppss, something went wrong!"
+        render 'new'
       end
-      redirect_to '/location'
-    else
-      clean_up_passwords resource
-      render json: { error: true, message: resource.errors.full_messages }
-    end
   end
 
   def update

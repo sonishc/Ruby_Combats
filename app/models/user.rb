@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one :image, class_name: 'Image', as: :attachable
   accepts_nested_attributes_for :image
 
+  before_create :confirmation_token
   before_create :set_default_role
   after_create :set_items
   after_find :calculate_stats
@@ -17,6 +18,12 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { maximum: 99 }
 
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+  
   def handle_bot_hp(user)
     self.hp = rand(user.hp * 0.8..user.hp + user.hp * 0.2)
   end
@@ -34,6 +41,12 @@ class User < ApplicationRecord
   end
 
   private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
 
   def set_default_role
     self.role_id ||= Role.find_by(title: 'Player').id
