@@ -21,7 +21,6 @@ class FayeMessages extends React.Component {
             button = document.createElement('button');
             createChatInfo = document.createTextNode(createChatText);
             createButtonInfo = document.createTextNode(createButtonText);
-        
         container.className = 'text';
         paragraph.className = 'text0';   
         button.className = 'text1';
@@ -46,7 +45,6 @@ class FayeMessages extends React.Component {
       if (activeClassElements.length) {
          activeClassElements[0].classList.toggle('active');
        }
-
       if (document.querySelector('#list') === null){
         let createPersonalChatWindow = document.createElement('div'),
             createChatText = 'Public Chat history',
@@ -56,13 +54,10 @@ class FayeMessages extends React.Component {
             button = document.createElement('button'),
             createChatInfo = document.createTextNode(createChatText),
             createButtonInfo = document.createTextNode(createButtonText);
-        
         container.className = "text";
         paragraph.className = "text0";
         button.className = 'text1';
-
         button.addEventListener ("click", () => this.removeChatHistory(document.querySelectorAll(`.dark_fone`)), false);
-
         paragraph.appendChild(createChatInfo);
         button.appendChild(createButtonInfo);
         container.appendChild(paragraph);
@@ -87,9 +82,8 @@ class FayeMessages extends React.Component {
       if (user.name !== this.props.name){
         return (<a className="users_list" data-toggle="tab" href="#Petro" onClick={this.generatePrivateChat.bind(this)} key={index}>{user.name}</a>);
       }
-      else
-      { 
-      return (<a className="users_list" data-toggle="tab" href="#list" onClick={this.generatePublicChat.bind(this)} key={index}>Public Chat</a>);
+      else{ 
+        return (<a className="users_list" data-toggle="tab" href="#list" onClick={this.generatePublicChat.bind(this)} key={index}>Public Chat</a>);
       }
     });
     return users;

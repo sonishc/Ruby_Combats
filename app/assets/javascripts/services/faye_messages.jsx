@@ -55,10 +55,10 @@ function messageBox(name) {
       appendMessage(data); 
     }); 
   });
+  
   function appendMessage(data) {
     if (!document.getElementById(data.username))
       createTab(data);
-
     if (data.msg !== 'null') {
       let message_box = document.createElement('p');
       message_box.className = `floralwhite_fone ${data.username}`;
@@ -69,7 +69,6 @@ function messageBox(name) {
   }
 
   function createTab({username, time, msg = null}) {
-    console.log(username, time, msg);
     let createPersonalChatWindow = document.createElement('div'),
         createChatText = `Chat history with ${username}`,
         createChatInfo = document.createTextNode(createChatText);
