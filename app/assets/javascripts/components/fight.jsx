@@ -2,6 +2,7 @@ class Fight extends React.Component {
 
   constructor(props) {
     super(props);
+    console.log(JSON.parse(props.enemy));
     const user  = this.setStats(JSON.parse(props.user));
     const enemy = this.setStats(JSON.parse(props.enemy));
     const inventory = JSON.parse(props.inventory);
