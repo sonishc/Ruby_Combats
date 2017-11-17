@@ -11,7 +11,7 @@ class FayeMessages extends React.Component {
       const activeClassElements = document.getElementsByClassName('active');
       if (activeClassElements.length) {
          activeClassElements[0].classList.toggle('active');
-       }
+      }
       if (document.querySelector(`#${name}`) == null){
         let createPersonalChatWindow = document.createElement('div'),
             createChatText = `Chat history with ${name}`,
@@ -44,7 +44,7 @@ class FayeMessages extends React.Component {
       const activeClassElements = document.getElementsByClassName('active');
       if (activeClassElements.length) {
          activeClassElements[0].classList.toggle('active');
-       }
+      }
       if (document.querySelector('#list') === null){
         let createPersonalChatWindow = document.createElement('div'),
             createChatText = 'Public Chat history',
