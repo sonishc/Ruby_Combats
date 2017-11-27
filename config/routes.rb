@@ -20,7 +20,14 @@ Rails.application.routes.draw do
   patch 'users', to: 'users#update'
   resources :users, only: %i[index destroy update]
 
-  get 'users/fight'
+  post 'item/:id/remove',  to: 'items#remove_item'
+  get 'fight/init', to: 'fight#initiate'
+  get 'fight/confirm', to: 'fight#confirm_invite'
+  get 'fight/users', to: 'fight#users'
+  post 'fight/update', to: 'fight#update'
+
+  get 'fight/:id', to: 'fight#index', :as => :fight
+  
   post 'users/:id/addexp', to: 'users#add_experience'
 
   put '/locale' => 'application#change_locale'

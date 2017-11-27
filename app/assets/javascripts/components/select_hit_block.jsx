@@ -1,5 +1,5 @@
 class SelectHitBlock extends React.Component {
-  
+
   constructor() {
     super();
 
@@ -22,7 +22,7 @@ class SelectHitBlock extends React.Component {
     return (
       <div>
         { this.renderItems(HIT_TYPES, 'selectedAttackIndex') }
-        { this.renderItems(BLOCK_TYPES, 'selectedBlockIndex') } 
+        { this.renderItems(BLOCK_TYPES, 'selectedBlockIndex') }
       </div>
     )
   }

@@ -9,26 +9,8 @@
 
 $primary-color: #9F182C;
 $light-green: #D3EBBC;
-$white: #ffffff;
-$black: #000000;
-
-* {
-  box-sizing: border-box;
-}
-html {
-  height: 100%
-}
-body {
-  height: 100%;
-  margin: 0;
-  background: radial-gradient(circle, #1fc8db, #2cb5e8);
-  /*background-color: #E9F1F1;*/
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.4rem;
-  text-align: center;
-  height: 100%;
-  padding: 100%;
-}
+$white: #fff;
+$black: #000;
 
 .center {
   text-align: center;
@@ -84,15 +66,23 @@ body {
     margin-bottom: 10%;
   }
 }
-.user-items {
-  width: 300px;
+
+.user-items, .inventory-items {
+  width: 264px;
   display: block;
-  margin: auto;
+  text-align: left;
 }
-.user-items > img{
+.user-items > img, .inventory-items > img{
   margin: 3px;
   border: 2px solid #e18916;
+  width: 60px;
+  height: 60px;
 }
+
+.inventory-items > img.activated {
+  border: 10px solid green;
+}
+
 meter::-webkit-meter-bar {
   background-image:
     linear-gradient(
@@ -122,7 +112,24 @@ meter::-webkit-meter-optimum-value {
   }
 }
 
-.container{
+.container {
   width: 100%;
   height: 100%;
+}
+.splash {
+  width: 1170px;
+  height: 645px;
+  position: absolute;
+  background: #150303b3;
+  z-index: 9;
+  text-align: center;
+  color: white;
+  line-height: 645px;
+  font-size: 24px;
+}
+.user-invite {
+  margin: 10px 0;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 20px;
 }

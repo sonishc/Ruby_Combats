@@ -38,23 +38,23 @@ const NAVBAR_LINKS = [
 
 const USER_CLASS_OPTION = [
       {
-        title:"Select your Player type:", 
+        title:"Select your Player type:",
         option: ""
       },
       {
-        title:"Magician", 
+        title:"Magician",
         option: "Magician"
       },
       {
-        title:"Rogue", 
+        title:"Rogue",
         option: "Rogue"
       },
       {
-        title:"Warrior", 
+        title:"Warrior",
         option: "Warrior"
       }
     ];
-  
+
 const NAVBAR_SPANS = ['icon-bar','icon-bar','icon-bar'];
 
 const SITE_LOGO_IMG = '/assets/logo_nav.png';

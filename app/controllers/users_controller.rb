@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :retrieve_users, :authenticate_user!
-  before_action :authenticate_user!, only: %i[fight add_experience]
+  before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
   def index
@@ -44,10 +44,20 @@ class UsersController < ApplicationController
     current_user.hp = @health_level.health_point_level
     @bot = current_user.dup
     @bot.handle_bot_hp(current_user)
+    @equipment = current_user.items.equipment
+    @useable = current_user.items.useable.map do |item|
+      item.count = item.inventories.first.count
+      item
+    end
   end
 
   def online
     @users = User.where('last_request_at > ?', 5.minutes.ago)
+  end
+
+  def fight
+    @bot = current_user.dup
+    @bot.handle_bot_hp(current_user)
   end
 
   def add_experience
@@ -66,6 +76,16 @@ class UsersController < ApplicationController
     @user.update(password_params)
     bypass_sign_in(@user)
     redirect_to users_profile_path
+  end
+
+  def remove_item
+    item = Inventory.find_by(user_id: current_user.id,
+                             item_id: params[:item_id])
+    if item.count > 1
+      item.update_attributes(count: item.count - 1)
+    else
+      item.destroy
+    end
   end
 
   private

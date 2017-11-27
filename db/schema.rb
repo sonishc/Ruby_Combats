@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029232326) do
+ActiveRecord::Schema.define(version: 20171102125246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(version: 20171029232326) do
     t.datetime "updated_at", null: false
     t.index ["attachable_id", "attachable_type"], name: "index_images_on_attachable_id_and_attachable_type"
     t.index ["attachable_type", "attachable_id"], name: "index_images_on_attachable_type_and_attachable_id"
+
+  create_table "fight_logs", force: :cascade do |t|
+    t.integer "fight_id"
+    t.integer "attack"
+    t.integer "block"
+    t.integer "item_id"
+    t.integer "user_id"
+    t.float "damage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.integer "initiator"
+    t.integer "opponent"
+    t.string "fight_hash"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -34,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171029232326) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "item_id"
+    t.integer "count", default: 1
   end
 
   create_table "items", force: :cascade do |t|
@@ -46,9 +65,11 @@ ActiveRecord::Schema.define(version: 20171029232326) do
     t.integer "instinct"
     t.integer "stamina"
     t.integer "dexterity"
+    t.integer "effect_type", default: 0
+    t.float "effect_value", default: 0.0
+    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "img"
   end
 
   create_table "levels", force: :cascade do |t|
