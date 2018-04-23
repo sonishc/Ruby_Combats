@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'persons/profile', to: 'persons#profile'
+
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_scope :user do
+    post '/users/signup', to: 'registrations#create'
+    get '/users/sign_up', to: 'devise/registrations#new'
+  end
 end
